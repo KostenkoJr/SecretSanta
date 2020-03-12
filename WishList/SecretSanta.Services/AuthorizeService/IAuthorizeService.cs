@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SecretSanta.Data.EF.Repositories.UserRepository
+namespace SecretSanta.Services.AuthorizeService
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IAuthorizeService
     {
         User Login(String email, String password);
-        User GetCurrentUser(String email);
         Boolean IsUserExist(String email);
     }
 }

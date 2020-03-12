@@ -9,7 +9,7 @@ namespace WishList.Controllers.Authorization.Model
     public class LoginModel
     {
         [Required]
-        public string Name { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

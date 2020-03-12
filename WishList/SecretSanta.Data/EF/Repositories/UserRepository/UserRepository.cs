@@ -35,6 +35,13 @@ namespace SecretSanta.Data.EF.Repositories.UserRepository
                 return context.Users.Include(u => u.Group).FirstOrDefault(u => u.Id == id);
             }
         }
+        public User Login(String email, String password)
+        {
+            using (SantaContext context = new SantaContext())
+            {
+                return context.Users.Include(u => u.Group).FirstOrDefault(u => u.Email == email && u.Password == password);
+            }
+        }
 
         public IEnumerable<User> Get()
         {
@@ -49,6 +56,22 @@ namespace SecretSanta.Data.EF.Repositories.UserRepository
             {
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
+            }
+        }
+
+        public bool IsUserExist(string email)
+        {
+            using (SantaContext context = new SantaContext())
+            {
+                return context.Users.FirstOrDefault(u => u.Email == email) != null;
+            }
+        }
+
+        public User GetCurrentUser(string email)
+        {
+            using (SantaContext context = new SantaContext())
+            {
+                return context.Users.FirstOrDefault(u => u.Email == email);
             }
         }
     }

@@ -23,10 +23,10 @@ namespace WishList.Controllers
             _groupService = groupService;
             _userService = userService;
         }
-        //[Authorize]
+        [Authorize]
         public ActionResult Index()
         {
-            #region Initialize
+            //#region Initialize
             //_groupService.CreateGroup(new Group { Name = "ICTIS" });
             //_userService.CreateUser(new User
             //{
@@ -38,7 +38,7 @@ namespace WishList.Controllers
             //    IsAdmin = true,
             //    GroupId = 1
             //});
-            #endregion
+            //#endregion
             var user = _userService.GetUser(1);
             var group = _groupService.GetGroup(1);
             return View();

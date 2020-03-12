@@ -26,7 +26,7 @@ namespace SecretSanta.Services.UserServices
 
         public User GetCurrentUser(string email)
         {
-            throw new NotImplementedException();
+            return _userRepository.GetCurrentUser(email);
         }
 
         public User GetUser(long id)

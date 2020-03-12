@@ -34,6 +34,8 @@ namespace SecretSanta.Data.Models
         public Boolean IsAdmin { get; set; }
         public Int64? GroupId { get; set; }
         public Group Group { get; set; }
+        public Int64? RecipientId { get; set; }
+        public User Recipient { get; set; }
 
     }
 }
