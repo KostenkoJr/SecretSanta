@@ -32,9 +32,7 @@ namespace SecretSanta.Data.Models
         public String PathToPicture { get; set; }
 
         public Boolean IsAdmin { get; set; }
-        public Int64? GroupId { get; set; }
-        public Group Group { get; set; }
-        //public Int64? RecipientId { get; set; }
+        public DateTime DateOfBirth { get; set; } 
         public Recipient Recipient { get; set; }
     }
 }

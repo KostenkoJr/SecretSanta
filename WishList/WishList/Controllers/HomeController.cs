@@ -101,8 +101,7 @@ namespace WishList.Controllers
                 Email = "9@mail.ru",
                 Password = "panda_super_secret_password",
                 PathToPicture = "~/Files/GeyYBmUpySU.jpg",
-                IsAdmin = false,
-                GroupId = 1
+                IsAdmin = false
             });
             if (upload != null)
             {

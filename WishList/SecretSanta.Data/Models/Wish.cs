@@ -17,9 +17,9 @@ namespace SecretSanta.Data.Models
         public string PathToPicture { get; set; }
         public string LinkToShop { get; set; }
         public decimal Price { get; set; }
+        public Boolean IsComlete { get; set; }
         public DateTime Date { get; set; }
         public Int64 UserId { get; set; }
         public User User { get; set; }
-        
     }
 }

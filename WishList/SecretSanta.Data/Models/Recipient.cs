@@ -26,6 +26,7 @@ namespace SecretSanta.Data.Models
         [Index(IsUnique = true)]
         [Required]
         public String Email { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         public String PathToPicture { get; set; }
         public User User { get; set; }
