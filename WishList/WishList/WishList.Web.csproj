@@ -150,6 +150,7 @@
     <Compile Include="Controllers\Authorization\Model\LoginModel.cs" />
     <Compile Include="Controllers\Authorization\Model\RegisterModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -295,9 +296,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Info\Contact.cshtml" />
+    <Content Include="Views\Info\About.cshtml" />
+    <Content Include="Views\Info\Rules.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

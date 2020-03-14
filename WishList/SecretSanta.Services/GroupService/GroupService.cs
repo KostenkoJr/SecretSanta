@@ -1,5 +1,8 @@
 ﻿using SecretSanta.Data.EF.Repositories.GroupRepository;
+using SecretSanta.Data.EF.Repositories.RecipientRepository;
+using SecretSanta.Data.EF.Repositories.UserRepository;
 using SecretSanta.Data.Models;
+using SecretSanta.Services.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +13,11 @@ namespace SecretSanta.Services.GroupService
 {
     public class GroupService : IGroupService
     {
-        public GroupService(IGroupRepository groupRepository)
+        public GroupService(IGroupRepository groupRepository, IUserRepository userRepository, IRecipientRepository recipientRepository)
         {
+            _recipientRepository = recipientRepository;
             _groupRepository = groupRepository;
+            _userRepository = userRepository;
         }
         public void CreateGroup(Group group)
         {
@@ -38,6 +43,16 @@ namespace SecretSanta.Services.GroupService
             _groupRepository.Update(group);
         }
 
+        public void SetRecipient(Group group)
+        {
+            var currentGroup = GetGroup(group.Id);
+            List<User> users = _userRepository.Get(u => u.GroupId == group.Id).ToList();
+            users.Mix();
+            _recipientRepository.SetRecipientForUsers(users);
+        }
+
         private IGroupRepository _groupRepository;
+        private IUserRepository _userRepository;
+        private IRecipientRepository _recipientRepository;
     }
 }

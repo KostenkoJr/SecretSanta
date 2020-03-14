@@ -18,8 +18,10 @@ namespace SecretSanta.Data.EF
         public DbSet<User> Users { get; set; }
         public DbSet<Wish> Wishes { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<Recipient> Recipients { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
     }
-    
+
     public class MyInitializer : DropCreateDatabaseIfModelChanges<SantaContext>
     {
         protected override void Seed(SantaContext context)

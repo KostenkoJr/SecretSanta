@@ -44,6 +44,14 @@ namespace SecretSanta.Data.EF.Repositories.GroupRepository
             }
         }
 
+        public IEnumerable<Group> Get(Func<Group, bool> predicate)
+        {
+            using (SantaContext context = new SantaContext())
+            {
+                return context.Groups.Where(predicate);
+            }
+        }
+
         public void Update(Group item)
         {
             using (SantaContext context = new SantaContext())

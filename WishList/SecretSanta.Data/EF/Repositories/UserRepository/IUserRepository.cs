@@ -12,5 +12,6 @@ namespace SecretSanta.Data.EF.Repositories.UserRepository
         User Login(String email, String password);
         User GetCurrentUser(String email);
         Boolean IsUserExist(String email);
+        //void SetRecipient(Recipient recipient);
     }
 }

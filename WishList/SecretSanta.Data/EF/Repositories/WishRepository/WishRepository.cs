@@ -42,6 +42,14 @@ namespace SecretSanta.Data.EF.Repositories.WishRepository
             }
         }
 
+        public IEnumerable<Wish> Get(Func<Wish, bool> predicate)
+        {
+            using (SantaContext context = new SantaContext())
+            {
+                return context.Wishes.Where(predicate);
+            }
+        }
+
         public void Update(Wish item)
         {
             using (SantaContext context = new SantaContext())

@@ -1,8 +1,7 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Upload";
 }
-
-    @*<h1>@ViewBag.Wish.Title</h1>
-    <h1>@ViewBag.Wish.Description</h1>
-    <p>@ViewBag.Wish.User.FirstName</p>
-    <p>@ViewBag.Wish.User.LastName</p>*@
+    <h1>@ViewBag.User.FirstName</h1>
+    <h1>@ViewBag.User.LastName</h1>
+    <img src="@Href("~/Files/" + @ViewBag.User.PathToPicture)" alt="Alternate Text" />

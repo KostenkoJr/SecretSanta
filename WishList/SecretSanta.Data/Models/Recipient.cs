@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SecretSanta.Data.Models
 {
-    public class User
+    public class Recipient
     {
         [Key]
+        [ForeignKey("User")]
         public Int64 Id { get; set; }
 
         [MaxLength(255)]
@@ -25,16 +27,7 @@ namespace SecretSanta.Data.Models
         [Required]
         public String Email { get; set; }
 
-        [MaxLength(255)]
-        [Required]
-        public String Password { get; set; }
-
         public String PathToPicture { get; set; }
-
-        public Boolean IsAdmin { get; set; }
-        public Int64? GroupId { get; set; }
-        public Group Group { get; set; }
-        //public Int64? RecipientId { get; set; }
-        public Recipient Recipient { get; set; }
+        public User User { get; set; }
     }
 }

@@ -12,10 +12,8 @@ namespace WishList.Controllers.Authorization.Model
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public string NickName { get; set; }
         public string Email { get; set; }
-
+        public HttpPostedFileBase Picture { get; set; }
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }

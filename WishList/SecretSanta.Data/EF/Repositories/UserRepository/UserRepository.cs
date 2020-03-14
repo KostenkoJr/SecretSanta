@@ -32,7 +32,7 @@ namespace SecretSanta.Data.EF.Repositories.UserRepository
         {
             using (SantaContext context = new SantaContext())
             {
-                return context.Users.Include(u => u.Group).FirstOrDefault(u => u.Id == id);
+                return context.Users.Include(u => u.Group).Include(u => u.Recipient).FirstOrDefault(u => u.Id == id);
             }
         }
         public User Login(String email, String password)
@@ -47,7 +47,7 @@ namespace SecretSanta.Data.EF.Repositories.UserRepository
         {
             using (SantaContext context = new SantaContext())
             {
-                return context.Users.ToList();
+                return context.Users.Include(u => u.Group).Include(u => u.Recipient).ToList();
             }
         }
         public void Update(User user)
@@ -74,5 +74,15 @@ namespace SecretSanta.Data.EF.Repositories.UserRepository
                 return context.Users.FirstOrDefault(u => u.Email == email);
             }
         }
+
+        public IEnumerable<User> Get(Func<User, bool> predicate)
+        {
+            using (SantaContext context = new SantaContext())
+            {
+                return context.Users.Where(predicate).ToList();
+            }
+        }
+
+        
     }
 }

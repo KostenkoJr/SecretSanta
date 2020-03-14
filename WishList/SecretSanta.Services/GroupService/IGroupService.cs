@@ -14,5 +14,6 @@ namespace SecretSanta.Services.GroupService
         void CreateGroup(Group group);
         void DeleteGroup(Group group);
         void UpdateGroup(Group group);
+        void SetRecipient(Group group);
     }
 }

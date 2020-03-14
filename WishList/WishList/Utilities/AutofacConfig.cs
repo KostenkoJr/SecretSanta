@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using SecretSanta.Data.EF.Repositories.GroupRepository;
+using SecretSanta.Data.EF.Repositories.RecipientRepository;
 using SecretSanta.Data.EF.Repositories.UserRepository;
 using SecretSanta.Services.AuthorizeService;
 using SecretSanta.Services.GroupService;
@@ -28,6 +29,10 @@ namespace WishList.Utilities
             #region User
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             builder.RegisterType<UserService>().As<IUserService>();
+            #endregion
+
+            #region Recipient
+            builder.RegisterType<RecipientRepository>().As<IRecipientRepository>();
             #endregion
 
             #region Authorization

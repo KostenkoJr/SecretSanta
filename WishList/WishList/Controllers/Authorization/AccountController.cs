@@ -1,10 +1,8 @@
 ﻿using SecretSanta.Data.Models;
 using SecretSanta.Services.AuthorizeService;
+using SecretSanta.Services.FileService;
 using SecretSanta.Services.UserServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WishList.Controllers.Authorization.Model;
@@ -61,6 +59,7 @@ namespace WishList.Controllers.Authorization
         {
             if (ModelState.IsValid)
             {
+                string pathToFile = FileService.SaveFile(model.Picture);
                 Boolean isUsserExist = _authorizeService.IsUserExist(model.Email);
                 if (!isUsserExist)
                 {
@@ -70,9 +69,9 @@ namespace WishList.Controllers.Authorization
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         Email = model.Email,
-                        Password = model.Password
+                        Password = model.Password,
+                        PathToPicture = pathToFile
                     });
-                    // если пользователь удачно добавлен в бд
                     User user = _userService.GetCurrentUser(model.Email);
                     if (user != null)
                     {
