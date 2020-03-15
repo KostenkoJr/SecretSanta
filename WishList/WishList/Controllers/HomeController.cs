@@ -2,65 +2,57 @@
 using System.Web.Mvc;
 using SecretSanta.Data.Models;
 using SecretSanta.Services.UserServices;
-using SecretSanta.Services.GroupService;
 
 namespace WishList.Controllers
 {
     public class HomeController : Controller
     {
-        private IGroupService _groupService;
         private IUserService _userService;
 
-        public HomeController(IUserService userService, IGroupService groupService)
+        public HomeController(IUserService userService)
         {
-            _groupService = groupService;
             _userService = userService;
         }
         //[Authorize]
         public ActionResult Index()
         {
             #region Initialize
-            //_groupService.CreateGroup(new Group { Name = "ICTIS" });
-            //_userService.CreateUser(new User
-            //{
-            //    FirstName = "Lena",
-            //    LastName = "Chernaya",
-            //    Email = "9@mail.ru",
-            //    Password = "panda_super_secret_password",
-            //    PathToPicture = "path to picture",
-            //    IsAdmin = false,
-            //    GroupId = 1
-            //});
-            //_userService.CreateUser(new User
-            //{
-            //    FirstName = "Lena",
-            //    LastName = "Chernaya",
-            //    Email = "99@mail.ru",
-            //    Password = "panda_super_secret_password",
-            //    PathToPicture = "path to picture",
-            //    IsAdmin = false,
-            //    GroupId = 1
-            //});
-            //_userService.CreateUser(new User
-            //{
-            //    FirstName = "Lena",
-            //    LastName = "Chernaya",
-            //    Email = "88@mail.ru",
-            //    Password = "panda_super_secret_password",
-            //    PathToPicture = "path to picture",
-            //    IsAdmin = false,
-            //    GroupId = 1
-            //});
-            //_userService.CreateUser(new User
-            //{
-            //    FirstName = "Lena",
-            //    LastName = "Chernaya",
-            //    Email = "77@mail.ru",
-            //    Password = "panda_super_secret_password",
-            //    PathToPicture = "path to picture",
-            //    IsAdmin = false,
-            //    GroupId = 1
-            //});
+            _userService.CreateUser(new User
+            {
+                FirstName = "Lena",
+                LastName = "Chernaya",
+                Email = "9@mail.ru",
+                Password = "panda_super_secret_password",
+                PathToPicture = "path to picture",
+                IsAdmin = false
+            });
+            _userService.CreateUser(new User
+            {
+                FirstName = "Lena",
+                LastName = "Chernaya",
+                Email = "99@mail.ru",
+                Password = "panda_super_secret_password",
+                PathToPicture = "path to picture",
+                IsAdmin = false
+            });
+            _userService.CreateUser(new User
+            {
+                FirstName = "Lena",
+                LastName = "Chernaya",
+                Email = "88@mail.ru",
+                Password = "panda_super_secret_password",
+                PathToPicture = "path to picture",
+                IsAdmin = false
+            });
+            _userService.CreateUser(new User
+            {
+                FirstName = "Lena",
+                LastName = "Chernaya",
+                Email = "77@mail.ru",
+                Password = "panda_super_secret_password",
+                PathToPicture = "path to picture",
+                IsAdmin = false
+            });
             //_userService.CreateUser(new User
             //{
             //    FirstName = "Lena",
@@ -86,7 +78,7 @@ namespace WishList.Controllers
             //var group = _groupService.GetGroup(1);
             //_groupService.SetRecipient(group);
             //var user = _userService.GetUser(1);
-            var user = _userService.GetUser(1);
+            //var user = _userService.GetUser(1);
             // UserViewModel 
             ViewBag.User = user;
             return View();
