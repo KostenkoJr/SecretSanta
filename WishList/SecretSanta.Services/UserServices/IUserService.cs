@@ -15,5 +15,6 @@ namespace SecretSanta.Services.UserServices
         void CreateUser(User user);
         void DeleteUser(User user);
         void UpdateUser(User user);
+        void SetRecipient();
     }
 }

@@ -2,8 +2,10 @@
 using Autofac.Integration.Mvc;
 using SecretSanta.Data.EF.Repositories.RecipientRepository;
 using SecretSanta.Data.EF.Repositories.UserRepository;
+using SecretSanta.Data.EF.Repositories.WishRepository;
 using SecretSanta.Services.AuthorizeService;
 using SecretSanta.Services.UserServices;
+using SecretSanta.Services.WishService;
 using System.Web.Mvc;
 
 namespace WishList.Utilities
@@ -30,6 +32,10 @@ namespace WishList.Utilities
 
             #region Authorization
             builder.RegisterType<AuthorizeService>().As<IAuthorizeService>();
+            #endregion
+            #region Wishes
+            builder.RegisterType<WishRepository>().As<IWishRepository>();
+            builder.RegisterType<WishService>().As<IWishService>();
             #endregion
 
             // создаем новый контейнер с теми зависимостями, которые определены выше

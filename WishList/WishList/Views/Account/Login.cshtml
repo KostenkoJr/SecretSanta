@@ -1,48 +1,303 @@
-﻿@model WishList.Controllers.Authorization.Model.LoginModel
+﻿@*@model WishList.Controllers.Authorization.Model.LoginModel
+
+    @{
+        ViewBag.Title = "Login";
+    }
+
+    <h2>Login</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>LoginModel</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Register", "Register", "Account")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+
+@model WishList.ViewModel.AuthorizeViewModel
 
 @{
     ViewBag.Title = "Login";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
 
-<h2>Login</h2>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Nokshi - Minimalist eCommerce HTML5 Template</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
+    <!-- all css here -->
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/animate.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/chosen.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/meanmenu.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/ionicons.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/bundle.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/style.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/responsive.css" />
+    <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>LoginModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+<body>
+    <div class="wrapper">
+        <!-- header start -->
+        <header class="">
+            <div class="header-area transparent-bar header-2 hm-4-padding">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 d-none d-sm-block d-md-block">
+
+                        </div>
+                        <div class="col-lg-7 col-md-5 col-5">
+                            <div class="logo-menu-wrapper text-center">
+                                <div class="logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/logo.png" alt="" /></a>
+                                </div>
+                                <div class="sticky-logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/2.png" alt="" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-7">
+                            <div class="header-site-icon">
+                                <div class="header-search same-style">
+                                    <button class="sidebar-trigger-search">
+                                        <span class="ti-search"></span>
+                                    </button>
+                                </div>
+                                <div class="header-login same-style">
+                                    <a href="login-register.html">
+                                        <span class="ti-user"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="header-height"></div>
+
+        <!-- main-search start -->
+        <div class="main-search-active">
+            <div class="sidebar-search-icon">
+                <button class="search-close"><span class="ti-close"></span></button>
+            </div>
+            <div class="sidebar-search-input">
+                <form>
+                    <div class="form-search">
+                        <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search" />
+                        <button>
+                            <i class="ti-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="breadcrumb-area mt-37 hm-4-padding">
+            <div class="container-fluid">
+                <div class="breadcrumb-content border-top-2"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        <div class="login-register-area hm-3-padding">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-7 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="login-register-tab-list nav">
+                                <a class="active" data-toggle="tab" href="#lg1">
+                                    <h4>login</h4>
+                                </a>
+                                <a data-toggle="tab" href="#lg2">
+                                    <h4>register</h4>
+                                </a>
+                            </div>
+                            <div class="tab-content">
+                                <div id="lg1" class="tab-pane active">
+                                    <div class="login-form-container">
+                                        <div class="login-form">
+                                            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <div class="form-horizontal">
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            @Html.TextBoxFor(model => model.Login.Email, new { @placeholder = "Email" })
+                                                            @Html.ValidationMessageFor(model => model.Login.Email, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            @Html.TextBoxFor(model => model.Login.Password, new { @placeholder = "Password", @type = "password" })
+                                                            @Html.ValidationMessageFor(model => model.Login.Password, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="button-box">
+                                                        <div class="login-toggle-btn">
+                                                            <input type="checkbox" />
+                                                            <label>Remember me</label>
+                                                            <a href="#">Forgot Password?</a>
+                                                        </div>
+                                                        <button type="submit" class="btn-style cr-btn">
+                                                            <span>Login</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-------------------------------REGISTER------------------------->
+                                <div id="lg2" class="tab-pane">
+                                    <div class="login-form-container">
+                                        <div class="login-form">
+                                            @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                            <div class="form-horizontal">
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        @Html.TextBoxFor(model => model.Register.FirstName, new { @placeholder = "First name" })
+                                                        @Html.ValidationMessageFor(model => model.Register.FirstName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        @Html.TextBoxFor(model => model.Register.LastName, new { @placeholder = "Last name"})
+                                                        @Html.ValidationMessageFor(model => model.Register.LastName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        @Html.TextBoxFor(model => model.Register.Email, new { @placeholder = "Email" })
+                                                        @Html.ValidationMessageFor(model => model.Register.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        @Html.TextBoxFor(model => model.Register.Password, new { @placeholder = "Password", @type = "password" })
+                                                        @Html.ValidationMessageFor(model => model.Register.Password, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        @Html.TextBoxFor(model => model.Register.ConfirmPassword, new { @placeholder = "Password", @type = "password" })
+                                                        @Html.ValidationMessageFor(model => model.Register.ConfirmPassword, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="button-box">
+                                                    <div class="login-toggle-btn">
+                                                        <input type="checkbox" />
+                                                        <label>Remember me</label>
+                                                        <a href="#">Forgot Password?</a>
+                                                    </div>
+                                                    <button type="submit" class="btn-style cr-btn">
+                                                        <span>Register</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            }
+                                            @*<form action="#" method="post">
+                                                <input type="text" name="user-name" placeholder="First name" />
+                                                <input type="text" name="user-name" placeholder="Last name" />
+                                                <input name="user-email" placeholder="Email" type="email" />
+                                                <input type="password" name="user-password" placeholder="Password" />
+                                                <input type="password" name="user-password" placeholder="Confirm password" />
+                                                <div class="button-box">
+                                                    <button type="submit" class="btn-style cr-btn">
+                                                        <span>Register</span>
+                                                    </button>
+                                                </div>
+                                            </form>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <footer class="hm-4-padding">
+            <div class="container-fluid">
+                <div class="footer-bottom border-top-1 ptb-15">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="copyright-payment">
+                                <div class="copyright">
+                                    <p>
+                                        Copyright © 2020 <a href="#">WishList</a> Я люблю колбасу.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </footer>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Register", "Register", "Account")
-</div>
+    <!-- all js here -->
+    <script src="~/Content/assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="~/Content/assets/js/popper.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Content/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/Content/assets/js/waypoints.min.js"></script>
+    <script src="~/Content/assets/js/ajax-mail.js"></script>
+    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
+    <script src="~/Content/assets/js/plugins.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+</body>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</html>

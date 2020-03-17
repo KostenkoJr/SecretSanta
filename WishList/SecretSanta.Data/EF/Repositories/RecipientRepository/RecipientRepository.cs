@@ -17,6 +17,7 @@ namespace SecretSanta.Data.EF.Repositories.RecipientRepository
                 context.SaveChanges();
             }
         }
+        //TODO Вынести в сервис
         public void SetRecipientForUsers(List<User> users)
         {
             using (SantaContext context = new SantaContext())
@@ -27,7 +28,8 @@ namespace SecretSanta.Data.EF.Repositories.RecipientRepository
                     FirstName = users[0].FirstName,
                     LastName = users[0].LastName,
                     Email = users[0].Email,
-                    PathToPicture = users[0].PathToPicture
+                    PathToPicture = users[0].PathToPicture,
+                    DateOfBirth = users[0].DateOfBirth
                 });
 
                 for (int i = 0; i < users.Count() - 1; i++)
@@ -38,7 +40,8 @@ namespace SecretSanta.Data.EF.Repositories.RecipientRepository
                         FirstName = users[i + 1].FirstName,
                         LastName = users[i + 1].LastName,
                         Email = users[i + 1].Email,
-                        PathToPicture = users[i + 1].PathToPicture
+                        PathToPicture = users[i + 1].PathToPicture,
+                        DateOfBirth = users[i + 1].DateOfBirth
                     });
                 }
                 context.SaveChanges();

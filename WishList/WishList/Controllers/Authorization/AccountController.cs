@@ -6,7 +6,7 @@ using System;
 using System.Web.Mvc;
 using System.Web.Security;
 using WishList.Controllers.Authorization.Model;
-
+using WishList.ViewModel;
 
 namespace WishList.Controllers.Authorization
 {
@@ -27,10 +27,11 @@ namespace WishList.Controllers.Authorization
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model)
+        public ActionResult Login(AuthorizeViewModel authModel)
         {
             if (ModelState.IsValid)
             {
+                LoginModel model = authModel.Login;
                 // поиск пользователя в бд
                 User loginUser = _authorizeService.Login(model.Email, model.Password);
                 if (loginUser != null)
@@ -44,7 +45,7 @@ namespace WishList.Controllers.Authorization
                 }
             }
 
-            return View(model);
+            return View(authModel);
         }
 
         [HttpGet]
@@ -55,22 +56,23 @@ namespace WishList.Controllers.Authorization
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(AuthorizeViewModel authModel)
         {
             if (ModelState.IsValid)
             {
-                string pathToFile = FileService.SaveFile(model.Picture);
+                RegisterModel model = authModel.Register;
                 Boolean isUsserExist = _authorizeService.IsUserExist(model.Email);
                 if (!isUsserExist)
                 {
-                    // создаем нового пользователя
+                    // cre
                     _userService.CreateUser(new User
                     {
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         Email = model.Email,
                         Password = model.Password,
-                        PathToPicture = pathToFile
+                        DateOfBirth = DateTime.Now
+                        //PathToPicture = pathToFile
                     });
                     User user = _userService.GetCurrentUser(model.Email);
                     if (user != null)
@@ -81,10 +83,10 @@ namespace WishList.Controllers.Authorization
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Пользователь с таким логином уже существует");
+                    ModelState.AddModelError("", "This email address already exists");
                 }
             }
-            return View(model);
+            return View();
         }
 
         [HttpGet]

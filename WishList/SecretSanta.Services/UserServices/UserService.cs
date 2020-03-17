@@ -1,5 +1,7 @@
-﻿using SecretSanta.Data.EF.Repositories.UserRepository;
+﻿using SecretSanta.Data.EF.Repositories.RecipientRepository;
+using SecretSanta.Data.EF.Repositories.UserRepository;
 using SecretSanta.Data.Models;
+using SecretSanta.Services.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,9 @@ namespace SecretSanta.Services.UserServices
 {
     public class UserService : IUserService
     {
-        public UserService(IUserRepository userRepositrory)
+        public UserService(IUserRepository userRepositrory, IRecipientRepository recipientRepository)
         {
+            _recipientRepository = recipientRepository;
             _userRepository = userRepositrory;
         }
         public void CreateUser(User user)
@@ -36,13 +39,20 @@ namespace SecretSanta.Services.UserServices
 
         public IEnumerable<User> GetUsers()
         {
-            throw new NotImplementedException();
+            return _userRepository.Get();
         }
 
         public void UpdateUser(User user)
         {
             _userRepository.Update(user);
         }
+        public void SetRecipient()
+        {
+            var users = _userRepository.Get().ToList();
+            users.Mix();
+            _recipientRepository.SetRecipientForUsers(users);
+        }
         private IUserRepository _userRepository;
+        private IRecipientRepository _recipientRepository;
     }
 }
