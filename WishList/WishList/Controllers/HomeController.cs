@@ -18,7 +18,7 @@ namespace WishList.Controllers
         public ActionResult Index()
         {
             #region Initialize
-           // Initialize();
+           Initialize();
             #endregion
             var user = _userService.GetUser(1);
             var user2 = _userService.GetUser(2);
