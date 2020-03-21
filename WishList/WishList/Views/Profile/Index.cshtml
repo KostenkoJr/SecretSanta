@@ -147,9 +147,11 @@
                                         @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
 
                                         <div class="button-box mt-20">
-                                            <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModal1" href="#">
-                                                <span>Add wish</span>
+                                            @*<button type="submit" class="btn-style cr-btn">
+                                                    <span>Save changes</span>
+                                                </button>*@
+                                            <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
+                                                <span>Save changes</span>
                                             </a>
                                         </div>
                                         <!-- ----
@@ -157,10 +159,17 @@
                                           data-target="#exampleModal">
                                           <span>Add wish</span>
                                         </button> -->
-                                        <div class="button-box mt-20">
-                                            <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
-                                                <span>Make a magic</span>
-                                            </a>
+                                        <div class="d-inline">
+                                            <div class="button-box mt-20">
+
+                                                <a class="action-plus btn-style cr-btn btn-wish-add" data-toggle="modal"
+                                                   data-target="#exampleModal1" href="#">
+                                                    <span>Add wish</span>
+                                                </a>
+                                                <a class="action-plus btn-style cr-btn btn-wish-add ml-10" href="#">
+                                                    <span>Make a magic</span>
+                                                </a>
+                                            </div>
                                         </div>
                                         @*<button type="submit" class="btn-style cr-btn mt-20">
                                                 <span>Make a magic</span>
@@ -185,8 +194,8 @@
                                         @*<button type="submit" class="btn-style cr-btn">
                                                 <span>Save changes</span>
                                             </button>*@
-                                        <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
-                                            <span>Save changes</span>
+                                        <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
+                                            <span>Change password</span>
                                         </a>
                                     </div>
                                 </div>
@@ -229,7 +238,7 @@
                                                         <a class="action-check" title="Done" href="#">
                                                             <i class="ti-check"></i>
                                                         </a>
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>
