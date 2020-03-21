@@ -1,82 +1,109 @@
 ﻿@model SecretSanta.Data.Models.Wish
 
-@{
-    ViewBag.Title = "Details";
-}
+<script type="text/javascript">
+    function onSuccess(data) {
+        const el = document.querySelector('.cst-input');
+        el.setAttribute('data-dismiss', 'modal');
+        el.click();
+    }
+</script>
 
-<h2>Details</h2>
 
-<div>
-    <h4>Wish</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+<div class="modal-content">
+    <div class="modal-body">
+        <div class="col-lg-6">
+            <div class="qwick-view-content">
+                <div class="text-center">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                </div>
+                <div class="form">
+                    @using (Ajax.BeginForm("Edit", "WishCard", new AjaxOptions { OnSuccess = "onSuccess" }))
+                    {
+                        @*<input type="text" name="name" />
+                                <input type="submit" value="Поиск" />
+                            }
+                            @using (Html.BeginForm("Edit", "WishCard", FormMethod.Post))
+                            {*@
+                        @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PathToPicture)
-        </dt>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <dd>
-            @Html.DisplayFor(model => model.PathToPicture)
-        </dd>
+                        @Html.TextBoxFor(model => model.Title, new { @placeholder = "Title", @class = "mt-10" })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LinkToShop)
-        </dt>
+                        @Html.TextBoxFor(model => model.Price, new { @placeholder = "Price", @class = "mt-10" })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
 
-        <dd>
-            @Html.DisplayFor(model => model.LinkToShop)
-        </dd>
+                        @Html.TextBoxFor(model => model.LinkToShop, new { @placeholder = "Link", @class = "mt-10" })
+                        @Html.ValidationMessageFor(model => model.LinkToShop, "", new { @class = "text-danger" })
+                        @Html.TextArea("Description", Model.Description, new { @class = "mt-10" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.User)
+                        @Html.HiddenFor(model => model.UserId)
+                        @Html.HiddenFor(model => model.PathToPicture)
+                        <div class="button-box button-position mt-20">
+                            <input class="cst-input btn-style cr-btn btn-wish-add" type="submit" value="Сохранить" />
+                        </div>
+                        @*<div class="quickview-btn-gift text-center">
+                                <a class="btn-style cr-btn" href="#"><span>create wish</span></a>
+                            </div>*@
+                    }
+                    @*<form action="#" method="post">
+                            <input class="mt-10" type="text" name="wish-title" required="required" placeholder="Title" />
+                            <input class="mt-10" type="number" step="1" min="0" name="wish-price"
+                                   placeholder="Price (RUB)" />
+                            <input class="mt-10" type="url" name="wish-url" placeholder="Link to shop" />
+                            <textarea class="mt-10" name="comment" placeholder="Description"></textarea>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                            <div class="button-box button-position mt-20">
+                                <button type="submit" class="btn-style cr-btn">
+                                    <span>Create wish</span>
+                                </button>
+                            </div>
+                        </form>*@
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="qwick-view-content">
+                <div class="text-center">
+                    <div class="tab-pane active show fade mt-10" id="modal1" role="tabpanel">
+                        <img src="@Url.Content($"~/Files/{Model.PathToPicture}")" alt="" width="290" height="368" />
+                    </div>
+                    <div class="button-box mt-20">
+                        <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
+                            <span>Open..</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lg-col-12 pb-30 ml-30 mr-30">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsComlete)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsComlete)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+@*<div class="modal-content">
+        <div class="modal-header">
+            <h4>Вы уверены?</h4>
+        </div>
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>Название модели:</dt>
+
+                <dt>Производитель</dt>
+
+
+                <dt>Год выпуска</dt>
+
+            </dl>
+            <button class="btn btn-success" data-dismiss="modal" area-hidden="true">Close</button>
+        </div>
+    </div>*@

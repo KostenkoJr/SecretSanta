@@ -23,7 +23,7 @@ namespace WishList.Controllers
                 return HttpNotFound();
             }
             var wish = _wishService.GetWish(id.Value);
-            return View(wish);
+            return PartialView(wish);
         }
 
         // GET: WishCard/Create
@@ -59,16 +59,26 @@ namespace WishList.Controllers
 
         // POST: WishCard/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Wish wish)
         {
             try
             {
+                //var _wish = _wishService.GetWish(wish.Id);
+                //_wish.Title = wish.Title;
+                //_wish.Price = wish.Price;
+                //_wish.PathToPicture = wish.PathToPicture;
+                //_wish.IsComlete = wish.IsComlete;
+                //_wish.LinkToShop = wish.LinkToShop;
+                //_wish.Description = wish.Description;
+                _wishService.UpdateWish(wish);
+                
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return Json(new { Id = 1, Name = "123" });
             }
             catch
             {
+                
                 return View();
             }
         }

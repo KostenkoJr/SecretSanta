@@ -1,0 +1,420 @@
+﻿@model SecretSanta.Data.Models.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Nokshi - Minimalist eCommerce HTML5 Template</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png" />
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/animate.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/chosen.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/easyzoom.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/meanmenu.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/ionicons.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/bundle.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/style.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/responsive.css" />
+    <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="modDialog" class="modal fade">
+            <div id="dialogContent" class="modal-dialog"></div>
+        </div>
+        <!-- header start -->
+        <header class="">
+            <div class="header-area transparent-bar header-2 hm-4-padding">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 d-none d-sm-block d-md-block">
+
+
+                        </div>
+                        <div class="col-lg-7 col-md-5 col-5">
+                            <div class="logo-menu-wrapper text-center">
+                                <div class="logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/logo.png" alt="" /></a>
+                                </div>
+                                <div class="sticky-logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/2.png" alt="" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-7">
+                            <div class="header-site-icon">
+                                <div class="header-search same-style">
+                                    <button class="sidebar-trigger-search">
+                                        <span class="ti-search"></span>
+                                    </button>
+                                </div>
+                                <div class="header-login same-style">
+                                    <a href="login-register.html">
+                                        <span class="ti-user"></span>
+                                    </a>
+                                </div>
+                                <div class="header-gift same-style">
+                                    <button class="sidebar-trigger">
+                                        <i class="ti-shopping-gift"></i>
+                                        <span class="count-style">03</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Сделать как-то мобилку -->
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="header-height"></div>
+
+
+        <!-- main-search start -->
+        <div class="main-search-active">
+            <div class="sidebar-search-icon">
+                <button class="search-close"><span class="ti-close"></span></button>
+            </div>
+            <div class="sidebar-search-input">
+                <form>
+                    <div class="form-search">
+                        <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search" />
+                        <button>
+                            <i class="ti-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="breadcrumb-area mt-37 hm-4-padding">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center border-top-2">
+                    <h2>@Model.FirstName @Model.LastName</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="wish-details-area hm-3-padding ptb-20">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="wish-details">
+                            <img src="~/Content/assets/img/wish-details/details8-s4.jpg" alt="" />
+                        </div>
+                        <a class="action-plus btn-style cr-btn btn-wish-add mt-20" title="Quick View" href="#">
+                            <span>Open...</span>
+                        </a>
+                        @*<div class="button-box mt-20">
+
+                                <button type="submit" class="btn-style cr-btn">
+                                    <span>Open...</span>
+                                </button>
+                            </div>*@
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="wish-details-content">
+                            <div class="wish-overview">
+                                <h5 class="pd-sub-title mt-10">Details</h5>
+                                <div class="form">
+                                    @using (Html.BeginForm("Edit", "Profile", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "First name", @class = "mt-10" })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+                                        @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Last name", @class = "mt-10" })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                                        @Html.TextBoxFor(model => model.DateOfBirth, "{0:yyyy-MM-dd}", new { @type = "date", @class = "mt-10" })
+                                        @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+
+                                        <div class="button-box mt-20">
+                                            <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" data-toggle="modal"
+                                               data-target="#exampleModal1" href="#">
+                                                <span>Add wish</span>
+                                            </a>
+                                        </div>
+                                        <!-- ----
+                                        <button type="submit" class="btn-style cr-btn action-plus" title="Quick View" data-toggle="modal"
+                                          data-target="#exampleModal">
+                                          <span>Add wish</span>
+                                        </button> -->
+                                        <div class="button-box mt-20">
+                                            <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
+                                                <span>Make a magic</span>
+                                            </a>
+                                        </div>
+                                        @*<button type="submit" class="btn-style cr-btn mt-20">
+                                                <span>Make a magic</span>
+                                            </button>*@
+                                        //</div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="wish-details-content">
+                            <div class="wish-overview">
+                                <h5 class="pd-sub-title mt-10">Change password</h5>
+                                <div class="form">
+                                    <input class="mt-10" type="password" name="user-password" placeholder="Old password" />
+                                    <input class="mt-10" type="password" name="user-password" placeholder="New password" />
+                                    <input class="mt-10" type="password" name="user-password" placeholder="Confirm new password" />
+                                    <div class="button-box mt-20">
+                                        @*<button type="submit" class="btn-style cr-btn">
+                                                <span>Save changes</span>
+                                            </button>*@
+                                        <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
+                                            <span>Save changes</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container ptb-30">
+                            <div class="section-title text-center mb-20">
+                                <h2>My wishes</h2>
+                            </div>
+                            <!-------------------------------------------------WISH------------------------------------------------------>
+                            <div class="row">
+                                @foreach (var wish in Model.Wishes)
+                                {
+                                    <!-- Start one wish from gallery -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="wish-wrapper mb-45">
+                                            <div class="wish-img">
+                                                <a>
+                                                    <img src="@Url.Content($"~/Files/{wish.PathToPicture}")" alt="" width="270" height="326" />
+                                                    @*<img src="~/Content/assets/img/wish/1.jpg" alt="" />*@
+                                                </a>
+                                                @if (@wish.IsComlete)
+                                                {
+                                                    <span style="background-color: green; color: white">DONE</span>
+                                                }
+                                                else
+                                                {
+                                                    <span style="background-color: red; color: white">NOT DONE</span>
+                                                }
+
+                                                <div class="wish-action">
+                                                    <div class="wish-action-style">
+                                                        @*@Html.ActionLink("", "Details", new { id = wish.Id }, new { @class = "compItem action-plus" })*@
+                                                        <a class="action-plus modalka" title="Quick View" @*data-toggle="modal" data-target="#exampleModal"*@
+                                                           href="@Url.Action("Details", "WishCard", new {id = wish.Id })">
+                                                            <i class="ti-plus"></i>
+                                                        </a>
+                                                        <a class="action-heart" title="Wishlist" href="#">
+                                                            <i class="ti-heart"></i>
+                                                        </a>
+                                                        <a class="action-gift" title="Add To gift" href="#">
+                                                            <i class="ti-shopping-gift"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="wish-content text-center">
+                                                <h4>
+                                                    <a href="wish-details.html">@wish.Title</a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="pagination-style text-center mt-10">
+                            <ul>
+                                <li>
+                                    <a class="active" href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="ion-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="hm-4-padding">
+                <div class="container-fluid">
+
+                    <div class="footer-bottom border-top-1 ptb-15">
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <div class="copyright-payment">
+                                    <div class="copyright">
+                                        <p>
+                                            Copyright © 2018 <a href="#">Nokshi</a> All RIght
+                                            Reserved.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- modal Add Wish-->
+            @*<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-hidden="true">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="ion-android-close" aria-hidden="true"></span>
+                    </button>
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="col-lg-6">
+                                    <div class="qwick-view-content">
+                                        <div class="text-center">
+                                            <div class="form">
+                                                <form action="#" method="post">
+                                                    <input class="mt-10" type="text" name="wish-title" required="required" placeholder="Title" />
+                                                    <input class="mt-10" type="number" step="1" min="0" name="wish-price"
+                                                           placeholder="Price (RUB)" />
+                                                    <input class="mt-10" type="url" name="wish-url" placeholder="Link to shop" />
+                                                    <textarea class="mt-10" name="comment" placeholder="Description"></textarea>
+
+                                                     <div class="button-box button-position mt-20">
+                                                    <button type="submit" class="btn-style cr-btn">
+                                                      <span>Create wish</span>
+                                                    </button>
+                                                  </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="qwick-view-content">
+                                        <div class="text-center">
+                                            <div class="tab-pane active show fade mt-10" id="modal1" role="tabpanel">
+                                                <img src="~/Content/assets/img/wish-details/details8-s1.jpg" alt="" />
+                                            </div>
+                                            <div class="button-box mt-20">
+                                                <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
+                                                    <span>Open..</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg-col-12 pb-30 ml-30 mr-30">
+
+
+                                <div class="quickview-btn-gift text-center">
+                                    <a class="btn-style cr-btn" href="#"><span>create wish</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- modal Quick View -->
+            @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="ion-android-close" aria-hidden="true"></span>
+                        </button>
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body pb-0">
+                                    <div class="col-lg-12">
+                                        <div class="qwick-view-content">
+                                            <div class="text-center">
+                                                <h3>WishName</h3>
+                                                <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                                                    <img src="~/Content/assets/img/quick-view/l1.jpg" alt="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg-col-12 pb-30 ml-30 mr-30">
+
+                                    <div class="price">
+                                        <span>$90.00</span>
+                                    </div>
+                                    <p>Link to shop</p>
+                                    <p>
+                                        THERE IS A DESCRIPTION Contrary to popular belief, Lorem Ipsum
+                                        is not simply random text. It has roots in a piece of classical
+                                        Latin literature from 45 BC, making it over 2000 years old.
+                                    </p>
+
+                                    <div class="quickview-btn-gift text-center">
+                                        <a class="btn-style cr-btn" href="#"><span>done</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+
+    <!-- all js here -->
+    <script src="~/Content/assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="~/Content/assets/js/popper.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Content/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/Content/assets/js/waypoints.min.js"></script>
+    <script src="~/Content/assets/js/ajax-mail.js"></script>
+    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
+    <script src="~/Content/assets/js/plugins.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".modalka").click(function (e) {
+                console.log("click!")
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>
+</body>
+
+</html>

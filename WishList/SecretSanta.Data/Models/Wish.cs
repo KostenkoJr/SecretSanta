@@ -12,13 +12,25 @@ namespace SecretSanta.Data.Models
     {
         [Key]
         public Int64 Id { get; set; }
+
+        [Required]
+        [MaxLength(200)]
         public string Title { get; set; }
         public string Description { get; set; }
+
+        [MaxLength(200)]
         public string PathToPicture { get; set; }
+
+        [MaxLength(200)]
         public string LinkToShop { get; set; }
+
         public decimal Price { get; set; }
+        [Required]
+
         public Boolean IsComlete { get; set; }
-        public DateTime Date { get; set; }
+        [Required]
+        public DateTime Date { get; set; } = DateTime.UtcNow;
+
         public Int64 UserId { get; set; }
         public User User { get; set; }
     }

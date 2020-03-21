@@ -71,7 +71,10 @@ namespace SecretSanta.Data.EF.Repositories.UserRepository
         {
             using (SantaContext context = new SantaContext())
             {
-                return context.Users.FirstOrDefault(u => u.Email == email);
+                return context.Users
+                    .Include(w => w.Wishes)
+                    .Include(r => r.Recipient)
+                    .FirstOrDefault(u => u.Email == email);
             }
         }
 

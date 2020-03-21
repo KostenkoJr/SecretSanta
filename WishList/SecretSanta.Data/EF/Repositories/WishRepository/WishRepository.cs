@@ -55,6 +55,7 @@ namespace SecretSanta.Data.EF.Repositories.WishRepository
             using (SantaContext context = new SantaContext())
             {
                 context.Entry(item).State = EntityState.Modified;
+                context.SaveChanges();
             }
         }
     }

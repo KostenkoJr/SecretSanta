@@ -22,6 +22,10 @@ namespace WishList.Controllers.Authorization
         [HttpGet]
         public ActionResult Login()
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Profile");
+            }
             return View();
         }
 
@@ -32,26 +36,20 @@ namespace WishList.Controllers.Authorization
             if (ModelState.IsValid)
             {
                 LoginModel model = authModel.Login;
-                // поиск пользователя в бд
+                // Search user by email
                 User loginUser = _authorizeService.Login(model.Email, model.Password);
                 if (loginUser != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, true);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Profile");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+                    ModelState.AddModelError("", "The username or password is incorrect");
                 }
             }
 
             return View(authModel);
-        }
-
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
         }
 
         [HttpPost]
@@ -64,7 +62,7 @@ namespace WishList.Controllers.Authorization
                 Boolean isUsserExist = _authorizeService.IsUserExist(model.Email);
                 if (!isUsserExist)
                 {
-                    // cre
+                    // Create the user
                     _userService.CreateUser(new User
                     {
                         FirstName = model.FirstName,
@@ -86,7 +84,7 @@ namespace WishList.Controllers.Authorization
                     ModelState.AddModelError("", "This email address already exists");
                 }
             }
-            return View();
+            return View("Login", authModel);
         }
 
         [HttpGet]
