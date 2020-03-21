@@ -292,6 +292,33 @@
     }
     buttonEffect();
 
+    //function inputEffect() {
+    //    $('<b></b>').appendTo('.confirm-btn');
+    //    $('.confirm-btn')
+    //        .on('mouseenter', function (e) {
+    //            var parentOffset = $(this).offset(),
+    //                relX = e.pageX - parentOffset.left,
+    //                relY = e.pageY - parentOffset.top;
+    //            $(this).find('b').css({
+    //                top: relY,
+    //                left: relX
+    //            });
+    //        })
+    //        .on('mouseout', function (e) {
+    //            var parentOffset = $(this).offset(),
+    //                relX = e.pageX - parentOffset.left,
+    //                relY = e.pageY - parentOffset.top;
+    //            $(this).find('b').css({
+    //                top: relY,
+    //                left: relX
+    //            });
+    //        });
+    //    $('[href="#"]').click(function () {
+    //        return true;
+    //    });
+    //}
+    //inputEffect();
+
 
     /* creative-menu-6 */
     var CreativeMenu = $('.sidebarmenu-wrapper');
