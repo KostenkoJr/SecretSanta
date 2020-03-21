@@ -185,6 +185,7 @@ label {
   font-size: 15px;
   font-weight: 400;
   color: #626262;
+  width: 100%;
 }
 
 *::-moz-selection {
@@ -2215,10 +2216,12 @@ textarea:focus {
 
 .btn-style {
   background-color: #f3a395;
+  border: 0px;
   border-radius: 0;
   color: #ffffff;
   display: inline-block;
   font-size: 14px;
+  cursor: pointer;
   font-weight: 400;
   letter-spacing: 1px;
   line-height: 18px;

@@ -2,7 +2,7 @@
 
 <script type="text/javascript">
     function onSuccess(data) {
-        const el = document.querySelector('.cst-input');
+        const el = document.querySelector('.confirm-btn');
         el.setAttribute('data-dismiss', 'modal');
         el.click();
     }
@@ -29,23 +29,31 @@
 
 
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                        @Html.TextBoxFor(model => model.Title, new { @placeholder = "Title", @class = "mt-10" })
-                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-
-                        @Html.TextBoxFor(model => model.Price, new { @placeholder = "Price", @class = "mt-10" })
-                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-
-                        @Html.TextBoxFor(model => model.LinkToShop, new { @placeholder = "Link", @class = "mt-10" })
-                        @Html.ValidationMessageFor(model => model.LinkToShop, "", new { @class = "text-danger" })
-                        @Html.TextArea("Description", Model.Description, new { @class = "mt-10" })
-
+                        <label>
+                            Title
+                            @Html.TextBoxFor(model => model.Title, new { @placeholder = "Title", @class = "mt-10" })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </label>
+                        <label>
+                            Price
+                            @Html.TextBoxFor(model => model.Price, new { @placeholder = "Price", @class = "mt-10" })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        </label>
+                        <label>
+                            Link to shop
+                            @Html.TextBoxFor(model => model.LinkToShop, new { @placeholder = "Link", @class = "mt-10" })
+                            @Html.ValidationMessageFor(model => model.LinkToShop, "", new { @class = "text-danger" })
+                        </label>
+                        <label>
+                            Description
+                            @Html.TextArea("Description", Model.Description, new { @class = "mt-10" })
+                        </label>
                         @Html.HiddenFor(model => model.Id)
                         @Html.HiddenFor(model => model.User)
                         @Html.HiddenFor(model => model.UserId)
                         @Html.HiddenFor(model => model.PathToPicture)
-                        <div class="button-box button-position mt-20">
-                            <input class="cst-input btn-style cr-btn btn-wish-add" type="submit" value="Сохранить" />
+                        <div class="button-box button-position">
+                            <input class="action-plus btn-style cr-btn btn-wish-add confirm-btn" type="submit" value="Save Changes" />
                         </div>
                         @*<div class="quickview-btn-gift text-center">
                                 <a class="btn-style cr-btn" href="#"><span>create wish</span></a>
@@ -107,3 +115,16 @@
             <button class="btn btn-success" data-dismiss="modal" area-hidden="true">Close</button>
         </div>
     </div>*@
+
+<script src="~/Content/assets/js/vendor/jquery-1.12.0.min.js"></script>
+<script src="~/Content/assets/js/popper.js"></script>
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+<script src="~/Content/assets/js/isotope.pkgd.min.js"></script>
+<script src="~/Content/assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="~/Content/assets/js/jquery.counterup.min.js"></script>
+<script src="~/Content/assets/js/waypoints.min.js"></script>
+<script src="~/Content/assets/js/ajax-mail.js"></script>
+<script src="~/Content/assets/js/owl.carousel.min.js"></script>
+<script src="~/Content/assets/js/plugins.js"></script>
+<script src="~/Content/assets/js/main.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
