@@ -147,8 +147,8 @@
                                         @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
 
                                         <div class="button-box mt-20">
-                                            <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModal1" href="#">
+                                            <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" @*data-toggle="modal"
+                                               data-target="#exampleModal1"*@ href="@Url.Action("Create", "WishCard")">
                                                 <span>Add wish</span>
                                             </a>
                                         </div>

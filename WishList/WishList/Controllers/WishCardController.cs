@@ -1,5 +1,6 @@
 ﻿using SecretSanta.Data.EF.Repositories.WishRepository;
 using SecretSanta.Data.Models;
+using SecretSanta.Services.UserServices;
 using SecretSanta.Services.WishService;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,11 @@ namespace WishList.Controllers
     public class WishCardController : Controller
     {
         private IWishService _wishService;
-        public WishCardController(IWishService wishService)
+        private IUserService _userService;
+        public WishCardController(IWishService wishService, IUserService userService)
         {
             _wishService = wishService;
+            _userService = userService;
         }
         public ActionResult Details(Int64? id)
         {
@@ -29,21 +32,30 @@ namespace WishList.Controllers
         // GET: WishCard/Create
         public ActionResult Create()
         {
+            //var email = User.Identity.Name;
+            //var user = _userService.GetCurrentUser(email);
+            //ViewBag.User = user;
             return View();
         }
 
         // POST: WishCard/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Wish wish)
         {
             try
             {
+                var email = User.Identity.Name;
+                var user = _userService.GetCurrentUser(email);
+                
                 if (wish != null)
                 {
+                    wish.UserId = user.Id;
+                    wish.Date = DateTime.Now;
                     _wishService.CreateWish(wish);
                 }
                 // TODO: Add insert logic here
-                return RedirectToAction("Details");
+                return RedirectToAction("Index", "Profile");
             }
             catch
             {
