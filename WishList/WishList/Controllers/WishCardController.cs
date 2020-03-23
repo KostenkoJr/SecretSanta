@@ -29,7 +29,7 @@ namespace WishList.Controllers
         // GET: WishCard/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: WishCard/Create
