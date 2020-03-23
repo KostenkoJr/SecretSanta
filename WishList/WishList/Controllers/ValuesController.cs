@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SecretSanta.Services.WishService;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -7,13 +8,18 @@ namespace WishList.Controllers.Api
 {
     public class ValuesController : ApiController
     {
-        // GET: api/Profile
-        [HttpGet, Route("api/FullWorkflow")]
-        public IHttpActionResult Get()
+        private IWishService _wishService;
+        public ValuesController(IWishService wishService)
         {
-            var arr = new string[] { "value1", "value2" };
-            var s = JsonConvert.SerializeObject(arr);
-            return Ok(s);
+            _wishService = wishService;
+        }
+        // GET: api/Profile
+        [HttpGet, Route("api/ChangeStatus/{id}")]
+        public IHttpActionResult Get(long id)
+        {
+            var isComplete = _wishService.ChangeStatus(id);
+           
+            return Ok(isComplete);
         }
 
         // GET: api/Profile/5

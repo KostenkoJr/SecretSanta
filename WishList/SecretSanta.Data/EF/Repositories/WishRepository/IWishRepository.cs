@@ -9,5 +9,6 @@ namespace SecretSanta.Data.EF.Repositories.WishRepository
 {
     public interface IWishRepository : IBaseRepository<Wish>
     {
+        bool ChangeStatus(long id);
     }
 }

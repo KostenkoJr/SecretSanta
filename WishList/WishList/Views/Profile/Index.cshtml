@@ -122,10 +122,10 @@
                         </a>
                         @*<div class="button-box mt-20">
 
-                            <button type="submit" class="btn-style cr-btn">
-                                <span>Open...</span>
-                            </button>
-                        </div>*@
+                                <button type="submit" class="btn-style cr-btn">
+                                    <span>Open...</span>
+                                </button>
+                            </div>*@
                     </div>
 
                     <div class="col-lg-4">
@@ -151,17 +151,17 @@
 
                                         <div class="button-box mt-20">
                                             @*<button type="submit" class="btn-style cr-btn">
-                                                <span>Save changes</span>
-                                            </button>*@
+                                                    <span>Save changes</span>
+                                                </button>*@
                                             <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
                                                 <span>Save changes</span>
                                             </a>
                                         </div>
                                         <!-- ----
-                                    <button type="submit" class="btn-style cr-btn action-plus" title="Quick View" data-toggle="modal"
-                                      data-target="#exampleModal">
-                                      <span>Add wish</span>
-                                    </button> -->
+                                        <button type="submit" class="btn-style cr-btn action-plus" title="Quick View" data-toggle="modal"
+                                          data-target="#exampleModal">
+                                          <span>Add wish</span>
+                                        </button> -->
                                         <div class="d-inline">
                                             <div class="button-box mt-20">
 
@@ -175,8 +175,8 @@
                                             </div>
                                         </div>
                                         @*<button type="submit" class="btn-style cr-btn mt-20">
-                                            <span>Make a magic</span>
-                                        </button>*@
+                                                <span>Make a magic</span>
+                                            </button>*@
                                         //</div>
                                     }
 
@@ -195,8 +195,8 @@
                                     <input class="mt-10" type="password" name="user-password" placeholder="Confirm new password" />
                                     <div class="button-box mt-20">
                                         @*<button type="submit" class="btn-style cr-btn">
-                                            <span>Save changes</span>
-                                        </button>*@
+                                                <span>Save changes</span>
+                                            </button>*@
                                         <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
                                             <span>Change password</span>
                                         </a>
@@ -224,22 +224,22 @@
                                                 </a>
                                                 @if (@wish.IsComlete)
                                                 {
-                                                    <span style="background-color: green; color: white">DONE</span>
+                                                    <span class="done is-complete" id="@("wish" + wish.Id.ToString())">DONE</span>
                                                 }
                                                 else
                                                 {
-                                                    <span style="background-color: red; color: white">NOT DONE</span>
+                                                    <span class="not-done is-complete" id="@("wish" + wish.Id.ToString())">NOT DONE</span>
                                                 }
 
                                                 <div class="wish-action">
                                                     <div class="wish-action-style">
                                                         @*@Html.ActionLink("", "Details", new { id = wish.Id }, new { @class = "compItem action-plus" })*@
-                                                        <a class="action-plus modalka" title="Quick View" @*data-toggle="modal" data-target="#exampleModal"*@
+                                                        <a class="action-plus modalka" title="Quick View"
                                                            href="@Url.Action("Details", "WishCard", new {id = wish.Id })">
                                                             <i class="ti-search"></i>
                                                         </a>
-                                                        <a class="action-check" title="Done" href="#">
-                                                            <i class="ti-check"></i>
+                                                        <a class="action-check" title="Done">
+                                                            <i class="ti-check" id="@wish.Id"></i>
                                                         </a>
 
                                                     </div>
@@ -300,72 +300,43 @@
             </footer>
             <!-- modal Add Wish-->
             @*<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-hidden="true">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="ion-android-close" aria-hidden="true"></span>
-                </button>
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="col-lg-6">
-                                <div class="qwick-view-content">
-                                    <div class="text-center">
-                                        <div class="form">
-                                            <form action="#" method="post">
-                                                <input class="mt-10" type="text" name="wish-title" required="required" placeholder="Title" />
-                                                <input class="mt-10" type="number" step="1" min="0" name="wish-price"
-                                                       placeholder="Price (RUB)" />
-                                                <input class="mt-10" type="url" name="wish-url" placeholder="Link to shop" />
-                                                <textarea class="mt-10" name="comment" placeholder="Description"></textarea>
-
-                                                 <div class="button-box button-position mt-20">
-                                                <button type="submit" class="btn-style cr-btn">
-                                                  <span>Create wish</span>
-                                                </button>
-                                              </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="qwick-view-content">
-                                    <div class="text-center">
-                                        <div class="tab-pane active show fade mt-10" id="modal1" role="tabpanel">
-                                            <img src="~/Content/assets/img/wish-details/details8-s1.jpg" alt="" />
-                                        </div>
-                                        <div class="button-box mt-20">
-                                            <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
-                                                <span>Open..</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lg-col-12 pb-30 ml-30 mr-30">
-
-
-                            <div class="quickview-btn-gift text-center">
-                                <a class="btn-style cr-btn" href="#"><span>create wish</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-            <!-- modal Quick View -->
-            @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="ion-android-close" aria-hidden="true"></span>
                     </button>
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <div class="modal-body pb-0">
-                                <div class="col-lg-12">
+                            <div class="modal-body">
+                                <div class="col-lg-6">
                                     <div class="qwick-view-content">
                                         <div class="text-center">
-                                            <h3>WishName</h3>
-                                            <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                                                <img src="~/Content/assets/img/quick-view/l1.jpg" alt="" />
+                                            <div class="form">
+                                                <form action="#" method="post">
+                                                    <input class="mt-10" type="text" name="wish-title" required="required" placeholder="Title" />
+                                                    <input class="mt-10" type="number" step="1" min="0" name="wish-price"
+                                                           placeholder="Price (RUB)" />
+                                                    <input class="mt-10" type="url" name="wish-url" placeholder="Link to shop" />
+                                                    <textarea class="mt-10" name="comment" placeholder="Description"></textarea>
+
+                                                     <div class="button-box button-position mt-20">
+                                                    <button type="submit" class="btn-style cr-btn">
+                                                      <span>Create wish</span>
+                                                    </button>
+                                                  </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="qwick-view-content">
+                                        <div class="text-center">
+                                            <div class="tab-pane active show fade mt-10" id="modal1" role="tabpanel">
+                                                <img src="~/Content/assets/img/wish-details/details8-s1.jpg" alt="" />
+                                            </div>
+                                            <div class="button-box mt-20">
+                                                <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
+                                                    <span>Open..</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -373,24 +344,53 @@
                             </div>
                             <div class="lg-col-12 pb-30 ml-30 mr-30">
 
-                                <div class="price">
-                                    <span>$90.00</span>
-                                </div>
-                                <p>Link to shop</p>
-                                <p>
-                                    THERE IS A DESCRIPTION Contrary to popular belief, Lorem Ipsum
-                                    is not simply random text. It has roots in a piece of classical
-                                    Latin literature from 45 BC, making it over 2000 years old.
-                                </p>
 
                                 <div class="quickview-btn-gift text-center">
-                                    <a class="btn-style cr-btn" href="#"><span>done</span></a>
+                                    <a class="btn-style cr-btn" href="#"><span>create wish</span></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>*@
+                </div>*@
+            <!-- modal Quick View -->
+            @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="ion-android-close" aria-hidden="true"></span>
+                        </button>
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body pb-0">
+                                    <div class="col-lg-12">
+                                        <div class="qwick-view-content">
+                                            <div class="text-center">
+                                                <h3>WishName</h3>
+                                                <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                                                    <img src="~/Content/assets/img/quick-view/l1.jpg" alt="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg-col-12 pb-30 ml-30 mr-30">
+
+                                    <div class="price">
+                                        <span>$90.00</span>
+                                    </div>
+                                    <p>Link to shop</p>
+                                    <p>
+                                        THERE IS A DESCRIPTION Contrary to popular belief, Lorem Ipsum
+                                        is not simply random text. It has roots in a piece of classical
+                                        Latin literature from 45 BC, making it over 2000 years old.
+                                    </p>
+
+                                    <div class="quickview-btn-gift text-center">
+                                        <a class="btn-style cr-btn" href="#"><span>done</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
         </div>
     </div>
 
@@ -436,6 +436,25 @@
                 });
             });
         })
+    </script>
+    <script>
+        const el = document.querySelectorAll(".ti-check");
+        el.forEach(e => {
+        e.addEventListener('click', (event) => {
+            event.preventDefault();
+            const target = event.target;
+            const id = target.id;
+            
+            const promise = fetch(`https://localhost:44360/api/ChangeStatus/${id}`);
+            promise.then(res => res.json()).then(isComplete => {
+                const elDone = document.querySelector(`#wish${target.id}`)
+                console.log(elDone)
+                elDone.classList.toggle('done');
+                elDone.classList.toggle('not-done');
+                elDone.innerHTML = isComplete ? 'Done' : 'Not Done'
+            });
+        })})
+        
     </script>
 </body>
 

@@ -6,7 +6,10 @@ using SecretSanta.Data.EF.Repositories.WishRepository;
 using SecretSanta.Services.AuthorizeService;
 using SecretSanta.Services.UserServices;
 using SecretSanta.Services.WishService;
+using Autofac.Integration.WebApi;
+using System.Reflection;
 using System.Web.Mvc;
+using System.Web.Http;
 
 namespace WishList.Utilities
 {
@@ -16,9 +19,9 @@ namespace WishList.Utilities
         {
             // получаем экземпляр контейнера
             var builder = new ContainerBuilder();
-
             // регистрируем контроллер в текущей сборке
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             // регистрируем споставление типов
             #region User
@@ -42,6 +45,8 @@ namespace WishList.Utilities
             var container = builder.Build();
 
             // установка сопоставителя зависимостей
+
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }

@@ -1549,3 +1549,13 @@ button.cr-btn:hover b {
         .pagination-style li a.active {
             color: #f3a395;
         }
+
+.done {
+    background-color: green !important;
+    color: white !important;
+}
+
+.not-done {
+    background-color: red !important;
+    color: white !important;
+}

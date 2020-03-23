@@ -10,6 +10,14 @@ namespace SecretSanta.Data.EF.Repositories.WishRepository
 {
     public class WishRepository : IWishRepository
     {
+        public bool ChangeStatus(long id)
+        {
+            var wish = Get(id);
+            wish.IsComlete = !wish.IsComlete;
+            Update(wish);
+            return wish.IsComlete;
+        }
+
         public void Create(Wish item)
         {
             using (SantaContext context = new SantaContext())

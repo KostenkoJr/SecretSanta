@@ -14,5 +14,7 @@ namespace SecretSanta.Services.WishService
         void CreateWish(Wish wish);
         void DeleteWish(Wish wish);
         void UpdateWish(Wish wish);
+        bool ChangeStatus(long id);
+
     }
 }

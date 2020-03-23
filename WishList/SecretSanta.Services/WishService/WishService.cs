@@ -34,6 +34,11 @@ namespace SecretSanta.Services.WishService
         {
             _wishRepository.Update(wish);
         }
+
+        public bool ChangeStatus(long id)
+        {
+            return _wishRepository.ChangeStatus(id);
+        }
         private IWishRepository _wishRepository;
     }
 }
