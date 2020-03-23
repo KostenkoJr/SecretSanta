@@ -25,6 +25,12 @@ namespace WishList
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/SecretSanta/css").IncludeDirectory(
+                "~/Content/assets/css", "*.css", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/SecretSanta/scripts").IncludeDirectory(
+                "~/Content/assets/js", "*.js", true));
         }
     }
 }
