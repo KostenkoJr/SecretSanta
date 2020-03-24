@@ -103,7 +103,7 @@
         <div class="wish-details-area hm-3-padding ptb-20">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 text-center">
                         <div class="wish-details">
                             @if (Model.PathToPicture == null)
                             {
@@ -111,15 +111,9 @@
                             }
                             <img src="~/Content/assets/img/wish-details/details8-s4.jpg" alt="" />
                         </div>
-                        <a class="action-plus btn-style cr-btn btn-wish-add mt-20" title="Quick View" href="#">
+                        <a class="action-plus btn-style cr-btn btn-wish-add mt-20" title="Choose photo" href="#">
                             <span>Open...</span>
                         </a>
-                        @*<div class="button-box mt-20">
-
-                                <button type="submit" class="btn-style cr-btn">
-                                    <span>Open...</span>
-                                </button>
-                            </div>*@
                     </div>
 
                     <div class="col-lg-4">
@@ -144,34 +138,25 @@
                                         @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
 
                                         <div class="button-box mt-20">
-                                            @*<button type="submit" class="btn-style cr-btn">
-                                                    <span>Save changes</span>
-                                                </button>*@
+
                                             <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
                                                 <span>Save changes</span>
                                             </a>
                                         </div>
-                                        <!-- ----
-                                        <button type="submit" class="btn-style cr-btn action-plus" title="Quick View" data-toggle="modal"
-                                          data-target="#exampleModal">
-                                          <span>Add wish</span>
-                                        </button> -->
-                                <div id="profileButtons" class="d-inline">
-                                    <div class="button-box mt-20">
 
-                                        <a id="profileButtonsInn" class="action-plus btn-style cr-btn btn-wish-add add-wish-modal" title="Quick View" @*data-toggle="modal" data-target="#exampleModal"*@
-                                           href="@Url.Action("Create", "WishCard")">
-                                            <span>Add wish</span>
-                                        </a>
-                                        <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
-                                            <span>Make a magic</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                        @*<button type="submit" class="btn-style cr-btn mt-20">
-                                                <span>Make a magic</span>
-                                            </button>*@
-                                        //</div>
+                                        <div id="profileButtons" class="d-inline">
+                                            <div class="button-box mt-20">
+
+                                                <a id="profileButtonsInn" class="action-plus btn-style cr-btn btn-wish-add add-wish-modal" title="Add wish" @*data-toggle="modal" data-target="#exampleModal"*@
+                                                   href="@Url.Action("Create", "WishCard")">
+                                                    <span>Add wish</span>
+                                                </a>
+                                                <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
+                                                    <span>Make a magic</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
                                     }
 
                                 </div>
@@ -188,9 +173,6 @@
                                     <input class="mt-10" type="password" name="user-password" placeholder="New password" />
                                     <input class="mt-10" type="password" name="user-password" placeholder="Confirm new password" />
                                     <div class="button-box mt-20">
-                                        @*<button type="submit" class="btn-style cr-btn">
-                                                <span>Save changes</span>
-                                            </button>*@
                                         <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
                                             <span>Change password</span>
                                         </a>
@@ -221,7 +203,6 @@
                                                     {
                                                         <img src="@Url.Content($"~/Files/{wish.PathToPicture}")" alt="" width="270" height="326" />
                                                     }
-                                                    @*<img src="~/Content/assets/img/wish/1.jpg" alt="" />*@
                                                 </a>
                                                 @if (@wish.IsComlete)
                                                 {
@@ -234,7 +215,6 @@
 
                                                 <div class="wish-action">
                                                     <div class="wish-action-style">
-                                                        @*@Html.ActionLink("", "Details", new { id = wish.Id }, new { @class = "compItem action-plus" })*@
                                                         <a class="action-plus modalka" title="Quick View"
                                                            href="@Url.Action("Details", "WishCard", new {id = wish.Id })">
                                                             <i class="ti-search"></i>
