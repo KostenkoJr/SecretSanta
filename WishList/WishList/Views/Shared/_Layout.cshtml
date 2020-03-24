@@ -1,52 +1,42 @@
 ﻿<!DOCTYPE html>
-<html>
+<html class="no-js" lang="zxx">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>SecretSanta</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png" />
+
+    <!-- all css here -->
+    @Styles.Render("~/Content/SecretSanta/css")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("My profile", "About", "Home")</li>
-                    @{ if (User.Identity.IsAuthenticated)
-                        {
-                            <li>@Html.ActionLink("Logoff", "Logoff", "Account")</li>
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                        }
+    @RenderBody()
+    <footer class="hm-4-padding">
+        <div class="container-fluid">
 
-                    }
-                </ul>
+            <div class="footer-bottom border-top-1 ptb-15">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="copyright-payment">
+                            <div class="copyright">
+                                <p>
+                                    Copyright © 2020 <a href="index.html">SecretSanta</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
+    </footer>
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/SecretSanta/scripts")
 </body>
 </html>

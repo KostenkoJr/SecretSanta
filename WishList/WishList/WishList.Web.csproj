@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ViewModel\ChangePasswordModel.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\Authorization\AccountController.cs" />
     <Compile Include="Controllers\Authorization\Model\LoginModel.cs" />
@@ -553,6 +554,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Api\" />
     <Folder Include="Files\" />
+    <Folder Include="Scripts\Pages\Profile\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

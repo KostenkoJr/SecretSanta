@@ -1,17 +1,23 @@
 ﻿using Newtonsoft.Json;
+using SecretSanta.Services.UserServices;
 using SecretSanta.Services.WishService;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Http;
+using WishList.ViewModel;
 
 namespace WishList.Controllers.Api
 {
     public class ValuesController : ApiController
     {
+        private IUserService _userService;
+
         private IWishService _wishService;
-        public ValuesController(IWishService wishService)
+        public ValuesController(IWishService wishService, IUserService userService)
         {
             _wishService = wishService;
+            _userService = userService;
         }
         // GET: api/Profile
         [HttpGet, Route("api/ChangeStatus/{id}")]
@@ -28,14 +34,34 @@ namespace WishList.Controllers.Api
             return "value";
         }
 
-        // POST: api/Profile
-        public void Post([FromBody]string value)
+        [HttpPost, Route("api/ChangePassword")]
+        public void ChangePassword([FromBody]ChangePasswordModel model)
         {
+            if(ModelState.IsValid)
+            {
+                string email = User.Identity.Name;
+                var user = _userService.GetCurrentUser(email);
+                if(user.Password == model.OldPassword)
+                {
+                    user.Password = model.NewPassword;
+                    _userService.UpdateUser(user);
+                }
+            }
         }
 
-        // PUT: api/Profile/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost, Route("api/ChangeAvatar")]
+        public IHttpActionResult ChangeAvatar()
         {
+            var httpRequest = HttpContext.Current.Request;
+            var postedFile = httpRequest.Files["file"];
+            var filePath = HttpContext.Current.Server.MapPath("~/Files/" + postedFile.FileName);
+            postedFile.SaveAs(filePath);
+            string email = User.Identity.Name;
+            var user = _userService.GetCurrentUser(email);
+            user.PathToPicture = postedFile.FileName;
+            _userService.UpdateUser(user);
+
+            return Ok(postedFile.FileName);
         }
 
         // DELETE: api/Profile/5
