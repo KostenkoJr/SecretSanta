@@ -17,17 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png" />
 
     <!-- all css here -->
-    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/animate.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/chosen.min.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/easyzoom.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/meanmenu.min.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/ionicons.min.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/bundle.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/style.css" />
-    <link rel="stylesheet" href="~/Content/assets/css/responsive.css" />
+    @Styles.Render("~/Content/SecretSanta/css")
     <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -115,6 +105,10 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="wish-details">
+                            @if (Model.PathToPicture == null)
+                            {
+                                <img src="~/Files/default-profile-picture.png" width="290" height="368" />
+                            }
                             <img src="~/Content/assets/img/wish-details/details8-s4.jpg" alt="" />
                         </div>
                         <a class="action-plus btn-style cr-btn btn-wish-add mt-20" title="Quick View" href="#">
@@ -219,7 +213,14 @@
                                         <div class="wish-wrapper mb-45">
                                             <div class="wish-img">
                                                 <a>
-                                                    <img src="@Url.Content($"~/Files/{wish.PathToPicture}")" alt="" width="270" height="326" />
+                                                    @if (wish.PathToPicture == null)
+                                                    {
+                                                        <img src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="270" height="326" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="@Url.Content($"~/Files/{wish.PathToPicture}")" alt="" width="270" height="326" />
+                                                    }
                                                     @*<img src="~/Content/assets/img/wish/1.jpg" alt="" />*@
                                                 </a>
                                                 @if (@wish.IsComlete)
@@ -238,7 +239,7 @@
                                                            href="@Url.Action("Details", "WishCard", new {id = wish.Id })">
                                                             <i class="ti-search"></i>
                                                         </a>
-                                                        <a class="action-check" title="Done">
+                                                        <a class="action-check" title="Done" href="">
                                                             <i class="ti-check" id="@wish.Id"></i>
                                                         </a>
 
@@ -298,115 +299,13 @@
                     </div>
                 </div>
             </footer>
-            <!-- modal Add Wish-->
-            @*<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-hidden="true">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="ion-android-close" aria-hidden="true"></span>
-                    </button>
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="col-lg-6">
-                                    <div class="qwick-view-content">
-                                        <div class="text-center">
-                                            <div class="form">
-                                                <form action="#" method="post">
-                                                    <input class="mt-10" type="text" name="wish-title" required="required" placeholder="Title" />
-                                                    <input class="mt-10" type="number" step="1" min="0" name="wish-price"
-                                                           placeholder="Price (RUB)" />
-                                                    <input class="mt-10" type="url" name="wish-url" placeholder="Link to shop" />
-                                                    <textarea class="mt-10" name="comment" placeholder="Description"></textarea>
-
-                                                     <div class="button-box button-position mt-20">
-                                                    <button type="submit" class="btn-style cr-btn">
-                                                      <span>Create wish</span>
-                                                    </button>
-                                                  </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="qwick-view-content">
-                                        <div class="text-center">
-                                            <div class="tab-pane active show fade mt-10" id="modal1" role="tabpanel">
-                                                <img src="~/Content/assets/img/wish-details/details8-s1.jpg" alt="" />
-                                            </div>
-                                            <div class="button-box mt-20">
-                                                <a class="action-plus btn-style cr-btn btn-wish-add" title="Quick View" href="#">
-                                                    <span>Open..</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg-col-12 pb-30 ml-30 mr-30">
-
-
-                                <div class="quickview-btn-gift text-center">
-                                    <a class="btn-style cr-btn" href="#"><span>create wish</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
-            <!-- modal Quick View -->
-            @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span class="ion-android-close" aria-hidden="true"></span>
-                        </button>
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body pb-0">
-                                    <div class="col-lg-12">
-                                        <div class="qwick-view-content">
-                                            <div class="text-center">
-                                                <h3>WishName</h3>
-                                                <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                                                    <img src="~/Content/assets/img/quick-view/l1.jpg" alt="" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lg-col-12 pb-30 ml-30 mr-30">
-
-                                    <div class="price">
-                                        <span>$90.00</span>
-                                    </div>
-                                    <p>Link to shop</p>
-                                    <p>
-                                        THERE IS A DESCRIPTION Contrary to popular belief, Lorem Ipsum
-                                        is not simply random text. It has roots in a piece of classical
-                                        Latin literature from 45 BC, making it over 2000 years old.
-                                    </p>
-
-                                    <div class="quickview-btn-gift text-center">
-                                        <a class="btn-style cr-btn" href="#"><span>done</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
         </div>
     </div>
 
     <!-- all js here -->
-    <script src="~/Content/assets/js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="~/Content/assets/js/popper.js"></script>
-    <script src="~/Content/assets/js/bootstrap.min.js"></script>
-    <script src="~/Content/assets/js/isotope.pkgd.min.js"></script>
-    <script src="~/Content/assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="~/Content/assets/js/jquery.counterup.min.js"></script>
-    <script src="~/Content/assets/js/waypoints.min.js"></script>
-    <script src="~/Content/assets/js/ajax-mail.js"></script>
-    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
-    <script src="~/Content/assets/js/plugins.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/SecretSanta/scripts")
 
     <script type="text/javascript">
 
@@ -440,21 +339,22 @@
     <script>
         const el = document.querySelectorAll(".ti-check");
         el.forEach(e => {
-        e.addEventListener('click', (event) => {
-            event.preventDefault();
-            const target = event.target;
-            const id = target.id;
-            
-            const promise = fetch(`https://localhost:44360/api/ChangeStatus/${id}`);
-            promise.then(res => res.json()).then(isComplete => {
-                const elDone = document.querySelector(`#wish${target.id}`)
-                console.log(elDone)
-                elDone.classList.toggle('done');
-                elDone.classList.toggle('not-done');
-                elDone.innerHTML = isComplete ? 'Done' : 'Not Done'
-            });
-        })})
-        
+            e.addEventListener('click', (event) => {
+                event.preventDefault();
+                const target = event.target;
+                const id = target.id;
+
+                const promise = fetch(`https://localhost:44360/api/ChangeStatus/${id}`);
+                promise.then(res => res.json()).then(isComplete => {
+                    const elDone = document.querySelector(`#wish${target.id}`)
+                    console.log(elDone)
+                    elDone.classList.toggle('done');
+                    elDone.classList.toggle('not-done');
+                    elDone.innerHTML = isComplete ? 'Done' : 'Not Done'
+                });
+            })
+        })
+
     </script>
 </body>
 

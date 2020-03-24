@@ -26,11 +26,35 @@ namespace WishList
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/SecretSanta/css").IncludeDirectory(
-                "~/Content/assets/css", "*.css", true));
+            bundles.Add(new StyleBundle("~/Content/SecretSanta/css").Include(
+                "~/Content/assets/css",
+                "~/Content/assets/css/bootstrap.min.css",
+                "~/Content/assets/css/animate.css",
+                "~/Content/assets/css/owl.carousel.min.css",
+                "~/Content/assets/css/chosen.min.css",
+                "~/Content/assets/css/easyzoom.css",
+                "~/Content/assets/css/meanmenu.min.css",
+                "~/Content/assets/css/themify-icons.css",
+                "~/Content/assets/css/ionicons.min.css",
+                "~/Content/assets/css/style.css",
+                "~/Content/assets/css/bundle.css",
+                "~/Content/assets/css/responsive.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/SecretSanta/scripts").IncludeDirectory(
-                "~/Content/assets/js", "*.js", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/SecretSanta/scripts").Include(
+                "~/Content/assets/js/vendor/jquery-1.12.0.min.js",
+                "~/Content/assets/js/popper.js",
+                "~/Content/assets/js/bootstrap.min.js",
+                "~/Content/assets/js/isotope.pkgd.min.js",
+                "~/Content/assets/js/imagesloaded.pkgd.min.js",
+                "~/Content/assets/js/jquery.counterup.min.js",
+                "~/Content/assets/js/waypoints.min.js",
+                "~/Content/assets/js/ajax-mail.js",
+                "~/Content/assets/js/owl.carousel.min.js",
+                "~/Content/assets/js/plugins.js",
+                "~/Content/assets/js/main.js",
+                "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+
         }
     }
 }
