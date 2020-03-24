@@ -2,94 +2,205 @@
 
 @{
     ViewBag.Title = "Contact";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
 
-<h2>Contact</h2>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>SecretSanta</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png" />
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Wish</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+    <!-- all css here -->
+    @Styles.Render("~/Content/SecretSanta/css")
+    <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="">
+            <div class="header-area transparent-bar header-2 hm-4-padding">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 d-none d-sm-block d-md-block">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="col-lg-7 col-md-5 col-5">
+                            <div class="logo-menu-wrapper text-center">
+                                <div class="logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/logo.png" alt="" /></a>
+                                </div>
+                                <div class="sticky-logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/2.png" alt="" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-7">
+                            <div class="header-site-icon">
+                                <div class="header-search same-style">
+                                    <button class="sidebar-trigger-search">
+                                        <span class="ti-search"></span>
+                                    </button>
+                                </div>
+                                <div class="header-login same-style">
+                                    <a href="login-register.html">
+                                        <span class="ti-user"></span>
+                                    </a>
+                                </div>
+                                <div class="header-gift same-style">
+                                    <button class="sidebar-trigger">
+                                        <i class="ti-gift"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Сделать как-то мобилку -->
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="header-height"></div>
+        <!-- main-search start -->
+        <div class="main-search-active">
+            <div class="sidebar-search-icon">
+                <button class="search-close"><span class="ti-close"></span></button>
+            </div>
+            <div class="sidebar-search-input">
+                <form>
+                    <div class="form-search">
+                        <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search" />
+                        <button>
+                            <i class="ti-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PathToPicture, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PathToPicture, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PathToPicture, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LinkToShop, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LinkToShop, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LinkToShop, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsComlete, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsComlete)
-                    @Html.ValidationMessageFor(model => model.IsComlete, "", new { @class = "text-danger" })
+        <div class="breadcrumb-area mt-37 hm-4-padding">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center border-top-2">
+                    <h2>Contact Us</h2>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+        <div class="contact-area hm-4-padding">
+            <div class="container">
+                <div class="row mb-20">
+                    <div class="col-lg-6">
+                        <div class="contact-info-wrapper">
+                            <h4 class="contact-title">INFORMATION</h4>
+                            <div class="communication-info">
+                                <div class="single-communication">
+                                    <div class="communication-icon">
+                                        <i class="ti-home" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="communication-text">
+                                        <h4>Address:</h4>
+                                        <p> Peski, Vologodsky District, Vologda Oblast</p>
+                                        <p>59.800119, 39.100369</p>
+                                    </div>
+                                </div>
+                                <div class="single-communication">
+                                    <div class="communication-icon">
+                                        <i class="ti-mobile" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="communication-text">
+                                        <h4>Phone:</h4>
+                                        <p>8(800)555-35-35</p>
+                                    </div>
+                                </div>
+                                <div class="single-communication">
+                                    <div class="communication-icon">
+                                        <i class="ti-email" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="communication-text">
+                                        <h4>Email:</h4>
+                                        <p><a href="#">nya.panda22@gmail.com</a></p>
+                                    </div>
+                                </div>
+                                <div class="single-communication">
+                                    <div class="communication-icon">
+                                        <i class="ti-world" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="communication-text">
+                                        <h4>Website:</h4>
+                                        <p><a href="#">https://SecretSanta.com</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact-message-wrapper">
+                            <h4 class="contact-title">GET IN TOUCH</h4>
+                            <div class="contact-message">
+                                <form id="contact-form" action="assets/mail.php" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="contact-form-style mb-20">
+                                                <input name="name" placeholder="Full Name" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="contact-form-style mb-20">
+                                                <input name="email" placeholder="Email Address" type="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="contact-form-style mb-10">
+                                                <input name="subject" placeholder="Subject" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="contact-form-style text-center">
+                                                <textarea name="message" placeholder="Message"></textarea>
+                                                <button class="submit cr-btn btn-style" type="submit">
+                                                    <span>
+                                                        SEND
+                                                        MESSAGE
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <footer class="hm-4-padding">
+            <div class="container-fluid">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="footer-bottom border-top-1 ptb-15">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="copyright-payment">
+                                <div class="copyright">
+                                    <p>
+                                        Copyright © 2020 <a href="index.html">SecretSanta</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
-        </div>
+        </footer>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <!-- all js here -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/SecretSanta/scripts")
+
+</body>
+</html>

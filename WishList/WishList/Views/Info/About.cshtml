@@ -1,7 +1,144 @@
 ﻿
 @{
     ViewBag.Title = "About";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
 
-<h2>About</h2>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>SecretSanta</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png" />
+
+    <!-- all css here -->
+    @Styles.Render("~/Content/SecretSanta/css")
+    <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="">
+            <div class="header-area transparent-bar header-2 hm-4-padding">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 d-none d-sm-block d-md-block">
+
+
+                        </div>
+                        <div class="col-lg-7 col-md-5 col-5">
+                            <div class="logo-menu-wrapper text-center">
+                                <div class="logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/logo.png" alt="" /></a>
+                                </div>
+                                <div class="sticky-logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/2.png" alt="" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-7">
+                            <div class="header-site-icon">
+                                <div class="header-search same-style">
+                                    <button class="sidebar-trigger-search">
+                                        <span class="ti-search"></span>
+                                    </button>
+                                </div>
+                                <div class="header-login same-style">
+                                    <a href="login-register.html">
+                                        <span class="ti-user"></span>
+                                    </a>
+                                </div>
+                                <div class="header-gift same-style">
+                                    <button class="sidebar-trigger">
+                                        <i class="ti-gift"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Сделать как-то мобилку -->
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="header-height"></div>
+        <div class="main-search-active">
+            <div class="sidebar-search-icon">
+                <button class="search-close"><span class="ti-close"></span></button>
+            </div>
+            <div class="sidebar-search-input">
+                <form>
+                    <div class="form-search">
+                        <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search" />
+                        <button>
+                            <i class="ti-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="breadcrumb-area mt-37 hm-4-padding">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center border-top-2">
+                    <h2>About Us</h2>
+                </div>
+            </div>
+        </div>
+        <div class="team-area hm-3-padding">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="team-wrapper text-center mb-30">
+                            <div class="team-img">
+                                <img src="assets/img/team/1.png" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4>Danila Kostenko</h4>
+                                <span>Backend/DevOps/Systems Architect</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="team-wrapper text-center mb-30">
+                            <div class="team-img">
+                                <img src="assets/img/team/2.png" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h4>Elena Chernaya</h4>
+                                <span>Prosto molodets and some verstka </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="hm-4-padding">
+            <div class="container-fluid">
+
+                <div class="footer-bottom border-top-1 ptb-15">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="copyright-payment">
+                                <div class="copyright">
+                                    <p>
+                                        Copyright © 2020 <a href="index.html">SecretSanta</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- all js here -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/SecretSanta/scripts")
+</body>
+</html>
 
