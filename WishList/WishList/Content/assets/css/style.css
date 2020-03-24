@@ -1050,6 +1050,7 @@ a.slider-btn {
             color: #f3a395;
         }
 
+
 /* modal style */
 
 .modal-body {
@@ -1559,3 +1560,215 @@ button.cr-btn:hover b {
     background-color: red !important;
     color: white !important;
 }
+
+
+/*--------- Contact ---------*/
+
+.contact-address {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+    .contact-address:last-child,
+    .single-twitter:last-child {
+        margin-bottom: 0px;
+    }
+
+.contact-info-icon i {
+    color: #2e2e2e;
+    font-size: 20px;
+    margin-top: -2px;
+    display: inline-block;
+}
+
+.contact-info-content > p {
+    color: #808080;
+    line-height: 23px;
+    margin: 0;
+}
+
+    .contact-info-content > p a {
+        color: #808080;
+    }
+
+.contact-info-icon {
+    margin-right: 20px;
+}
+
+.contact-info-content > p a:hover {
+    color: #f3a395;
+}
+
+.contact-message p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: #555;
+}
+
+
+.contact-title {
+    color: #505050;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+    .contact-title::before {
+        background-color: #f3a395;
+        bottom: -8px;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        width: 59px;
+    }
+
+.contact-form-style > input {
+    background-color: #f7f7f7;
+    border: none;
+    font-weight: 500;
+    font-size: 12px;
+    color: #7d7d7d;
+    padding: 0 15px;
+    height: 50px;
+}
+
+.contact-form-style > textarea {
+    background-color: #f7f7f7;
+    border: medium none;
+    color: #7d7d7d;
+    font-size: 12px;
+    font-weight: 500;
+    height: 190px;
+    padding: 20px 15px;
+}
+
+    .contact-form-style > input::-moz-placeholder,
+    .contact-form-style > textarea::-moz-placeholder {
+        color: #7d7d7d;
+        opacity: 1;
+    }
+
+    .contact-form-style > input::-webkit-placeholder,
+    .contact-form-style > textarea::-webkit-placeholder {
+        color: #7d7d7d;
+        opacity: 1;
+    }
+
+.contact-form-style button {
+    border: medium none;
+    padding: 12px 32px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.communication-info {
+    background-color: #f7f7f7;
+    margin-right: 80px;
+    padding: 54px 35px;
+}
+
+.single-communication {
+    display: flex;
+    margin-bottom: 37px;
+}
+
+    .single-communication:last-child {
+        margin-bottom: 0px;
+    }
+
+.communication-icon i {
+    border: 1px solid #ea000d;
+    border-radius: 50%;
+    color: #ea000d;
+    font-size: 24px;
+    height: 66px;
+    line-height: 66px;
+    text-align: center;
+    width: 66px;
+}
+
+.communication-icon i {
+    border: 1px solid #f3a395;
+    border-radius: 50%;
+    color: #f3a395;
+    display: inline-block;
+    font-size: 18px;
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+    width: 47px;
+    transition: all 0.3s ease 0s;
+}
+
+.communication-icon {
+    margin-right: 15px;
+}
+
+.communication-text > h4 {
+    font-size: 15px;
+    color: #505050;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.communication-text > p {
+    color: #666;
+    margin: 0;
+    font-size: 14px;
+}
+
+    .communication-text > p a {
+        color: #666;
+    }
+
+        .communication-text > p a:hover {
+            color: #f3a395;
+        }
+
+.single-communication:hover .communication-icon i {
+    background-color: #f3a395;
+    color: #fff;
+}
+
+/*--------- About ---------*/
+
+.team-content > h4 {
+    color: #292929;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.team-content > span {
+    color: #292929;
+}
+
+.team-content {
+    padding-top: 26px;
+}
+
+.team-img > img {
+    width: 70%;
+}
+
+.team-area .row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+    .team-area .row div[class^="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+.team-img img {
+    transition: all 0.4s ease 0s;
+}
+
+.team-wrapper:hover .team-img img {
+    filter: grayscale(100%);
+    transition: all 0.4s ease 0s;
+}
+    
