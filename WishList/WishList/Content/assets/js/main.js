@@ -7,6 +7,26 @@
         meanMenuContainer: ".mobile-menu-area .mobile-menu",
     });
 
+    /* Profile page Buttons with different window width */   
+    $('.d-inline').ready(function () {
+        function nowWidth() {
+            var currentWidth = window.innerWidth || document.documentElement.clientWidth;
+            if (((currentWidth <= 1209) && (currentWidth >= 1200)) || ((currentWidth <= 1109) && (currentWidth >= 992))) {
+                $('#profileButtons').removeClass('d-inline');
+                $('#profileButtonsInn').addClass('mb-20');
+            }
+            else {
+                $('#profileButtonsInn').removeClass('mb-20');
+            }
+        }
+
+        nowWidth(); // check while load page
+
+        $(window).resize(function () {
+            nowWidth(); // check while resize by client
+        });
+    });
+
 
     /*====== sidebargift ======*/
     function sidebargift() {
