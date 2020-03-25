@@ -64,6 +64,28 @@ namespace WishList.Controllers.Api
             return Ok(postedFile.FileName);
         }
 
+        [HttpPost, Route("api/ChangeImage")]
+        public IHttpActionResult ChangeImage()
+        {
+            var httpRequest = HttpContext.Current.Request;
+            var wishId = HttpContext.Current.Request.Params["wishId"];
+            var postedFile = httpRequest.Files["file"];
+            var filePath = HttpContext.Current.Server.MapPath("~/Files/" + postedFile.FileName);
+            postedFile.SaveAs(filePath);
+            string email = User.Identity.Name;
+            var user = _userService.GetCurrentUser(email);
+            var wish = _wishService.GetWish(Convert.ToInt64(wishId));
+            if (user.Id == wish.UserId)
+            {
+                wish.PathToPicture = postedFile.FileName;
+                _wishService.UpdateWish(wish);
+            }
+            //user.PathToPicture = postedFile.FileName;
+            //_userService.UpdateUser(user);
+
+            return Ok(postedFile.FileName);
+        }
+
         // DELETE: api/Profile/5
         public void Delete(int id)
         {

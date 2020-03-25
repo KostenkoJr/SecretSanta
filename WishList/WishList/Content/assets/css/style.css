@@ -1056,9 +1056,22 @@ a.slider-btn {
 .modal-body {
     display: flex;
     justify-content: space-between;
-    padding: 30px;
+    padding: 15px 10px;
+}
+.modal-header {
+    border-bottom: 0px solid #333333 !important;
+    padding: 8px 10px 5px 10px;*
 }
 
+/*button.close {
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}*/
 .modal-dialog {
     margin: 150px auto;
     min-width: 700px;
@@ -1204,7 +1217,7 @@ a.slider-btn {
     margin: 9px 0 8px;
 }
 
-#exampleModal .close,
+/*#exampleModal .close,
 #exampleCompare .close {
     color: #fff;
     float: right;
@@ -1221,16 +1234,26 @@ a.slider-btn {
 }
 
     #exampleModal .close:hover,
-    #exampleCompare .close:hover {
+    .modal-header .close:hover {
         color: #f3a395;
-    }
+    }*/
+.modal-header .close:hover {
+    color: #f3a395;
+}
 
+.modal-title {
+    align-self: center;
+    padding-left:15px;
+}
 .modal-backdrop.show {
     opacity: 0.8;
 }
 
-.modal-content .close:hover {
-    color: #f3a395;
+.modal-header .close {
+    margin-top: -5px;
+    padding: 8px 15px 5px 10px;
+    background-color: transparent;
+    margin: 0 !important;
 }
 
 .modal-open .modal {
@@ -1283,7 +1306,7 @@ button.cr-btn:hover b {
     color: #ffffff;
 }
 
-.modal .close {
+/*.modal .close {
     color: #fff;
     float: right;
     font-size: 50px;
@@ -1292,7 +1315,7 @@ button.cr-btn:hover b {
     margin-right: 50px;
     opacity: 1;
     text-shadow: 0 1px 0 #fff;
-}
+}*/
 
 .table-content.compare-style table thead tr {
     border-bottom: medium none;
