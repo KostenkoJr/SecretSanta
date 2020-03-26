@@ -13,6 +13,7 @@
     <!-- all css here -->
     @Styles.Render("~/Content/SecretSanta/css")
     @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/bundles/alertify/css")
     <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -36,7 +37,9 @@
             </div>
         </div>
     </footer>
+
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/SecretSanta/scripts")
+    @Scripts.Render("~/bundles/alertify/js")
 </body>
 </html>

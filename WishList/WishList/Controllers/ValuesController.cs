@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SecretSanta.Data.Models;
 using SecretSanta.Services.UserServices;
 using SecretSanta.Services.WishService;
 using System;
@@ -64,26 +65,34 @@ namespace WishList.Controllers.Api
             return Ok(postedFile.FileName);
         }
 
-        [HttpPost, Route("api/ChangeImage")]
-        public IHttpActionResult ChangeImage()
+        [HttpPost, Route("api/UploadImage")]
+        public IHttpActionResult UploadImage()
         {
             var httpRequest = HttpContext.Current.Request;
-            var wishId = HttpContext.Current.Request.Params["wishId"];
             var postedFile = httpRequest.Files["file"];
             var filePath = HttpContext.Current.Server.MapPath("~/Files/" + postedFile.FileName);
             postedFile.SaveAs(filePath);
+            return Ok(postedFile.FileName);
+        }
+
+        [HttpPost, Route("api/ChangeWish")]
+        public IHttpActionResult ChangeWish([FromBody]Wish wish)
+        {
             string email = User.Identity.Name;
             var user = _userService.GetCurrentUser(email);
-            var wish = _wishService.GetWish(Convert.ToInt64(wishId));
-            if (user.Id == wish.UserId)
+            var _wish = _wishService.GetWish(wish.Id);
+            if(_wish.UserId == user.Id)
             {
-                wish.PathToPicture = postedFile.FileName;
-                _wishService.UpdateWish(wish);
+                _wish.Description = wish.Description;
+                _wish.LinkToShop = wish.LinkToShop;
+                _wish.PathToPicture = String.IsNullOrEmpty(wish.PathToPicture) ? null : wish.PathToPicture;
+                _wish.Price = wish.Price;
+                _wish.Title = wish.Title;
+                _wish.IsComlete = wish.IsComlete;
+                _wishService.UpdateWish(_wish);
+                return Ok(true);
             }
-            //user.PathToPicture = postedFile.FileName;
-            //_userService.UpdateUser(user);
-
-            return Ok(postedFile.FileName);
+            return NotFound();
         }
 
         // DELETE: api/Profile/5

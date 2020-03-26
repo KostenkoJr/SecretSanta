@@ -55,6 +55,12 @@ namespace WishList
                 "~/Content/assets/js/main.js",
                 "~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
+            bundles.Add(new StyleBundle("~/bundles/alertify/css")
+                .IncludeDirectory("~/Content/alertify", "*.css", true));
+
+            bundles.Add(new StyleBundle("~/bundles/alertify/js")
+                .Include("~/Content/notify/bootstrap-notify.js")
+                .Include("~/Scripts/utilities.js"));
         }
     }
 }

@@ -184,11 +184,11 @@
                                             <a>
                                                 @if (wish.PathToPicture == null)
                                                 {
-                                                    <img src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="270" height="326" />
+                                                    <img id="@("img" + wish.Id)" src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="270" height="326" />
                                                 }
                                                 else
                                                 {
-                                                    <img src="@Url.Content($"~/Files/{wish.PathToPicture}")" alt="" width="270" height="326" />
+                                                    <img id="@("img" + wish.Id)" src="@Url.Content($"~/Files/{wish.PathToPicture}")" alt="" width="270" height="326" />
                                                 }
                                             </a>
                                             @if (@wish.IsComlete)
@@ -215,7 +215,7 @@
                                         </div>
                                         <div class="wish-content text-center">
                                             <h4>
-                                                <a href="wish-details.html">@wish.Title</a>
+                                                <a id="@("title" + wish.Id)">@wish.Title</a>
                                             </h4>
                                         </div>
                                     </div>

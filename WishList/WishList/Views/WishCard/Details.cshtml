@@ -1,96 +1,115 @@
 ﻿@model SecretSanta.Data.Models.Wish
 
-<script type="text/javascript">
-    function onSuccess(data) {
-        const el = document.querySelector('.close');
-        el.click();
-    }
-</script>
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">@Model.Title</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="col-lg-6">
+            <div class="qwick-view-content">
+                <div class="form">
+                    <form id="SaveChanges" data-model="@Model.Id">
+                        <input class="mt-10" name="Id" value="@Model.Id" hidden="true" />
+                        <input class="mt-10" name="UserId" value="@Model.UserId" hidden="true" />
+                        <input class="mt-10" name="User" value="@Model.User" hidden="true" />
+                        <input class="mt-10" name="IsComplete" value="@Model.IsComlete" hidden="true" />
 
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">@Model.Title</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="col-lg-6">
-                    <div class="qwick-view-content">
-                        <div class="form">
-                            @using (Ajax.BeginForm("Edit", "WishCard", new AjaxOptions { OnSuccess = "onSuccess" }))
-                            {
-
-                                @Html.AntiForgeryToken()
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <label>
-                                    Title
-                                    @Html.TextBoxFor(model => model.Title, new { @placeholder = "Title", @class = "mt-10" })
-                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                                </label>
-                                <label>
-                                    Price
-                                    @Html.TextBoxFor(model => model.Price, new { @placeholder = "Price", @class = "mt-10" })
-                                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                                </label>
-                                <label>
-                                    Link to shop
-                                    @Html.TextBoxFor(model => model.LinkToShop, new { @placeholder = "Link", @class = "mt-10" })
-                                    @Html.ValidationMessageFor(model => model.LinkToShop, "", new { @class = "text-danger" })
-                                </label>
-                                <label>
-                                    Description
-                                    @Html.TextArea("Description", Model.Description, new { @class = "mt-10" })
-                                </label>
-                                @Html.HiddenFor(model => model.Id)
-                                @Html.HiddenFor(model => model.User)
-                                @Html.HiddenFor(model => model.UserId)
-                                @Html.HiddenFor(model => model.PathToPicture)
-                                <div class="button-box button-position">
-                                    <input class="action-plus btn-style cr-btn btn-wish-add confirm-btn" type="submit" value="Save Changes" />
-                                </div>
-                            }
+                        <label>
+                            Title
+                            <input class="mt-10" name="Title" placeholder="Ttile" value="@Model.Title" />
+                        </label>
+                        <label>
+                            Price
+                            <input class="mt-10" name="Price" type="number" step="0.1" placeholder="Price" value="@Math.Round(Convert.ToDouble(Model.Price), 2)" />
+                        </label>
+                        <label>
+                            Link to shop
+                            <input class="mt-10" name="LinkToShop" placeholder="Link" value="@Model.LinkToShop" />
+                        </label>
+                        <label>
+                            Description
+                            <textarea class="mt-10" name="Description" placeholder="Description">@Model.Description</textarea>
+                        </label>
+                        <div class="button-box mt-20">
+                            <a class="action-plus btn-style cr-btn btn-wish-add save-changes" href="#">
+                                <span>Save Changes</span>
+                            </a>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                <div class="col-lg-6">
-                    <div class="qwick-view-content">
-                        <div class="text-center">
-                            <div class="tab-pane active show fade mt-10" id="modal1" role="tabpanel">
-                                @if (Model.PathToPicture == null)
-                                {
-                                    <img class="item-pic" src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="290" height="368" />
-                                }
-                                else
-                                {
-                                    <img class="item-pic" src="@Url.Content($"~/Files/{Model.PathToPicture}")" alt="" width="290" height="368" />
-                                }
-                            </div>
-                            <div class="button-box mt-20">
-                                <a class="action-plus btn-style cr-btn btn-wish-add" title="Choose photo" href="#">
-                                    <span onclick="document.getElementById('file-input-image').click();">Open...</span>
-                                    <input id="file-input-image" type="file" name="avatar" style="display: none;" data-wish="@Model.Id"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="lg-col-12 pb-30 ml-30 mr-30">
-
-
-
             </div>
         </div>
+        <div class="col-lg-6">
+            <div class="qwick-view-content">
+                <div class="text-center">
+                    <div class="tab-pane active show fade mt-10" id="modal1" role="tabpanel">
+                        @if (Model.PathToPicture == null)
+                        {
+                            <img class="item-pic" src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="290" height="368" />
+                        }
+                        else
+                        {
+                            <img class="item-pic" src="@Url.Content($"~/Files/{Model.PathToPicture}")" alt="" width="290" height="368" />
+                        }
+                    </div>
+                    <div class="button-box mt-20">
+                        <a class="action-plus btn-style cr-btn btn-wish-add" title="Choose photo">
+                            <span onclick="document.getElementById('file-input-image').click();">Open...</span>
+                            <input id="file-input-image" type="file" name="avatar" style="display: none;" data-wish="@Model.Id" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lg-col-12 pb-30 ml-30 mr-30"></div>
+</div>
 @Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/SecretSanta/scripts")
+@Scripts.Render("~/bundles/alertify/js")
+
 <script>
+    //TODO refactoring
+    const sendBtn = document.querySelector('.save-changes');
+    sendBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const formData = document.querySelector('#SaveChanges');
+        const img = document.querySelector('.item-pic');
+        const data = {};
+        const arr = formData.elements;
+        Array.from(arr).forEach(el => {
+            data[el.name] = el.value;
+        });
+        let pathToPicture = img.src.match(/Files\/.*/gi)[0].substring(6);
+        data["pathToPicture"] = pathToPicture;
+        const promise = AjaxRequest.ajaxSendForm(data, 'https://localhost:44360/api/ChangeWish');
+        promise
+            .then(res => {
+                const closeBtn = document.querySelector('.close');
+                const wishImg = document.querySelector(`#img${data.Id}`);
+                wishImg.src = "@Url.Content($"~/Files/")" + pathToPicture;
+                const wishTitle = document.querySelector(`#title${data.Id}`);
+                wishTitle.innerHTML = data.Title;
+                closeBtn.click();
+                Notifier.showSuccess("<strong>Wish changed!</strong>", '<br><p>Your wish was changed!</p>')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    });
+
+</script>
+<script>
+        //TODO refactoring
     const inputFile = document.getElementById('file-input-image');
     const wishId = inputFile.dataset.wish;
     inputFile.addEventListener('change', (event) => {
+        event.preventDefault();
         var dataFile = new FormData();
         dataFile.append('file', inputFile.files[0]);
-        alert(wishId);
         dataFile.append('wishId', wishId);
-        fetch("https://localhost:44360/api/ChangeImage", {
+        fetch("https://localhost:44360/api/UploadImage", {
 
             method: 'POST',
             body: dataFile
@@ -103,3 +122,4 @@
 
     })
 </script>
+
