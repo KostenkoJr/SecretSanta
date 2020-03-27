@@ -89,9 +89,6 @@
     padding: 250px 0 0;
   }
 
-  .main-menu nav ul li>ul.mega-menu {
-    left: -135px;
-  }
 
   .wish-content-4 {
     padding: 60px 40px;
@@ -109,16 +106,10 @@
     left: -95px;
   }
 
-  .main-menu nav ul li>ul.mega-menu {
-    left: -230px;
-    width: 630px;
-  }
-
   .main-menu ul li a {
     font-size: 12px;
   }
 
-  .main-menu nav ul li>ul.mega-menu li ul>li>a,
   .main-menu nav ul li ul li>a,
   .stick .main-menu nav ul li ul li>a {
     font-size: 13px;
@@ -179,10 +170,6 @@
 
   .quickview-btn-gift>a {
     padding: 14px 10px;
-  }
-
-  .main-menu nav ul li>ul.mega-menu li ul>li.mega-menu-title {
-    font-size: 14px;
   }
 }
 
