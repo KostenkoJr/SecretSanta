@@ -37,9 +37,10 @@ namespace WishList.Controllers
                 FirstName = "Lena",
                 LastName = "Chernaya",
                 Email = "9@mail.ru",
-                Password = "panda_super_secret_password",
+                Password = "1234",
                 PathToPicture = "path to picture",
-                IsAdmin = false,
+                IsAdmin = true,
+                Address = "New address",
                 DateOfBirth = DateTime.Now
             });
             _userService.CreateUser(new User
@@ -50,6 +51,7 @@ namespace WishList.Controllers
                 Password = "panda_super_secret_password",
                 PathToPicture = "path to picture",
                 IsAdmin = false,
+                Address = "Peski, Vologodskay oblast1",
                 DateOfBirth = DateTime.Now
             });
             _userService.CreateUser(new User
@@ -60,36 +62,7 @@ namespace WishList.Controllers
                 Password = "panda_super_secret_password",
                 PathToPicture = "path to picture",
                 IsAdmin = false,
-                DateOfBirth = DateTime.Now
-            });
-            _userService.CreateUser(new User
-            {
-                FirstName = "Lena",
-                LastName = "Chernaya",
-                Email = "77@mail.ru",
-                Password = "panda_super_secret_password",
-                PathToPicture = "path to picture",
-                IsAdmin = false,
-                DateOfBirth = DateTime.Now
-            });
-            _userService.CreateUser(new User
-            {
-                FirstName = "Lena",
-                LastName = "Chernaya",
-                Email = "66@mail.ru",
-                Password = "panda_super_secret_password",
-                PathToPicture = "path to picture",
-                IsAdmin = false,
-                DateOfBirth = DateTime.Now
-            });
-            _userService.CreateUser(new User
-            {
-                FirstName = "Lena",
-                LastName = "Chernaya",
-                Email = "55@mail.ru",
-                Password = "panda_super_secret_password",
-                PathToPicture = "path to picture",
-                IsAdmin = false,
+                Address = "Peski, Vologodskay oblast2",
                 DateOfBirth = DateTime.Now
             });
         }

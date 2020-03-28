@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SecretSanta.Data.Models;
+using SecretSanta.Services.FeedbackService;
 using SecretSanta.Services.UserServices;
 using SecretSanta.Services.WishService;
 using System;
@@ -13,12 +14,13 @@ namespace WishList.Controllers.Api
     public class ValuesController : ApiController
     {
         private IUserService _userService;
-
         private IWishService _wishService;
-        public ValuesController(IWishService wishService, IUserService userService)
+        private IFeedbackService _feedbackService;
+        public ValuesController(IWishService wishService, IUserService userService, IFeedbackService feedbackService)
         {
             _wishService = wishService;
             _userService = userService;
+            _feedbackService = feedbackService;
         }
         // GET: api/Profile
         [HttpGet, Route("api/ChangeStatus/{id}")]
@@ -102,6 +104,16 @@ namespace WishList.Controllers.Api
             wish.PathToPicture = String.IsNullOrEmpty(wish.PathToPicture) ? null : wish.PathToPicture;
             wish.UserId = user.Id;
             _wishService.CreateWish(wish);
+            return Ok(true);
+        }
+
+        [HttpPost, Route("api/GetInTouch")]
+        public IHttpActionResult GetInTouch([FromBody]FeedbackForm feedback)
+        {
+            string email = User.Identity.Name;
+            var user = _userService.GetCurrentUser(email);
+            feedback.UserId = user.Id;
+            _feedbackService.GetInTouch(feedback);
             return Ok(true);
         }
 

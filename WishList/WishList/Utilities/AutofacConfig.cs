@@ -10,6 +10,8 @@ using Autofac.Integration.WebApi;
 using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Http;
+using SecretSanta.Data.EF.Repositories.FeedbackRepository;
+using SecretSanta.Services.FeedbackService;
 
 namespace WishList.Utilities
 {
@@ -39,6 +41,11 @@ namespace WishList.Utilities
             #region Wishes
             builder.RegisterType<WishRepository>().As<IWishRepository>();
             builder.RegisterType<WishService>().As<IWishService>();
+            #endregion
+
+            #region FeedbackForm
+            builder.RegisterType<FeedbackRepository>().As<IFeedbackRepository>();
+            builder.RegisterType<FeedbackService>().As<IFeedbackService>();
             #endregion
 
             // создаем новый контейнер с теми зависимостями, которые определены выше

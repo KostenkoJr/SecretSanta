@@ -30,6 +30,7 @@ namespace SecretSanta.Data.Models
         public String Password { get; set; }
 
         public String PathToPicture { get; set; }
+        public String Address { get; set; }
 
         public Boolean IsAdmin { get; set; }
         public DateTime DateOfBirth { get; set; } 

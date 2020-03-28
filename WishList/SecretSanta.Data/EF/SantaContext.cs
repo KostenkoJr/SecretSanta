@@ -19,6 +19,7 @@ namespace SecretSanta.Data.EF
         public DbSet<Wish> Wishes { get; set; }
         public DbSet<Recipient> Recipients { get; set; }
         public DbSet<Picture> Pictures { get; set; }
+        public DbSet<FeedbackForm> FeedbackForms { get; set; }
     }
 
     public class MyInitializer : DropCreateDatabaseIfModelChanges<SantaContext>
