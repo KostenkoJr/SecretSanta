@@ -62,9 +62,9 @@
                                                     <li><a href="index-2.html">chuvak wishes</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="about-us.html">rules </a></li>
-                                            <li><a href="contact.html">about us</a></li>
-                                            <li><a href="contact.html">contact us</a></li>
+                                            <li><a href="@Url.Action("Rules", "Info")">rules </a></li>
+                                            <li><a href="@Url.Action("About", "Info")">about us</a></li>
+                                            <li><a href="@Url.Action("Contact", "Info")">contact us</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -84,9 +84,9 @@
                                                 <a href="#" class="ti-user"></a>
                                                 <ul>
                                                     <li class="active">
-                                                        <a href="index.html">My profile</a>
+                                                        <a href="@Url.Action("Index", "Profile")">My profile</a>
                                                     </li>
-                                                    <li><a href="index-2.html">Log out</a></li>
+                                                    <li><a href="@Url.Action("Logoff", "Account")">Log out</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

@@ -95,6 +95,17 @@ namespace WishList.Controllers.Api
             return NotFound();
         }
 
+        [HttpPost, Route("api/CreateWish")]
+        public IHttpActionResult CreateWish([FromBody]Wish wish)
+        {
+            string email = User.Identity.Name;
+            var user = _userService.GetCurrentUser(email);
+            wish.PathToPicture = String.IsNullOrEmpty(wish.PathToPicture) ? null : wish.PathToPicture;
+            wish.UserId = user.Id;
+            _wishService.CreateWish(wish);
+            return Ok(true);
+        }
+
         // DELETE: api/Profile/5
         public void Delete(int id)
         {

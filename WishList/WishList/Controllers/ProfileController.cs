@@ -1,4 +1,5 @@
-﻿using SecretSanta.Services.UserServices;
+﻿using SecretSanta.Data.Models;
+using SecretSanta.Services.UserServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace WishList.Controllers
             if(user != null)
             {
                 ViewBag.User = user;
+                IList<Wish> wishes = user.Wishes;
+                wishes = wishes.OrderByDescending(w => w.Date).ToList();
+                ViewBag.Wishes = wishes;
                 return View(user);
             }
             return HttpNotFound();

@@ -175,7 +175,7 @@
                         </div>
                         <!-------------------------------------------------WISH------------------------------------------------------>
                         <div class="row">
-                            @foreach (var wish in Model.Wishes)
+                            @foreach (var wish in ViewBag.Wishes)
                             {
                                 <!-- Start one wish from gallery -->
                                 <div class="col-md-6 col-lg-4 col-xl-3">
@@ -290,7 +290,6 @@
             const promise = fetch(`https://localhost:44360/api/ChangeStatus/${id}`);
             promise.then(res => res.json()).then(isComplete => {
                 const elDone = document.querySelector(`#wish${target.id}`)
-                console.log(elDone)
                 elDone.classList.toggle('done');
                 elDone.classList.toggle('not-done');
                 elDone.innerHTML = isComplete ? 'Done' : 'Not Done'
@@ -324,6 +323,7 @@
             inputOldPassword.value = '';
             inputNewPassword.value = '';
             inputConfirmNewPassword.value = '';
+            Notifier.showSuccess("<strong>Password updated</strong>", '<br><p>Your password has been updated!</p>')
         })
     })
 </script>
