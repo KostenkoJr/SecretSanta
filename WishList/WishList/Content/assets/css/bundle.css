@@ -2215,7 +2215,7 @@ textarea:focus {
 }
 
 .btn-style {
-  background-color: #f3a395;
+  background-color: #5b772d;
   border: 0px;
   border-radius: 0;
   color: #ffffff;
@@ -2267,7 +2267,7 @@ button:focus {
 }
 
 .btn-style-2 {
-  border: 1px solid #000000;
+  border: 1px solid #004700;
   border-radius: 50px;
   color: #3e3e3e;
   display: inline-block;

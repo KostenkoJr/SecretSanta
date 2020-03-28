@@ -103,7 +103,7 @@
 }
 
 .chosen-container-single .chosen-single span:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .chosen-container-single .chosen-single {
@@ -138,7 +138,7 @@
 }
 
 .chosen-container .chosen-single div b::before {
-  color: #000000;
+  color: #004700;
   content: "";
   font-family: "themify";
   font-size: 12px;
@@ -154,7 +154,7 @@
 }
 
 .chosen-container .chosen-drop ul li.highlighted {
-  background: #f3a395;
+  background: #5b772d;
 }
 
 /* logo */
@@ -184,7 +184,7 @@
 }
 
 .main-menu ul li:hover>a {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .main-menu nav>ul>li>ul {
@@ -215,7 +215,7 @@
 }
 
 .main-menu nav ul li ul>li>a::before {
-  background: #f3a395 none repeat scroll 0 0;
+  background: #5b772d none repeat scroll 0 0;
   content: "";
   height: 7px;
   left: 15px;
@@ -244,7 +244,7 @@
 
 .main-menu nav ul li ul li.active>a,
 .stick .main-menu nav ul li ul li.active>a {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .main-menu nav ul li ul li:hover>a {
@@ -359,7 +359,7 @@
 
 .same-style button:hover,
 .same-style a:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .header-gift button span {
@@ -370,7 +370,7 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color: #f3a395;
+  background-color: #5b772d;
   color: #fff;
   text-align: center;
   line-height: 20px;
@@ -432,7 +432,7 @@
 .sidebar-search-icon button:hover,
 .sidebar-search-input form .form-search button:hover,
 .sidebar-nav-icon button:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .gift-content>h3 {
@@ -463,7 +463,7 @@
 }
 
 .gift-title>span {
-  color: #f3a395;
+  color: #5b772d;
   font-weight: 600;
 }
 
@@ -486,7 +486,7 @@
 }
 
 .gift-delete a i:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .gift-content ul {
@@ -508,7 +508,7 @@
 }
 
 .gift-total h4 span {
-  color: #f3a395;
+  color: #5b772d;
   font-size: 18px;
   font-weight: 600;
 }
@@ -667,7 +667,7 @@
 }
 
 .slider-content h2 span {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .slider-content p {
@@ -686,11 +686,11 @@ a.slider-btn {
 }
 
 a.slider-btn:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 a.slider-btn::before {
-  background: #f3a395 none repeat scroll 0 0;
+  background: #5b772d none repeat scroll 0 0;
   bottom: -5px;
   content: "";
   height: 1px;
@@ -775,7 +775,7 @@ a.slider-btn:hover::before {
 
 .wish-tab-list a.active h4,
 .wish-tab-list a h4:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .wish-wrapper,
@@ -819,11 +819,11 @@ a.slider-btn:hover::before {
 
 .wish-content>h4 a:hover,
 .wish-action-style>a:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .wish-rating i {
-  color: #f3a395;
+  color: #5b772d;
   font-size: 16px;
   margin: 0 3px;
 }
@@ -922,7 +922,7 @@ a.slider-btn:hover::before {
 }
 
 .banner-content-5>h4 {
-  color: #f3a395;
+  color: #5b772d;
   font-family: "Painter PERSONAL USE ONLY";
   font-size: 24px;
   margin: 0;
@@ -949,7 +949,7 @@ a.slider-btn:hover::before {
 }
 
 .banner-btn:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .banner-btn:before {
@@ -964,7 +964,7 @@ a.slider-btn:hover::before {
 }
 
 .banner-btn:hover:before {
-  background: #f3a395 none repeat scroll 0 0;
+  background: #5b772d none repeat scroll 0 0;
 }
 
 .overflow {
@@ -1051,7 +1051,7 @@ a.slider-btn:hover::before {
 }
 
 .copyright>p a:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 /* modal style */
@@ -1115,7 +1115,7 @@ a.slider-btn:hover::before {
 }
 
 .price span.new {
-  color: #f3a395;
+  color: #5b772d;
   margin-right: 12px;
 }
 
@@ -1225,7 +1225,7 @@ a.slider-btn:hover::before {
 
 #exampleModal .close:hover,
 #exampleCompare .close:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .modal-backdrop.show {
@@ -1233,7 +1233,7 @@ a.slider-btn:hover::before {
 }
 
 .modal-content .close:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .modal-open .modal {
@@ -1282,7 +1282,7 @@ button.cr-btn:hover b {
 }
 
 .btn-style:hover {
-  border: 0px solid #f3a395;
+  border: 0px solid #5b772d;
   color: #ffffff;
 }
 
@@ -1339,7 +1339,7 @@ button.cr-btn:hover b {
 }
 
 .breadcrumb-content li a:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .breadcrumb-content li a::after {
@@ -1412,7 +1412,7 @@ button.cr-btn:hover b {
 
 .wish-categories li a:hover,
 .wish-details-tags li a:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .wish-details .easyzoom>a img {
@@ -1485,7 +1485,7 @@ button.cr-btn:hover b {
 }
 
 .login-toggle-btn>a:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .login-register-tab-list {
@@ -1504,7 +1504,7 @@ button.cr-btn:hover b {
 
 .login-register-tab-list.nav a.active h4,
 .login-register-tab-list.nav a h4:hover {
-  color: #f3a395;
+  color: #5b772d;
 }
 
 .login-form button {
@@ -1514,7 +1514,7 @@ button.cr-btn:hover b {
 
 /*--------- 9. Scrollup ---------*/
 #scrollUp {
-  background: #f3a395 none repeat scroll 0 0;
+  background: #5b772d none repeat scroll 0 0;
   bottom: 85px;
   color: #ffffff;
   cursor: pointer;
@@ -1551,5 +1551,5 @@ button.cr-btn:hover b {
 
 .pagination-style li a:hover,
 .pagination-style li a.active {
-  color: #f3a395;
+  color: #5b772d;
 }
