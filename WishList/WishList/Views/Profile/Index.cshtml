@@ -3,255 +3,166 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<div class="wrapper">
-    <div class="modal fade" id="modDialog" role="dialog">
-        <div id="dialogContent" class="modal-dialog">
+@*<div class="breadcrumb-area mt-37 hm-4-padding">
+    <div class="container-fluid">
+        <div class="breadcrumb-content text-center border-top-2">
+            <h2>@Model.FirstName @Model.LastName</h2>
         </div>
     </div>
-    <div id="modDialog1" class="modal fade">
-        <div id="dialogContent1" class="modal-dialog"></div>
-    </div>
-    <!-- header start -->
-    <header class="">
-        <div class="header-area transparent-bar header-2 hm-4-padding">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 d-none d-sm-block d-md-block">
+</div>*@
 
-
-                    </div>
-                    <div class="col-lg-7 col-md-5 col-5">
-                        <div class="logo-menu-wrapper text-center">
-                            <div class="logo pr-155">
-                                <a href="index.html"><img src="~/Content/assets/img/logo/logo.png" alt="" /></a>
-                            </div>
-                            <div class="sticky-logo pr-155">
-                                <a href="index.html"><img src="~/Content/assets/img/logo/2.png" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-7">
-                        <div class="header-site-icon">
-                            <div class="header-search same-style">
-                                <button class="sidebar-trigger-search">
-                                    <span class="ti-search"></span>
-                                </button>
-                            </div>
-                            <div class="header-login same-style">
-                                <a href="login-register.html">
-                                    <span class="ti-user"></span>
-                                </a>
-                            </div>
-                            <div class="header-gift same-style">
-                                <button class="sidebar-trigger">
-                                    <i class="ti-gift"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Сделать как-то мобилку -->
-
+<div class="wish-details-area hm-3-padding ptb-20">
+    <div class="container-fluid">
+        <div class="section-title text-center mb-20">
+            <h2>@Model.FirstName @Model.LastName</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 text-center">
+                <div class="wish-details">
+                    @if (Model.PathToPicture == null)
+                    {
+                        <img id="avatar" src="~/Files/default-profile-picture.png" width="290" height="368" />
+                    }
+                    else
+                    {
+                        <img id="avatar" src="~/Files/@Model.PathToPicture" width="290" height="368" />
+                    }
                 </div>
+                <a class="action-plus btn-style cr-btn btn-wish-add mt-20" title="Choose photo" href="#">
+                    <span onclick="document.getElementById('file-input').click();">Open...</span>
+                    <input id="file-input" type="file" name="avatar" style="display: none;" />
+                </a>
             </div>
-        </div>
-    </header>
-    <div class="header-height"></div>
+
+            <div class="col-lg-4">
+                <div class="wish-details-content">
+                    <div class="wish-overview">
+                        <h5 class="pd-sub-title mt-10">Details</h5>
+                        <div class="form">
+                            @using (Html.BeginForm("Edit", "Profile", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
 
 
-    <!-- main-search start -->
-    <div class="main-search-active">
-        <div class="sidebar-search-icon">
-            <button class="search-close"><span class="ti-close"></span></button>
-        </div>
-        <div class="sidebar-search-input">
-            <form>
-                <div class="form-search">
-                    <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search" />
-                    <button>
-                        <i class="ti-search"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="breadcrumb-area mt-37 hm-4-padding">
-        <div class="container-fluid">
-            <div class="breadcrumb-content text-center border-top-2">
-                <h2>@Model.FirstName @Model.LastName</h2>
-            </div>
-        </div>
-    </div>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="wish-details-area hm-3-padding ptb-20">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4 text-center">
-                    <div class="wish-details">
-                        @if (Model.PathToPicture == null)
-                        {
-                            <img id="avatar" src="~/Files/default-profile-picture.png" width="290" height="368" />
-                        }
-                        else
-                        {
-                            <img id="avatar" src="~/Files/@Model.PathToPicture" width="290" height="368" />
-                        }
-                    </div>
-                    <a class="action-plus btn-style cr-btn btn-wish-add mt-20" title="Choose photo" href="#">
-                        <span onclick="document.getElementById('file-input').click();">Open...</span>
-                        <input id="file-input" type="file" name="avatar" style="display: none;" />
-                    </a>
-                </div>
+                                @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "First name", @class = "mt-10" })
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
 
-                <div class="col-lg-4">
-                    <div class="wish-details-content">
-                        <div class="wish-overview">
-                            <h5 class="pd-sub-title mt-10">Details</h5>
-                            <div class="form">
-                                @using (Html.BeginForm("Edit", "Profile", FormMethod.Post))
-                                {
-                                    @Html.AntiForgeryToken()
+                                @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Last name", @class = "mt-10" })
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
 
+                                @Html.TextBoxFor(model => model.DateOfBirth, "{0:yyyy-MM-dd}", new { @type = "date", @class = "mt-10" })
+                                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
 
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                                    @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "First name", @class = "mt-10" })
-                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-
-                                    @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Last name", @class = "mt-10" })
-                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-
-                                    @Html.TextBoxFor(model => model.DateOfBirth, "{0:yyyy-MM-dd}", new { @type = "date", @class = "mt-10" })
-                                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-
-                                    <div class="button-box mt-20">
-
-                                        <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
-                                            <span>Save changes</span>
-                                        </a>
-                                    </div>
-
-                                    <div id="profileButtons" class="d-inline">
-                                        <div class="button-box mt-20">
-
-                                            <a id="profileButtonsInn" class="action-plus btn-style cr-btn btn-wish-add add-wish-modal" title="Add wish" @*data-toggle="modal" data-target="#exampleModal"*@
-                                               href="@Url.Action("Create", "WishCard")">
-                                                <span>Add wish</span>
-                                            </a>
-                                            @if (Model.IsAdmin)
-                                            {
-                                                <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
-                                                    <span>Make a magic</span>
-                                                </a>
-                                            }
-
-                                        </div>
-                                    </div>
-
-                                }
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4">
-                    <div class="wish-details-content">
-                        <div class="wish-overview">
-                            <h5 class="pd-sub-title mt-10">Change password</h5>
-                            <div class="form">
-                                <input class="mt-10" type="password" name="OldPassword" placeholder="Old password" />
-                                <input class="mt-10" type="password" name="NewPassword" placeholder="New password" />
-                                <input class="mt-10" type="password" name="ConfirmNewPassword" placeholder="Confirm new password" />
                                 <div class="button-box mt-20">
-                                    <a class="action-plus btn-style cr-btn btn-wish-add change-password" href="#">
-                                        <span>Change password</span>
+
+                                    <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
+                                        <span>Save changes</span>
                                     </a>
                                 </div>
+
+                                <div id="profileButtons" class="d-inline">
+                                    <div class="button-box mt-20">
+
+                                        <a id="profileButtonsInn" class="action-plus btn-style cr-btn btn-wish-add add-wish-modal" title="Add wish" @*data-toggle="modal" data-target="#exampleModal"*@
+                                           href="@Url.Action("Create", "WishCard")">
+                                            <span>Add wish</span>
+                                        </a>
+                                        @if (Model.IsAdmin)
+                                        {
+                                            <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
+                                                <span>Make a magic</span>
+                                            </a>
+                                        }
+
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="wish-details-content">
+                    <div class="wish-overview">
+                        <h5 class="pd-sub-title mt-10">Change password</h5>
+                        <div class="form">
+                            <input class="mt-10" type="password" name="OldPassword" placeholder="Old password" />
+                            <input class="mt-10" type="password" name="NewPassword" placeholder="New password" />
+                            <input class="mt-10" type="password" name="ConfirmNewPassword" placeholder="Confirm new password" />
+                            <div class="button-box mt-20">
+                                <a class="action-plus btn-style cr-btn btn-wish-add change-password" href="#">
+                                    <span>Change password</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="container ptb-30">
-                        <div class="section-title text-center mb-20">
-                            <h2>My wishes</h2>
-                        </div>
-                        <!-------------------------------------------------WISH------------------------------------------------------>
-                        <div class="row">
-                            @foreach (var wish in ViewBag.Wishes)
-                            {
-                                <!-- Start one wish from gallery -->
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="wish-wrapper mb-45">
-                                        <div class="wish-img">
-                                            <a>
-                                                @if (wish.PathToPicture == null)
-                                                {
-                                                    <img id="@("img" + wish.Id)" src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="270" height="326" />
-                                                }
-                                                else
-                                                {
-                                                    <img id="@("img" + wish.Id)" src="@Url.Content($"~/Files/{wish.PathToPicture}")" alt="" width="270" height="326" />
-                                                }
-                                            </a>
-                                            @if (@wish.IsComlete)
+            </div>
+            <div class="col-12">
+                <div class="container ptb-30">
+                    <div class="section-title text-center mb-20">
+                        <h2>My wishes</h2>
+                    </div>
+                    <!-------------------------------------------------WISH------------------------------------------------------>
+                    <div class="row">
+                        @foreach (var wish in ViewBag.Wishes)
+                        {
+                            <!-- Start one wish from gallery -->
+                            <div class="col-md-6 col-lg-4 col-xl-3">
+                                <div class="wish-wrapper mb-45">
+                                    <div class="wish-img">
+                                        <a>
+                                            @if (wish.PathToPicture == null)
                                             {
-                                                <span class="done is-complete" id="@("wish" + wish.Id.ToString())">DONE</span>
+                                                <img id="@("img" + wish.Id)" src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="270" height="326" />
                                             }
                                             else
                                             {
-                                                <span class="not-done is-complete" id="@("wish" + wish.Id.ToString())">NOT DONE</span>
+                                                <img id="@("img" + wish.Id)" src="@Url.Content($"~/Files/{wish.PathToPicture}")" alt="" width="270" height="326" />
                                             }
+                                        </a>
+                                        @if (@wish.IsComlete)
+                                        {
+                                            <span class="done is-complete" id="@("wish" + wish.Id.ToString())">DONE</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="not-done is-complete" id="@("wish" + wish.Id.ToString())">NOT DONE</span>
+                                        }
 
-                                            <div class="wish-action">
-                                                <div class="wish-action-style">
-                                                    <a class="action-plus modalka" title="Quick View"
-                                                       href="@Url.Action("Details", "WishCard", new {id = wish.Id })">
-                                                        <i class="ti-search"></i>
-                                                    </a>
-                                                    <a class="action-check" title="Done" href="">
-                                                        <i class="ti-check" id="@wish.Id"></i>
-                                                    </a>
+                                        <div class="wish-action">
+                                            <div class="wish-action-style">
+                                                <a class="action-plus modalka" title="Quick View"
+                                                   href="@Url.Action("Details", "WishCard", new {id = wish.Id })">
+                                                    <i class="ti-search"></i>
+                                                </a>
+                                                <a class="action-check" title="Done" href="">
+                                                    <i class="ti-check" id="@wish.Id"></i>
+                                                </a>
 
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="wish-content text-center">
-                                            <h4>
-                                                <a id="@("title" + wish.Id)">@wish.Title</a>
-                                            </h4>
-                                        </div>
+                                    </div>
+                                    <div class="wish-content text-center">
+                                        <h4>
+                                            <a id="@("title" + wish.Id)">@wish.Title</a>
+                                        </h4>
                                     </div>
                                 </div>
-                            }
-                        </div>
+                            </div>
+                        }
                     </div>
-
-                    @*<div class="pagination-style text-center mt-10">
-                        <ul>
-                            <li>
-                                <a class="active" href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="ion-chevron-right"></i>
-                                </a>
-                            </li>
-                        </ul>*@
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>
-
 
 <!-- all js here -->
 <script type="text/javascript">

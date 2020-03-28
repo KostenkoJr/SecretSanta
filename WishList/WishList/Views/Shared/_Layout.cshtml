@@ -15,30 +15,169 @@
     @Scripts.Render("~/bundles/jquery")
     <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
-    @RenderBody()
-    <footer class="hm-4-padding">
-        <div class="container-fluid">
 
-            <div class="footer-bottom border-top-1 ptb-15">
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <div class="copyright-payment">
-                            <div class="copyright">
-                                <p>
-                                    Copyright © 2020 <a href="index.html">SecretSanta</a>
-                                </p>
+<body>
+    <div class="wrapper">
+        <!-- header start -->
+        <header>
+            <div class="header-area transparent-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-5 col-5">
+                            <div class="clock" id="clockdiv"></div>
+                            <div class="sticky-logo">
+                                <a href="index.html"><img src="~/Content/assets/img/logo/2.png" alt="" /></a>
+                            </div>
+                            <div class="logo-small-device">
+                                <a href="index.html"><img alt="" src="~/Content/assets/img/logo/logo.png" /></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 d-none d-md-block">
+                            <div class="logo-menu-wrapper text-center">
+                                <div class="logo">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/logo.png" alt="" /></a>
+                                </div>
+                                <div class="main-menu">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#">wishes <i class="ion-ios-arrow-down"></i></a>
+                                                <!-- НЕ УДАЛЯТЬ DROPDOWN  ДЛЯ ЛОГИН -->
+                                                <ul>
+                                                    <li class="active">
+                                                        <a href="index.html">all wishes</a>
+                                                    </li>
+                                                    <li><a href="index-2.html">my wishes</a></li>
+                                                    <li><a href="index-2.html">recipient wishes</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="@Url.Action("Rules", "Info")">rules </a></li>
+                                            <li><a href="@Url.Action("About", "Info")">about us</a></li>
+                                            <li><a href="@Url.Action("Contact", "Info")">contact us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-7 col-7">
+                            <div class="header-site-icon">
+                                <div class="header-search same-style">
+                                    <button class="sidebar-trigger-search">
+                                        <span class="ti-search"></span>
+                                    </button>
+                                </div>
+                                <div class="header-login same-style sidebar-trigger">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#" class="ti-user"></a>
+                                                <ul>
+                                                    <li class="active">
+                                                        <a href="@Url.Action("Index", "Profile")">My profile</a>
+                                                    </li>
+                                                    <li><a href="@Url.Action("Logoff", "Account")">Log out</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-gift same-style">
+                                    <button class="sidebar-trigger">
+                                        <i class="ti-gift" title="My recipient">
+                                        </i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-menu-area col-12">
+                            <div class="mobile-menu">
+                                <nav id="mobile-menu-active">
+                                    <ul class="menu-overflow">
+                                        <li>
+                                            <a href="#">WISHES</a>
+                                            <ul>
+                                                <li><a href="index.html">all wishes</a></li>
+                                                <li><a href="index-2.html">my wishes</a></li>
+                                                <li><a href="index-2.html">recipient wishes</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html"> rules</a></li>
+                                        <li><a href="contact.html"> about us</a></li>
+                                        <li><a href="contact.html"> contact us</a></li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+        </header>
+        <!-- main-search start -->
+        <div class="main-search-active">
+            <div class="sidebar-search-icon">
+                <button class="search-close"><span class="ti-close"></span></button>
+            </div>
+            <div class="sidebar-search-input">
+                <form>
+                    <div class="form-search">
+                        <input id="search" class="input-text" value="" placeholder="Find your friends" type="search" />
+                        <button>
+                            <i class="ti-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </footer>
+        <div class="slider-area">
+            <div class="slider-active owl-carousel">
+                <div class="single-slider slider-1 gray-bg"></div>
+            </div>
+        </div>
+        @RenderBody()
+        <footer class="hm-4-padding">
+            <div class="container-fluid">
 
+                <div class="footer-bottom border-top-1 ptb-15">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="copyright-payment">
+                                <div class="copyright">
+                                    <p>
+                                        Copyright © 2020 <a href="index.html">SecretSanta</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/SecretSanta/scripts")
     @Scripts.Render("~/bundles/alertify/js")
+    <script>
+        var deadline = '2020-12-31';
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'days': days,
+            };
+        }
+        function initializeClock(id, endtime) {
+            var clock = document.getElementById(id);
+            var timeinterval = setInterval(function () {
+                var t = getTimeRemaining(endtime);
+                clock.innerHTML = 'There are ' + t.days + ' days till the Hew Year!';
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                }
+            }, 1000);
+        }
+        initializeClock('clockdiv', deadline);
+    </script>
 </body>
 </html>
