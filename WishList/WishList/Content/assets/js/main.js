@@ -28,27 +28,27 @@
     });
 
 
-    /*====== sidebargift ======*/
-    function sidebargift() {
-        var menuTrigger = $('button.sidebar-trigger'),
-            endTrigger = $('button.op-sidebar-close'),
-            container = $('.sidebar-gift'),
-            wrapper = $('.wrapper');
-        wrapper.prepend('<div class="body-overlay"></div>');
-        menuTrigger.on('click', function () {
-            container.addClass('inside');
-            wrapper.addClass('overlay-active');
-        });
-        endTrigger.on('click', function () {
-            container.removeClass('inside');
-            wrapper.removeClass('overlay-active');
-        });
-        $('.body-overlay').on('click', function () {
-            container.removeClass('inside');
-            wrapper.removeClass('overlay-active');
-        });
-    };
-    sidebargift();
+    ///*====== sidebargift ======*/
+    //function sidebargift() {
+    //    var menuTrigger = $('button.sidebar-trigger'),
+    //        endTrigger = $('button.op-sidebar-close'),
+    //        container = $('.sidebar-gift'),
+    //        wrapper = $('.wrapper');
+    //    wrapper.prepend('<div class="body-overlay"></div>');
+    //    menuTrigger.on('click', function () {
+    //        container.addClass('inside');
+    //        wrapper.addClass('overlay-active');
+    //    });
+    //    endTrigger.on('click', function () {
+    //        container.removeClass('inside');
+    //        wrapper.removeClass('overlay-active');
+    //    });
+    //    $('.body-overlay').on('click', function () {
+    //        container.removeClass('inside');
+    //        wrapper.removeClass('overlay-active');
+    //    });
+    //};
+    //sidebargift();
 
 
     /*====== sidebarSearch ======*/
