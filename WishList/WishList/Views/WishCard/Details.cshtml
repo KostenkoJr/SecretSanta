@@ -25,19 +25,19 @@
                             <input class="mt-10" name="LinkToShop" placeholder="Link" value="@Model.LinkToShop" />
                         </label>
                         <label>
+                            Description
+                            <textarea class="mt-10" name="Description" placeholder="Description">@Model.Description</textarea>
+                        </label>
+                        <label class="d-inline">
                             Current status
                             @if (Model.IsComlete)
                             {
-                                <input class="mt-10" type="checkbox" name="IsComlete" value="@Model.IsComlete.ToString().ToLower()" checked />
+                                <input placeholder="kek" class="mt-10" type="checkbox" name="IsComlete" value="@Model.IsComlete.ToString().ToLower()" checked style="" />
                             }
                             else
                             {
                                 <input class="mt-10" type="checkbox" name="IsComlete" value="@Model.IsComlete.ToString().ToLower()" />
                             }
-                        </label>
-                        <label>
-                            Description
-                            <textarea class="mt-10" name="Description" placeholder="Description">@Model.Description</textarea>
                         </label>
                         <div class="button-box mt-20">
                             <a class="action-plus btn-style cr-btn btn-wish-add save-changes" href="#">
@@ -109,7 +109,7 @@
 
 </script>
 <script>
-        //TODO refactoring
+    //TODO refactoring
     const inputFile = document.getElementById('file-input-image');
     const wishId = inputFile.dataset.wish;
     inputFile.addEventListener('change', (event) => {

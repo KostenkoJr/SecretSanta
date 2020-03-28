@@ -31,5 +31,11 @@ namespace WishList.Controllers
             }
             return HttpNotFound();
         }
+
+        [Authorize]
+        public ActionResult AnotherUser()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,318 @@
+﻿
+@{
+    ViewBag.Title = "AnotherUser";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>SecretSanta</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png" />
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/animate.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/chosen.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/easyzoom.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/meanmenu.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/ionicons.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/bundle.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/style.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/responsive.css" />
+    <script src="~/Content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="modal fade" id="modDialog" role="dialog">
+            <div id="dialogContent" class="modal-dialog">
+            </div>
+        </div>
+        <div id="modDialog1" class="modal fade">
+            <div id="dialogContent1" class="modal-dialog"></div>
+        </div>
+        <!-- header start -->
+        <header class="">
+            <div class="header-area transparent-bar header-2 hm-4-padding">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 d-none d-sm-block d-md-block">
+
+
+                        </div>
+                        <div class="col-lg-7 col-md-5 col-5">
+                            <div class="logo-menu-wrapper text-center">
+                                <div class="logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/logo.png" alt="" /></a>
+                                </div>
+                                <div class="sticky-logo pr-155">
+                                    <a href="index.html"><img src="~/Content/assets/img/logo/2.png" alt="" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-7">
+                            <div class="header-site-icon">
+                                <div class="header-search same-style">
+                                    <button class="sidebar-trigger-search">
+                                        <span class="ti-search"></span>
+                                    </button>
+                                </div>
+                                <div class="header-login same-style">
+                                    <a href="login-register.html">
+                                        <span class="ti-user"></span>
+                                    </a>
+                                </div>
+                                <div class="header-gift same-style">
+                                    <button class="sidebar-trigger">
+                                        <i class="ti-gift"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Сделать как-то мобилку -->
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="header-height"></div>
+
+
+        <!-- main-search start -->
+        <div class="main-search-active">
+            <div class="sidebar-search-icon">
+                <button class="search-close"><span class="ti-close"></span></button>
+            </div>
+            <div class="sidebar-search-input">
+                <form>
+                    <div class="form-search">
+                        <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search" />
+                        <button>
+                            <i class="ti-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="breadcrumb-area mt-37 hm-4-padding">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center border-top-2">
+                    <h2>User Name</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="wish-details-area hm-3-padding ptb-20">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <div class="wish-details">
+                            <img id="avatar" src="~/Files/default-profile-picture.png" width="290" height="368" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="wish-details-content">
+                            <h4 class="contact-title">Details</h4>
+                            <div class="single-communication">
+                                <div class="communication-text">
+                                    <h4>Full Name:</h4>
+                                    <p>First name, Second name</p>
+                                </div>
+                            </div>
+                            <div class="single-communication">
+                                <div class="communication-text">
+                                    <h4>BirthDate:</h4>
+                                    <p>DD:MM:YYYY</p>
+                                </div>
+                            </div>
+                            <div class="single-communication">
+                                <div class="communication-text">
+                                    <h4>Address:</h4>
+                                    <p>Peski, Vologodsky District, Vologda Oblast</p>
+                                </div>
+                            </div>
+                            <div class="single-communication">
+                                <div class="communication-text">
+                                    <h4>Email:</h4>
+                                    <p>Не знаю, должны ли мы его отображать</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="container ptb-30">
+                        <div class="section-title text-center mb-20">
+                            <h2>User`s wishes</h2>
+                        </div>
+                        <!-------------------------------------------------WISH------------------------------------------------------>
+                        <div class="row">
+
+                            <!-- Start one wish from gallery -->
+                            <div class="col-md-6 col-lg-4 col-xl-3">
+                                <div class="wish-wrapper mb-45">
+                                    <div class="wish-img">
+                                        <a>
+
+                                            <img src="~/Content/assets/img/wish/1.jpg" alt="" width="270" height="326" />
+
+                                        </a>
+
+                                        <span class="done is-complete">DONE</span>
+
+                                        <div class="wish-action">
+                                            <div class="wish-action-style">
+                                                <a class="action-plus modalka" title="Quick View"
+                                                   href="#">
+                                                    <i class="ti-search"></i>
+                                                </a>
+                                                <a class="action-check" title="Done" href="">
+                                                    <i class="ti-check"></i>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wish-content text-center">
+                                        <h4>
+                                            <a id="titlt+y">ish.Title</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    @*<div class="pagination-style text-center mt-10">
+                        <ul>
+                            <li>
+                                <a class="active" href="#">1</a>
+                            </li>
+                            <li>
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ion-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- all js here -->
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".modalka").click(function (e) {
+                console.log("click!")
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".add-wish-modal").click(function (e) {
+                console.log("click!")
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent1').html(data);
+                    $('#modDialog1').modal('show');
+                });
+            });
+        })
+    </script>
+    <script>
+        const el = document.querySelectorAll(".ti-check");
+        el.forEach(e => {
+            e.addEventListener('click', (event) => {
+                event.preventDefault();
+                const target = event.target;
+                const id = target.id;
+
+                const promise = fetch(`https://localhost:44360/api/ChangeStatus/${id}`);
+                promise.then(res => res.json()).then(isComplete => {
+                    const elDone = document.querySelector(`#wish${target.id}`)
+                    console.log(elDone)
+                    elDone.classList.toggle('done');
+                    elDone.classList.toggle('not-done');
+                    elDone.innerHTML = isComplete ? 'Done' : 'Not Done'
+                });
+            })
+        })
+    </script>
+
+    <script>
+        const elem = document.querySelector('.change-password');
+        const data = {};
+        console.log(elem);
+        elem.addEventListener('click', (event) => {
+            event.preventDefault();
+            const inputOldPassword = document.querySelector('input[name=OldPassword]');
+            const inputNewPassword = document.querySelector('input[name=NewPassword]');
+            const inputConfirmNewPassword = document.querySelector('input[name=ConfirmNewPassword]');
+            console.log(inputOldPassword.value);
+            data.OldPassword = inputOldPassword.value;
+            data.NewPassword = inputNewPassword.value;
+            data.ConfirmNewPassword = inputConfirmNewPassword.value
+            fetch("https://localhost:44360/api/ChangePassword", {
+
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => {
+                inputOldPassword.value = '';
+                inputNewPassword.value = '';
+                inputConfirmNewPassword.value = '';
+            })
+        })
+    </script>
+
+    <script>
+        const inputFile = document.getElementById('file-input');
+        inputFile.addEventListener('change', (event) => {
+            var dataFile = new FormData();
+            dataFile.append('file', inputFile.files[0])
+            console.log(inputFile.files[0])
+            fetch("https://localhost:44360/api/ChangeAvatar", {
+
+                method: 'POST',
+                body: dataFile
+            })
+                .then(res => res.json())
+                .then(src => {
+                    const imgAvatar = document.querySelector('#avatar');
+                    imgAvatar.src = `/Files/${src}`;
+                });
+
+        })
+    </script>
+</body>
+</html>

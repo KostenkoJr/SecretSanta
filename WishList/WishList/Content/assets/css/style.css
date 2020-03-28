@@ -1680,6 +1680,11 @@ button.cr-btn:hover b {
     margin-bottom: 37px;
 }
 
+.wish-details-content .single-communication {
+    display: flex;
+    margin-bottom: 15px;
+}
+
     .single-communication:last-child {
         margin-bottom: 0px;
     }
