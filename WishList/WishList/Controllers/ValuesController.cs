@@ -88,7 +88,6 @@ namespace WishList.Controllers.Api
                 _wish.PathToPicture = String.IsNullOrEmpty(wish.PathToPicture) ? null : wish.PathToPicture;
                 _wish.Price = wish.Price;
                 _wish.Title = wish.Title;
-                _wish.IsComlete = wish.IsComlete;
                 _wishService.UpdateWish(_wish);
                 return Ok(true);
             }

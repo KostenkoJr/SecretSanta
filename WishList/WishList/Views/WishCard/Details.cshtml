@@ -28,17 +28,6 @@
                             Description
                             <textarea class="mt-10" name="Description" placeholder="Description">@Model.Description</textarea>
                         </label>
-                        <label class="d-inline">
-                            Current status
-                            @if (Model.IsComlete)
-                            {
-                                <input placeholder="kek" class="mt-10" type="checkbox" name="IsComlete" value="@Model.IsComlete.ToString().ToLower()" checked style="" />
-                            }
-                            else
-                            {
-                                <input class="mt-10" type="checkbox" name="IsComlete" value="@Model.IsComlete.ToString().ToLower()" />
-                            }
-                        </label>
                         <div class="button-box mt-20">
                             <a class="action-plus btn-style cr-btn btn-wish-add save-changes" href="#">
                                 <span>Save Changes</span>
@@ -73,7 +62,6 @@
     </div>
     <div class="lg-col-12 pb-30 ml-30 mr-30"></div>
 </div>
-@Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/SecretSanta/scripts")
 @Scripts.Render("~/bundles/alertify/js")
 
@@ -128,12 +116,6 @@
                 itemPic.src = `/Files/${src}`;
             });
 
-    })
-</script>
-<script>
-    const checkbox = document.querySelector('input[name="IsComlete"]');
-    checkbox.addEventListener('change', () => {
-        checkbox.value = checkbox.value == 'true' ? '' : 'true';
     })
 </script>
 

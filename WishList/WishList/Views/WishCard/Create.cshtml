@@ -22,10 +22,6 @@
                             <input class="mt-10" name="LinkToShop" placeholder="Link" />
                         </label>
                         <label>
-                            Current status
-                            <input class="mt-10" type="checkbox" name="IsComlete" />
-                        </label>
-                        <label>
                             Description
                             <textarea class="mt-10" name="Description" placeholder="Description"></textarea>
                         </label>
@@ -55,9 +51,7 @@
         </div>
     </div>
 </div>
-@Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/SecretSanta/scripts")
-@Scripts.Render("~/bundles/alertify/js")
 
 <script>
     //TODO refactoring
@@ -106,11 +100,5 @@
                 itemPic.src = `/Files/${src}`;
             });
 
-    })
-</script>
-<script>
-    const checkbox = document.querySelector('input[name="IsComlete"]');
-    checkbox.addEventListener('change', () => {
-        checkbox.value = checkbox.value == 'true' ? '' : 'true';
     })
 </script>
