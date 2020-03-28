@@ -1,6 +1,7 @@
 ﻿using SecretSanta.Data.EF.Repositories.WishRepository;
 using SecretSanta.Data.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SecretSanta.Services.WishService
 {

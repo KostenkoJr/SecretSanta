@@ -138,9 +138,13 @@
                                                href="@Url.Action("Create", "WishCard")">
                                                 <span>Add wish</span>
                                             </a>
-                                            <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
-                                                <span>Make a magic</span>
-                                            </a>
+                                            @if (Model.IsAdmin)
+                                            {
+                                                <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
+                                                    <span>Make a magic</span>
+                                                </a>
+                                            }
+
                                         </div>
                                     </div>
 

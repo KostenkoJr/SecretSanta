@@ -47,7 +47,7 @@ namespace SecretSanta.Data.EF.Repositories.WishRepository
         {
             using (SantaContext context = new SantaContext())
             {
-                return context.Wishes.Include(w => w.User);
+                return context.Wishes.Include(w => w.User).ToList();
             }
         }
 

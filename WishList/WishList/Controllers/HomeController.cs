@@ -1,32 +1,33 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SecretSanta.Data.Models;
 using SecretSanta.Services.UserServices;
+using SecretSanta.Services.WishService;
 
 namespace WishList.Controllers
 {
     public class HomeController : Controller
     {
         private IUserService _userService;
+        private IWishService _wishService;
 
-        public HomeController(IUserService userService)
+        public HomeController(IUserService userService, IWishService wishService)
         {
+            _wishService = wishService;
             _userService = userService;
         }
         //[Authorize]
         public ActionResult Index()
         {
             #region Initialize
-           //Initialize();
+            //Initialize();
             #endregion
-            var user = _userService.GetUser(1);
-            var user2 = _userService.GetUser(2);
-            var user3 = _userService.GetUser(3);
-            //var user = _userService.GetUser(1);
-            // UserViewModel 
-            ViewBag.User = user;
-            //_userService.SetRecipient();
+            var users = _userService.GetUsers();
+            var wishes = _wishService.GetWishes()/*.OrderByDescending(w => w.Date)*/;
+
+            ViewBag.Wishes = wishes;
             return View();
         }
         public void Initialize()
