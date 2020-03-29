@@ -136,12 +136,12 @@
                     if (answer.IsRepeat) {
                         $('#ConfirmModal').modal('show');
                         const confirmBtn = document.querySelector('#confirm-btn');
-                        confirmBtn.addEventListener('click', (event) => {
+                        confirmBtn.onclick = (event) => {
                             event.preventDefault();
                             fetch(`https://localhost:44360/api/AddToMyWishList/${wishId}`);
                             $('#ConfirmModal').modal('hide');
                             Notifier.showSuccess("<strong>Wish added to your wishlist</strong>", '<br><p>Your password has been updated!</p>');
-                        })
+                        };
                     }
                     else {
                         Notifier.showSuccess("<strong>Wish added to your wishlist</strong>", '<br><p>Your password has been updated!</p>');
