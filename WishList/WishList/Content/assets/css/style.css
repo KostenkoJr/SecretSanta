@@ -1824,3 +1824,35 @@ button.cr-btn:hover b {
     filter: grayscale(100%);
     transition: all 0.4s ease 0s;
 }
+
+/*user isnt found*/
+.no-user-title {
+    color: #505050;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.no-user-title.text-center > h2 {
+    color: #720707;
+    display: inline-block;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 20px, 0;
+    position: relative;
+}
+
+.no-user-img > img {
+    width: 25%;
+}
+
+.no-user-img img {
+    transition: all 0.4s ease 0s;
+}
+
+.team-wrapper .no-user-img img:hover {
+    filter: grayscale(100%);
+    transition: all 0.4s ease 0s;
+}

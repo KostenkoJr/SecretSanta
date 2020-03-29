@@ -240,6 +240,7 @@
     <Content Include="Content\assets\img\brand-logo\3.png" />
     <Content Include="Content\assets\img\brand-logo\4.png" />
     <Content Include="Content\assets\img\brand-logo\5.png" />
+    <Content Include="Content\assets\img\coming-soon\userIsntFound.png" />
     <Content Include="Content\assets\img\favicon.png" />
     <Content Include="Content\assets\img\gift\1.jpg" />
     <Content Include="Content\assets\img\gift\2.jpg" />
@@ -551,9 +552,11 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\WishCard\Edit.cshtml" />
     <Content Include="Views\Profile\AnotherUser.cshtml" />
+    <Content Include="Views\Profile\UserIsntFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assets\img\NewFolder1\" />
     <Folder Include="Controllers\Api\" />
     <Folder Include="Files\" />
     <Folder Include="Scripts\Pages\Profile\" />
