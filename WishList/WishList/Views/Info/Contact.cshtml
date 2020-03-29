@@ -110,7 +110,7 @@
         const promise = AjaxRequest.ajaxSendForm(data, 'https://localhost:44360/api/GetInTouch');
         promise
             .then(res => {
-                Notifier.showSuccess("<strong>We received your letter!</strong>")
+                Notifier.showSuccess("<strong>Your message is sent!</strong>")
             })
             .catch(err => {
                 console.log(err)
