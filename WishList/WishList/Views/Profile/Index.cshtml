@@ -60,6 +60,9 @@
                                 @Html.TextBoxFor(model => model.DateOfBirth, "{0:yyyy-MM-dd}", new { @type = "date", @class = "mt-10" })
                                 @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
 
+                                @Html.TextBoxFor(model => model.Address, new { @placeholder = "Address", @class = "mt-10" })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
                                 <div class="button-box mt-20">
 
                                     <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
