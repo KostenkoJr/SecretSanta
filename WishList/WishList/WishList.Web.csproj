@@ -553,6 +553,8 @@
     <Content Include="Views\WishCard\Edit.cshtml" />
     <Content Include="Views\Profile\AnotherUser.cshtml" />
     <Content Include="Views\Profile\UserIsntFound.cshtml" />
+    <Content Include="Views\Home\MyWishes.cshtml" />
+    <Content Include="Views\Home\RecipientWishes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

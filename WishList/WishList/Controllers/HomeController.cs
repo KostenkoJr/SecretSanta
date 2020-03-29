@@ -26,12 +26,36 @@ namespace WishList.Controllers
             #endregion
             var email = User.Identity.Name;
             var user = _userService.GetCurrentUser(email);
-            var users = _userService.GetUsers();
             var wishes = _wishService.GetWishes().Where(w => w.UserId != user.Id).OrderByDescending(w => w.Date);
 
             ViewBag.Wishes = wishes;
             return View();
         }
+        public ActionResult MyWishes()
+        {
+            var email = User.Identity.Name;
+            var user = _userService.GetCurrentUser(email);
+            var wishes = _wishService.GetWishes().Where(w => w.UserId == user.Id).OrderByDescending(w => w.Date);
+            ViewBag.Wishes = wishes;
+            return View();
+        }
+
+        public ActionResult RecipientWishes()
+        {
+            var email = User.Identity.Name;
+            var user = _userService.GetCurrentUser(email);
+            var recipient = user.Recipient;
+            if(recipient == null)
+            {
+                return RedirectToAction("UserIsntFound", "Profile");
+                
+            }
+            var wishes = _wishService.GetWishes().Where(w => w.UserId == user.Recipient.Id).OrderByDescending(w => w.Date);
+            ViewBag.Wishes = wishes;
+            ViewBag.Recipient = recipient;
+            return View();
+        }
+
         public void Initialize()
         {
             _userService.CreateUser(new User
