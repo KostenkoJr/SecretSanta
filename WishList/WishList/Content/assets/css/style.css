@@ -1637,8 +1637,32 @@ button.cr-btn:hover b {
     position: relative;
     margin-bottom: 40px;
 }
+.rules-title {
+    color: #505050;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 20px;
+}
 
-.contact-title::before {
+.rules-text p {
+    margin-bottom: 10px;
+}
+
+.rules-text ul li {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+    .rules-text ul li p::before {
+        color: #5b772d;
+        content: "\2022";
+        font-size: 1.4em;
+        padding-right: 7px;
+    }
+
+.contact-title::before,
+.rules-title::before {
     background-color: #5b772d;
     bottom: -8px;
     content: "";
