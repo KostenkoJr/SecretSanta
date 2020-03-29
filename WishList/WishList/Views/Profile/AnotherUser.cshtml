@@ -103,7 +103,7 @@
         </div>
         <div class="breadcrumb-area mt-37 hm-4-padding">
             <div class="container-fluid">
-                <div class="breadcrumb-content text-center border-top-2">
+                <div class="section-title text-center mb-20">
                     <h2>User Name</h2>
                 </div>
             </div>
@@ -128,6 +128,12 @@
                             </div>
                             <div class="single-communication">
                                 <div class="communication-text">
+                                    <h4>Email:</h4>
+                                    <p>example@example.com</p>
+                                </div>
+                            </div>
+                            <div class="single-communication">
+                                <div class="communication-text">
                                     <h4>BirthDate:</h4>
                                     <p>DD:MM:YYYY</p>
                                 </div>
@@ -136,12 +142,6 @@
                                 <div class="communication-text">
                                     <h4>Address:</h4>
                                     <p>Peski, Vologodsky District, Vologda Oblast</p>
-                                </div>
-                            </div>
-                            <div class="single-communication">
-                                <div class="communication-text">
-                                    <h4>Email:</h4>
-                                    <p>Не знаю, должны ли мы его отображать</p>
                                 </div>
                             </div>
                         </div>
@@ -154,29 +154,23 @@
                         </div>
                         <!-------------------------------------------------WISH------------------------------------------------------>
                         <div class="row">
-
                             <!-- Start one wish from gallery -->
                             <div class="col-md-6 col-lg-4 col-xl-3">
                                 <div class="wish-wrapper mb-45">
                                     <div class="wish-img">
                                         <a>
-
                                             <img src="~/Content/assets/img/wish/1.jpg" alt="" width="270" height="326" />
-
                                         </a>
-
                                         <span class="done is-complete">DONE</span>
-
                                         <div class="wish-action">
                                             <div class="wish-action-style">
-                                                <a class="action-plus modalka" title="Quick View"
+                                                <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal"
                                                    href="#">
                                                     <i class="ti-search"></i>
                                                 </a>
-                                                <a class="action-check" title="Done" href="">
-                                                    <i class="ti-check"></i>
+                                                <a id="add-to-my-wishlist" class="action-heart" title="Add To My Wishlist" href="#" data-wish="#">
+                                                    <i class="ti-heart"></i>
                                                 </a>
-
                                             </div>
                                         </div>
                                     </div>
@@ -190,32 +184,11 @@
 
                         </div>
                     </div>
-
-                    @*<div class="pagination-style text-center mt-10">
-                        <ul>
-                            <li>
-                                <a class="active" href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="ion-chevron-right"></i>
-                                </a>
-                            </li>
-                        </ul>*@
                 </div>
 
             </div>
         </div>
     </div>
-    </div>
-
-
     <!-- all js here -->
     <script type="text/javascript">
 
@@ -244,74 +217,6 @@
                     $('#modDialog1').modal('show');
                 });
             });
-        })
-    </script>
-    <script>
-        const el = document.querySelectorAll(".ti-check");
-        el.forEach(e => {
-            e.addEventListener('click', (event) => {
-                event.preventDefault();
-                const target = event.target;
-                const id = target.id;
-
-                const promise = fetch(`https://localhost:44360/api/ChangeStatus/${id}`);
-                promise.then(res => res.json()).then(isComplete => {
-                    const elDone = document.querySelector(`#wish${target.id}`)
-                    console.log(elDone)
-                    elDone.classList.toggle('done');
-                    elDone.classList.toggle('not-done');
-                    elDone.innerHTML = isComplete ? 'Done' : 'Not Done'
-                });
-            })
-        })
-    </script>
-
-    <script>
-        const elem = document.querySelector('.change-password');
-        const data = {};
-        console.log(elem);
-        elem.addEventListener('click', (event) => {
-            event.preventDefault();
-            const inputOldPassword = document.querySelector('input[name=OldPassword]');
-            const inputNewPassword = document.querySelector('input[name=NewPassword]');
-            const inputConfirmNewPassword = document.querySelector('input[name=ConfirmNewPassword]');
-            console.log(inputOldPassword.value);
-            data.OldPassword = inputOldPassword.value;
-            data.NewPassword = inputNewPassword.value;
-            data.ConfirmNewPassword = inputConfirmNewPassword.value
-            fetch("https://localhost:44360/api/ChangePassword", {
-
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(res => {
-                inputOldPassword.value = '';
-                inputNewPassword.value = '';
-                inputConfirmNewPassword.value = '';
-            })
-        })
-    </script>
-
-    <script>
-        const inputFile = document.getElementById('file-input');
-        inputFile.addEventListener('change', (event) => {
-            var dataFile = new FormData();
-            dataFile.append('file', inputFile.files[0])
-            console.log(inputFile.files[0])
-            fetch("https://localhost:44360/api/ChangeAvatar", {
-
-                method: 'POST',
-                body: dataFile
-            })
-                .then(res => res.json())
-                .then(src => {
-                    const imgAvatar = document.querySelector('#avatar');
-                    imgAvatar.src = `/Files/${src}`;
-                });
-
         })
     </script>
 </body>
