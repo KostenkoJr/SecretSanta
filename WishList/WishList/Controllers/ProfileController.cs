@@ -37,5 +37,10 @@ namespace WishList.Controllers
         {
             return View();
         }
+
+        public ActionResult UserIsntFound()
+        {
+            return View();
+        }
     }
 }

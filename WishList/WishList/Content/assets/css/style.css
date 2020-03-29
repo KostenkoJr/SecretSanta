@@ -1637,8 +1637,32 @@ button.cr-btn:hover b {
     position: relative;
     margin-bottom: 40px;
 }
+.rules-title {
+    color: #505050;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 20px;
+}
 
-.contact-title::before {
+.rules-text p {
+    margin-bottom: 10px;
+}
+
+.rules-text ul li {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+    .rules-text ul li p::before {
+        color: #5b772d;
+        content: "\2022";
+        font-size: 1.4em;
+        padding-right: 7px;
+    }
+
+.contact-title::before,
+.rules-title::before {
     background-color: #5b772d;
     bottom: -8px;
     content: "";
@@ -1797,6 +1821,38 @@ button.cr-btn:hover b {
 }
 
 .team-wrapper:hover .team-img img {
+    filter: grayscale(100%);
+    transition: all 0.4s ease 0s;
+}
+
+/*user isnt found*/
+.no-user-title {
+    color: #505050;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.no-user-title.text-center > h2 {
+    color: #720707;
+    display: inline-block;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 20px, 0;
+    position: relative;
+}
+
+.no-user-img > img {
+    width: 25%;
+}
+
+.no-user-img img {
+    transition: all 0.4s ease 0s;
+}
+
+.team-wrapper .no-user-img img:hover {
     filter: grayscale(100%);
     transition: all 0.4s ease 0s;
 }
