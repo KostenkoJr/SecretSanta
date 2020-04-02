@@ -23,7 +23,7 @@
             <div class="header-area transparent-bar">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-2 col-md-2 col-sm-5 col-5">
+                        <div class="col-lg-3 col-md-2 col-sm-5 col-5">
                             <div class="clock" id="clockdiv"></div>
                             <div class="sticky-logo">
                                 <a href="index.html"><img src="~/Content/assets/img/logo/2.png" alt="" /></a>
@@ -32,7 +32,7 @@
                                 <a href="index.html"><img alt="" src="~/Content/assets/img/logo/logo.png" /></a>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-8 d-none d-md-block">
+                        <div class="col-lg-6 col-md-8 d-none d-md-block">
                             <div class="logo-menu-wrapper text-center">
                                 <div class="logo">
                                     <a href="index.html"><img src="~/Content/assets/img/logo/logo.png" alt="" /></a>
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-7 col-7">
+                        <div class="col-lg-3 col-md-2 col-sm-7 col-7">
                             <div class="header-site-icon">
                                 <div class="header-search same-style">
                                     <button class="sidebar-trigger-search">
@@ -171,7 +171,7 @@
             var clock = document.getElementById(id);
             var timeinterval = setInterval(function () {
                 var t = getTimeRemaining(endtime);
-                clock.innerHTML = 'There are ' + t.days + ' days till the Hew Year!';
+                clock.innerHTML = 'Coutdowh to New Year ' + t.days + ' days!';
                 if (t.total <= 0) {
                     clearInterval(timeinterval);
                 }
