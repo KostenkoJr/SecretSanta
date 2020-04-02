@@ -3,13 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-@*<div class="breadcrumb-area mt-37 hm-4-padding">
-        <div class="container-fluid">
-            <div class="breadcrumb-content text-center border-top-2">
-                <h2>@Model.FirstName @Model.LastName</h2>
-            </div>
-        </div>
-    </div>*@
+
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog"></div>
 </div>
@@ -44,51 +38,34 @@
                     <div class="wish-overview">
                         <h5 class="pd-sub-title mt-10">Details</h5>
                         <div class="form">
-                            @using (Html.BeginForm("Edit", "Profile", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-
-
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                                @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "First name", @class = "mt-10" })
-                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-
-                                @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Last name", @class = "mt-10" })
-                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-
-                                @Html.TextBoxFor(model => model.DateOfBirth, "{0:yyyy-MM-dd}", new { @type = "date", @class = "mt-10" })
-                                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-
-                                @Html.TextBoxFor(model => model.Address, new { @placeholder = "Address", @class = "mt-10" })
-                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-
+                            <form id="SaveChangesDetails">
+                                <input class="mt-10" name="Id" value="@Model.Id" hidden="true" />
+                                <input class="mt-10" name="FirstName" placeholder="First name" value="@Model.FirstName" />
+                                <input class="mt-10" name="LastName" placeholder="Last name" value="@Model.LastName" />
+                                <input class="mt-10" name="DateOfBirth" type="date" placeholder="Date of birth" value="@Model.DateOfBirth.Date.ToString("yyyy-MM-dd")" />
+                                <input class="mt-10" name="Address" placeholder="Address" value="@Model.Address" />
                                 <div class="button-box mt-20">
-
-                                    <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
+                                    <a id="save-changes-btn" class="action-plus btn-style btn-wish-add disable-btn" href="#">
                                         <span>Save changes</span>
                                     </a>
                                 </div>
+                            </form>
+                            <div id="profileButtons" class="d-inline">
+                                <div class="button-box mt-20">
 
-                                <div id="profileButtons" class="d-inline">
-                                    <div class="button-box mt-20">
-
-                                        <a id="profileButtonsInn" class="action-plus btn-style cr-btn btn-wish-add add-wish-modal" title="Add wish" @*data-toggle="modal" data-target="#exampleModal"*@
-                                           href="@Url.Action("Create", "WishCard")">
-                                            <span>Add wish</span>
+                                    <a id="profileButtonsInn" class="action-plus btn-style cr-btn btn-wish-add add-wish-modal" title="Add wish" @*data-toggle="modal" data-target="#exampleModal"*@
+                                       href="@Url.Action("Create", "WishCard")">
+                                        <span>Add wish</span>
+                                    </a>
+                                    @if (Model.IsAdmin)
+                                    {
+                                        <a class="action-plus btn-style cr-btn btn-wish-add disabled" href="#">
+                                            <span>Make a magic</span>
                                         </a>
-                                        @if (Model.IsAdmin)
-                                        {
-                                            <a class="action-plus btn-style cr-btn btn-wish-add" href="#">
-                                                <span>Make a magic</span>
-                                            </a>
-                                        }
+                                    }
 
-                                    </div>
                                 </div>
-
-                            }
-
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -271,4 +248,58 @@
             });
 
     })
+</script>
+<script>
+    const saveChangesBtn = document.querySelector('#save-changes-btn');
+
+    saveChangesBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (saveChangesBtn.classList.contains('disable-btn'))
+            return;
+        const formData = document.querySelector('#SaveChangesDetails');
+        const data = {};
+        const arr = formData.elements;
+        Array.from(arr).forEach(el => {
+            data[el.name] = el.value;
+        });
+        const promise = AjaxRequest.ajaxSendForm(data, 'https://localhost:44360/api/ChangeProfileDetails');
+        promise
+            .then(res => {
+                Notifier.showSuccess("<strong>Details updated!</strong>", '<br><p>Your wish was changed!</p>')
+                localStorage.setItem('form-details-cast', JSON.stringify(data));
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const formData = document.querySelector('#SaveChangesDetails');
+        formData.addEventListener('change', (event) => {
+            const data = {};
+            const arr = formData.elements;
+            Array.from(arr).forEach(el => {
+                data[el.name] = el.value;
+            });
+            const saveChangesBtn = document.querySelector('#save-changes-btn');
+            if (JSON.stringify(data) === localStorage.getItem('form-details-cast')) {
+                saveChangesBtn.classList.toggle('disable-btn', true);
+                saveChangesBtn.classList.toggle('cr-btn', false);
+            }
+            else {
+                saveChangesBtn.classList.toggle('disable-btn', false);
+                saveChangesBtn.classList.toggle('cr-btn', true);
+            }
+        })
+        const data = {};
+        const arr = formData.elements;
+        Array.from(arr).forEach(el => {
+            data[el.name] = el.value;
+        });
+        localStorage.setItem('form-details-cast', JSON.stringify(data));
+    })
+</script>
+<script>
+
 </script>

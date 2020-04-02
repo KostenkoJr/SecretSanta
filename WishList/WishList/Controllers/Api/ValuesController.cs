@@ -24,13 +24,13 @@ namespace WishList.Controllers.Api
             _feedbackService = feedbackService;
         }
         // GET: api/Profile
-        [HttpGet, Route("api/ChangeStatus/{id}")]
-        public IHttpActionResult ChangeStatus(long id)
-        {
-            var isComplete = _wishService.ChangeStatus(id);
+        //[HttpGet, Route("api/ChangeStatus/{id}")]
+        //public IHttpActionResult ChangeStatus(long id)
+        //{
+        //    var isComplete = _wishService.ChangeStatus(id);
            
-            return Ok(isComplete);
-        }
+        //    return Ok(isComplete);
+        //}
 
         [HttpGet, Route("api/CheckAndAddToMyWishList/{id}")]
         public IHttpActionResult CheckAndAddToMyWishList(long id)
@@ -172,6 +172,22 @@ namespace WishList.Controllers.Api
             var user = _userService.GetCurrentUser(email);
             feedback.UserId = user.Id;
             _feedbackService.GetInTouch(feedback);
+            return Ok(true);
+        }
+
+        [HttpPost, Route("api/ChangeProfileDetails")]
+        public IHttpActionResult ChangeProfileDetails([FromBody]User user)
+        {
+            string email = User.Identity.Name;
+            var _user = _userService.GetCurrentUser(email);
+            if(user != null)
+            {
+                _user.FirstName = user.FirstName;
+                _user.LastName = user.LastName;
+                _user.Address = user.Address;
+                _user.DateOfBirth = Convert.ToDateTime(user.DateOfBirth);
+                _userService.UpdateUser(_user);
+            }
             return Ok(true);
         }
 

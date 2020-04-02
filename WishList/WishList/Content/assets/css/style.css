@@ -1874,3 +1874,8 @@ button.cr-btn:hover b {
     filter: grayscale(100%);
     transition: all 0.4s ease 0s;
 }
+
+.disable-btn {
+    background-color: #bcbcbc !important;
+    cursor: default !important;
+}
