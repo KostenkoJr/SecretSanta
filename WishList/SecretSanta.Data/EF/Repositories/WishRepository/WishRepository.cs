@@ -31,7 +31,9 @@ namespace SecretSanta.Data.EF.Repositories.WishRepository
         {
             using (SantaContext context = new SantaContext())
             {
+                context.Wishes.Attach(item);
                 context.Wishes.Remove(item);
+                context.SaveChanges();
             }
         }
 

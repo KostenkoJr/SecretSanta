@@ -98,7 +98,7 @@
                         @foreach (var wish in ViewBag.Wishes)
                         {
                             <!-- Start one wish from gallery -->
-                            <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div id="@("WishId" + wish.Id)" class="col-md-6 col-lg-4 col-xl-3">
                                 <div class="wish-wrapper mb-45">
                                     <div class="wish-img">
                                         <a>
@@ -130,7 +130,7 @@
                                                     <i class="ti-check" id="@wish.Id"></i>
                                                 </a>
                                                 <a class="action-trash" title="Delete" href="">
-                                                    <i class="ti-trash" id="@wish.Id"></i>
+                                                    <i class="ti-trash" id="@wish.Id" data-title="@wish.Title"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -147,6 +147,26 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+<!--Confirm Modal-->
+<div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ConfirmModalTitle">Delete this wish?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="modal-body" class="modal-body">
+                You already have a wish on your list with that title. Are you sure you want to add it?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirm-btn" type="button" class="btn btn-primary">Yes</button>
+            </div>
         </div>
     </div>
 </div>
@@ -267,6 +287,7 @@
             .then(res => {
                 Notifier.showSuccess("<strong>Details updated!</strong>", '<br><p>Your wish was changed!</p>')
                 localStorage.setItem('form-details-cast', JSON.stringify(data));
+                saveChangesBtn.classList.toggle('disable-btn', true);
             })
             .catch(err => {
                 console.log(err)
@@ -298,8 +319,32 @@
             data[el.name] = el.value;
         });
         localStorage.setItem('form-details-cast', JSON.stringify(data));
-    })
+    });
 </script>
-<script>
 
+<script>
+    const deleteIcon = document.querySelectorAll(".action-trash");
+    deleteIcon.forEach(e => {
+        e.addEventListener('click', (event) => {
+            event.preventDefault();
+            const target = event.target;
+            const id = target.id;
+            const title = target.dataset.title;
+            $('#ConfirmModal').modal('show');
+            console.log(title);
+            document.querySelector('#modal-body').innerHTML = `Are you sure you want to delete "${title}?"`
+            console.log(document.querySelector('#modal-body'))
+
+            const confirmBtn = document.querySelector('#confirm-btn');
+            confirmBtn.onclick = (event) => {
+                event.preventDefault();
+                fetch(`https://localhost:44360/api/DeleteWish/${id}`)
+                    .then(res => {
+                        $('#ConfirmModal').modal('hide');
+                        document.querySelector(`#WishId${id}`).remove();
+                        Notifier.showSuccess('Delete success', `<p><br>Wish "${title}" was deleted</p>`);
+                    });
+            };
+        })
+    })
 </script>

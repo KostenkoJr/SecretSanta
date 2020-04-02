@@ -159,7 +159,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Api\ApiProfileController.cs" />
+    <Compile Include="Controllers\Api\ProfileController.cs" />
+    <Compile Include="Controllers\Api\WishController.cs" />
     <Compile Include="ViewModel\ChangePasswordModel.cs" />
     <Compile Include="Controllers\Api\ValuesController.cs" />
     <Compile Include="Controllers\Authorization\AccountController.cs" />
