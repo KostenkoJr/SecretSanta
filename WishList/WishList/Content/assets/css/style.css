@@ -102,11 +102,19 @@
 /*timer*/
 .clock {
     display: inherit;
-    position: absolute;
-    font-size: 16px;
+    position: relative;
+    font-size: 22px;
     font-weight: 500;
     padding-top: 70px;
-    color: #5b772d;
+    color: #6c893c;
+    line-height: 1em;
+    text-shadow: 0px 0px 0 rgb(76,104,30),
+        1px 1px 0 rgb(62,90,16),
+        2px 2px 0 rgb(47,75,1), 
+        3px 3px 0 rgb(32,60,-14),
+        4px 4px 3px rgba(0,0,0,0.8),
+        4px 4px 1px rgba(0,0,0,0.5),
+        0px 0px 3px rgba(0,0,0,.2);
 }
 /* chosen select option */
 .chosen-container-single .chosen-single span {

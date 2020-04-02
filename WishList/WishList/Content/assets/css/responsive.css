@@ -170,6 +170,11 @@
         .quickview-btn-gift > a {
             padding: 14px 10px;
         }
+
+    .clock {
+        position: absolute;
+        font-size: 18px;
+    }
 }
 
 /* small mobile :320px. */
