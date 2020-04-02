@@ -671,14 +671,14 @@ a.button-small:hover::after {
         Input
 *************************/
 input {
-  background: #eceff8;
-  border: 2px solid #eceff8;
-  height: 45px;
-  box-shadow: none;
-  padding-left: 10px;
-  font-size: 14px;
-  color: #626262;
-  width: 100%;
+    background: rgba(91, 119, 45, 0.04);
+    border: 1.3px solid #5b772d;
+    height: 45px;
+    box-shadow: none;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #626262;
+    width: 100%;
 }
 
 select {
