@@ -1074,8 +1074,8 @@ a.slider-btn {
 .modal-header {
     border-bottom: 0px solid #333333 !important;
     padding: 8px 10px 5px 10px;
-    *
 }
+
 
 /*button.close {
     padding: 0;
@@ -1089,6 +1089,11 @@ a.slider-btn {
 .modal-dialog {
     margin: 150px auto;
     min-width: 700px;
+}
+
+#ConfirmModal .modal-dialog {
+    margin: 150px auto;
+    min-width: 300px;
 }
 
 .quick-view-tab-content .tab-pane > img {
@@ -1123,6 +1128,10 @@ a.slider-btn {
 
 .modal-content {
     border-radius: 0rem;
+}
+
+.modal-dialog-centered .modal-content {
+    padding: 10px;
 }
 
 .qwick-view-content > h3 {
@@ -1258,6 +1267,10 @@ a.slider-btn {
 .modal-title {
     align-self: center;
     padding-left: 15px;
+}
+
+#ConfirmModalTitle {
+    font-weight: 500;
 }
 
 .modal-backdrop.show {
