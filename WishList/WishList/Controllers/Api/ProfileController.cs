@@ -27,7 +27,7 @@ namespace WishList.Controllers.Api
 
         #region Post
         [HttpPost, Route("api/ChangePassword")]
-        public void ChangePassword([FromBody]ChangePasswordModel model)
+        public IHttpActionResult ChangePassword([FromBody]ChangePasswordModel model)
         {
             if (ModelState.IsValid)
             {
@@ -37,8 +37,11 @@ namespace WishList.Controllers.Api
                 {
                     user.Password = model.NewPassword;
                     _userService.UpdateUser(user);
+                    return Ok("Success");
                 }
+                return Ok("Incorrect password");
             }
+            return Ok("Password mismatch");
         }
 
         [HttpPost, Route("api/ChangeAvatar")]

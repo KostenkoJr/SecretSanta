@@ -76,14 +76,16 @@
                     <div class="wish-overview">
                         <h5 class="pd-sub-title mt-10">Change password</h5>
                         <div class="form">
-                            <input class="mt-10" type="password" name="OldPassword" placeholder="Old password" />
-                            <input class="mt-10" type="password" name="NewPassword" placeholder="New password" />
-                            <input class="mt-10" type="password" name="ConfirmNewPassword" placeholder="Confirm new password" />
-                            <div class="button-box mt-10">
-                                <a class="action-plus btn-style cr-btn btn-wish-add change-password" href="#">
-                                    <span>Change password</span>
-                                </a>
-                            </div>
+                            <form id="ChangePassword">
+                                <input class="mt-10" type="password" name="OldPassword" placeholder="Old password" />
+                                <input class="mt-10" type="password" name="NewPassword" placeholder="New password" />
+                                <input class="mt-10" type="password" name="ConfirmNewPassword" placeholder="Confirm new password" />
+                                <div class="button-box mt-10">
+                                    <a class="action-plus btn-style cr-btn btn-wish-add change-password" href="#">
+                                        <span>Change password</span>
+                                    </a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -226,13 +228,28 @@
     console.log(elem);
     elem.addEventListener('click', (event) => {
         event.preventDefault();
-        const inputOldPassword = document.querySelector('input[name=OldPassword]');
-        const inputNewPassword = document.querySelector('input[name=NewPassword]');
-        const inputConfirmNewPassword = document.querySelector('input[name=ConfirmNewPassword]');
-        console.log(inputOldPassword.value);
-        data.OldPassword = inputOldPassword.value;
-        data.NewPassword = inputNewPassword.value;
-        data.ConfirmNewPassword = inputConfirmNewPassword.value
+        //--------------------------------------------------------------------------
+        const passwordForm = document.querySelector('#ChangePassword');
+        const data = {};
+        const arr = Array.from(passwordForm.elements);
+        if (arr[1].value.length <= 6) {
+            arr.forEach(el => {
+                el.value = '';
+            });
+            Notifier.showWarning('Password mismatch', '<br><p>Password must be longer than 6 characters</p>');
+            return;
+        }
+        if (arr[1].value !== arr[2].value) {
+            arr.forEach(el => {
+                el.value = '';
+            });
+            Notifier.showWarning('Password mismatch', '123');
+            return;
+        }
+
+        arr.forEach(el => {
+            data[el.name] = el.value;
+        });
         fetch("https://localhost:44360/api/ChangePassword", {
 
             method: 'POST',
@@ -241,12 +258,21 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(res => {
-            inputOldPassword.value = '';
-            inputNewPassword.value = '';
-            inputConfirmNewPassword.value = '';
-            Notifier.showSuccess("<strong>Password updated</strong>", '<br><p>Your password has been updated!</p>')
-        })
+        }).then(res => res.json())
+            .then(data => {
+                if (data == 'Incorrect password') {
+                    Notifier.showWarning("<strong>Password incorrect</strong>", '<br><p></p>')
+                }
+                if (data == 'Password mismatch') {
+                    Notifier.showWarning("<strong>Password mismatch</strong>", '<br><p></p>')
+                }
+                if (data == 'Success') {
+                    Notifier.showSuccess("<strong>Password updated</strong>", '<br><p></p>')
+                }
+                arr.forEach(el => {
+                    el.value = '';
+                });
+            })
     })
 </script>
 
