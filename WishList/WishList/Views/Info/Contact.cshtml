@@ -1,9 +1,5 @@
 ﻿@model SecretSanta.Data.Models.Wish
 
-@{
-    ViewBag.Title = "Contact";
-}
-
 <div class="wish-details-area hm-3-padding ptb-20">
     <div class="container">
         <div class="section-title text-center mb-20">
@@ -95,25 +91,4 @@
     </div>
 </div>
 
-<script>
-    //TODO refactoring
-    const sendBtn = document.querySelector('#SendForm');
-    sendBtn.addEventListener('click', (event) => {
-        event.preventDefault();
-        const formData = document.querySelector('#GetInTouch');
-        const data = {};
-        const arr = formData.elements;
-        Array.from(arr).forEach(el => {
-            data[el.name] = el.value;
-        });
-        console.log(data)
-        const promise = AjaxRequest.ajaxSendForm(data, 'https://localhost:44360/api/GetInTouch');
-        promise
-            .then(res => {
-                Notifier.showSuccess("<strong>Your message is sent!</strong>")
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    });
-</script>
+<script src="~/Scripts/Pages/Contact/Contact.js"></script>
