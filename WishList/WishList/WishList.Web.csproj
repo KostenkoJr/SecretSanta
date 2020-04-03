@@ -449,6 +449,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Pages\Profile\Profile.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -562,7 +563,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\img\NewFolder1\" />
     <Folder Include="Files\" />
-    <Folder Include="Scripts\Pages\Profile\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
