@@ -1603,13 +1603,15 @@ button.cr-btn:hover b {
         }
 
 .done {
-    background-color: green !important;
+    background-color: #5b772d !important;
     color: white !important;
+    border-radius: 3px;
 }
 
 .not-done {
-    background-color: red !important;
+    background-color: #6b1010 !important;
     color: white !important;
+    border-radius: 3px;
 }
 
 
