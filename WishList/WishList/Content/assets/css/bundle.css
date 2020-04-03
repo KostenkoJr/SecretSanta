@@ -2238,6 +2238,18 @@ textarea:focus {
     z-index: 99;
 }
 
+#confirm-btn {
+    background-color: #6b1010;
+    border: 0;
+    border-radius: 3px;
+}
+
+.btn-secondary {
+    background-color: #5b772d;
+    border: 0;
+    border-radius: 3px;
+}
+
 .cr-btn span {
   position: relative;
   z-index: 9;
