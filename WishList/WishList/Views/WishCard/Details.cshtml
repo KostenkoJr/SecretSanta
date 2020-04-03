@@ -1,5 +1,7 @@
 ﻿@model SecretSanta.Data.Models.Wish
-
+@{
+    Layout = null;
+}
 <div class="modal-content">
     <div class="modal-header">
         <h4 class="modal-title">@Model.Title</h4>
@@ -28,14 +30,6 @@
                             Description
                             <textarea class="mt-10" name="Description" placeholder="Description">@Model.Description</textarea>
                         </label>
-                        @*<div class="button-box mt-20">
-                            <a class="action-plus btn-style cr-btn btn-wish-add save-changes" href="#">
-                                <span>Save Changes</span>
-                            </a>
-                            <a class="action-plus btn-style cr-btn" href="#">
-                                <span>Delete</span>
-                            </a>
-                        </div>*@
                     </form>
                 </div>
             </div>
@@ -74,9 +68,7 @@
         </div>
     </div>
 </div>
-@Scripts.Render("~/bundles/SecretSanta/scripts")
-@Scripts.Render("~/bundles/alertify/js")
-
+<script src="~/Content/assets/js/main.js"></script>
 <script>
     //TODO refactoring
     const sendBtn = document.querySelector('.save-changes');
