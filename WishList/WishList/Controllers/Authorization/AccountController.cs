@@ -3,6 +3,8 @@ using SecretSanta.Services.AuthorizeService;
 using SecretSanta.Services.FileService;
 using SecretSanta.Services.UserServices;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Security;
 using WishList.Controllers.Authorization.Model;
@@ -36,7 +38,7 @@ namespace WishList.Controllers.Authorization
             if (ModelState.IsValid)
             {
                 LoginModel model = authModel.Login;
-                // Search user by email
+                // Login user
                 User loginUser = _authorizeService.Login(model.Email, model.Password);
                 if (loginUser != null)
                 {
@@ -62,15 +64,13 @@ namespace WishList.Controllers.Authorization
                 Boolean isUsserExist = _authorizeService.IsUserExist(model.Email);
                 if (!isUsserExist)
                 {
-                    // Create the user
-                    _userService.CreateUser(new User
+                    _authorizeService.RegisterUser(new User
                     {
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         Email = model.Email,
                         Password = model.Password,
                         DateOfBirth = DateTime.Now
-                        //PathToPicture = pathToFile
                     });
                     User user = _userService.GetCurrentUser(model.Email);
                     if (user != null)

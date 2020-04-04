@@ -28,6 +28,7 @@ namespace SecretSanta.Data.Models
         [MaxLength(255)]
         [Required]
         public String Password { get; set; }
+        public String Salt { get; set; }
 
         public String PathToPicture { get; set; }
         public String Address { get; set; }

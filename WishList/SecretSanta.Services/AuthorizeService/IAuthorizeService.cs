@@ -11,5 +11,7 @@ namespace SecretSanta.Services.AuthorizeService
     {
         User Login(String email, String password);
         Boolean IsUserExist(String email);
+        void RegisterUser(User user);
+        bool ChangePassword(User user, String oldPassword, String newPassword);
     }
 }

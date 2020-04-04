@@ -553,7 +553,7 @@
     <Content Include="Views\Info\Contact.cshtml" />
     <Content Include="Views\Info\About.cshtml" />
     <Content Include="Views\Info\Rules.cshtml" />
-    <Content Include="Views\WishCard\Details.cshtml" />
+    <Content Include="Views\WishCard\MyWishDetails.cshtml" />
     <Content Include="Views\WishCard\Create.cshtml" />
     <Content Include="Views\Account\LoginRegister.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
@@ -562,6 +562,7 @@
     <Content Include="Views\Profile\UserIsntFound.cshtml" />
     <Content Include="Views\Home\MyWishes.cshtml" />
     <Content Include="Views\Home\RecipientWishes.cshtml" />
+    <Content Include="Views\WishCard\NotMyWishDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

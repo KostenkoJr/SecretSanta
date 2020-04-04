@@ -32,7 +32,7 @@ namespace SecretSanta.Data.EF.Repositories.UserRepository
         {
             using (SantaContext context = new SantaContext())
             {
-                return context.Users.Include(u => u.Recipient).FirstOrDefault(u => u.Id == id);
+                return context.Users.Include(u => u.Recipient).Include(w => w.Wishes).FirstOrDefault(u => u.Id == id);
             }
         }
         public User Login(String email, String password)

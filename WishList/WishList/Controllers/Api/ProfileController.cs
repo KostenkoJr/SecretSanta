@@ -1,4 +1,5 @@
 ﻿using SecretSanta.Data.Models;
+using SecretSanta.Services.AuthorizeService;
 using SecretSanta.Services.FeedbackService;
 using SecretSanta.Services.UserServices;
 using SecretSanta.Services.WishService;
@@ -15,11 +16,12 @@ namespace WishList.Controllers.Api
 {
     public class ProfileController : ApiController
     {
-        public ProfileController(IWishService wishService, IUserService userService, IFeedbackService feedbackService)
+        public ProfileController(IWishService wishService, IUserService userService, IFeedbackService feedbackService, IAuthorizeService authorizeService)
         {
             _wishService = wishService;
             _userService = userService;
             _feedbackService = feedbackService;
+            _authorizeService = authorizeService;
         }
 
         #region Get
@@ -45,13 +47,10 @@ namespace WishList.Controllers.Api
             {
                 string email = User.Identity.Name;
                 var user = _userService.GetCurrentUser(email);
-                if (user.Password == model.OldPassword)
+                if (_authorizeService.ChangePassword(user, model.OldPassword, model.NewPassword))
                 {
-                    user.Password = model.NewPassword;
-                    _userService.UpdateUser(user);
                     return Ok("Success");
                 }
-                return Ok("Incorrect password");
             }
             return Ok("Password mismatch");
         }
@@ -92,6 +91,7 @@ namespace WishList.Controllers.Api
         private IUserService _userService;
         private IWishService _wishService;
         private IFeedbackService _feedbackService;
+        private IAuthorizeService _authorizeService;
         #endregion
     }
 }

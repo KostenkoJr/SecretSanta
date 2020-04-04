@@ -1,5 +1,6 @@
 ﻿using SecretSanta.Data.EF.Repositories.WishRepository;
 using SecretSanta.Data.Models;
+using SecretSanta.Services.UserServices;
 using SecretSanta.Services.WishService;
 using System;
 using System.Collections.Generic;
@@ -12,18 +13,29 @@ namespace WishList.Controllers
     public class WishCardController : Controller
     {
         private IWishService _wishService;
-        public WishCardController(IWishService wishService)
+        private IUserService _userervice;
+        public WishCardController(IWishService wishService, IUserService userService)
         {
             _wishService = wishService;
+            _userervice = userService;
         }
         public ActionResult Details(Int64? id)
         {
-            if(id == null)
+            if(id != null)
             {
-                return HttpNotFound();
+                var user = _userervice.GetCurrentUser(User.Identity.Name);
+                var wish = _wishService.GetWish(id.Value);
+                if (user.Id == wish.User.Id)
+                {
+                    return PartialView("MyWishDetails", wish);
+                }
+                else
+                {
+                    return PartialView("NotMyWishDetails", wish);
+                }
             }
-            var wish = _wishService.GetWish(id.Value);
-            return PartialView(wish);
+            return HttpNotFound();
+
         }
 
         // GET: WishCard/Create

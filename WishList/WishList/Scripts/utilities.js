@@ -1,41 +1,78 @@
 ﻿class Notifier {
 
     static showSuccess(title, message) {
-        $.notify(
-            {
-                title: title,
-                icon: './../Content/assets/img/logo/2.png',
-                message: message,
+        if (message) {
+            $.notify(
+                {
+                    title: title,
+                    icon: './../Content/assets/img/logo/2.png',
+                    message: message,
 
-            },
-            {
-                type: 'success',
-                icon_type: 'image',
-                placement: {
-                    from: "bottom",
-                    align: "right"
                 },
-                delay: 3000
-            })
+                {
+                    type: 'success',
+                    icon_type: 'image',
+                    placement: {
+                        from: "bottom",
+                        align: "right"
+                    },
+                    delay: 3000
+                })
+        }
+        else {
+            $.notify(
+                {
+                    title: title,
+                    icon: './../Content/assets/img/logo/2.png'
+                },
+                {
+                    type: 'success',
+                    icon_type: 'image',
+                    placement: {
+                        from: "bottom",
+                        align: "right"
+                    },
+                    delay: 3000
+                })
+        }
+        
     }
 
     static showWarning(title, message) {
-        $.notify(
-            {
-                title: title,
-                icon: './../Content/assets/img/coming-soon/userIsntFoundIcon.png',
-                message: message,
+        if (message) {
+            $.notify(
+                {
+                    title: title,
+                    icon: './../Content/assets/img/coming-soon/userIsntFoundIcon.png',
+                    message: message,
 
-            },
-            {
-                type: 'danger',
-                icon_type: 'image',
-                placement: {
-                    from: "bottom",
-                    align: "right"
                 },
-                delay: 3000
-            })
+                {
+                    type: 'danger',
+                    icon_type: 'image',
+                    placement: {
+                        from: "bottom",
+                        align: "right"
+                    },
+                    delay: 3000
+                })
+        }
+        else {
+            $.notify(
+                {
+                    title: title,
+                    icon: './../Content/assets/img/coming-soon/userIsntFoundIcon.png'
+                },
+                {
+                    type: 'danger',
+                    icon_type: 'image',
+                    placement: {
+                        from: "bottom",
+                        align: "right"
+                    },
+                    delay: 3000
+                })
+        }    
     }
 
 }

@@ -33,9 +33,17 @@ namespace WishList.Controllers
         }
 
         [Authorize]
-        public ActionResult AnotherUser()
+        public ActionResult AnotherUser(long? id)
         {
-            return View();
+            if(id != null)
+            {
+                var user = _userService.GetUser(id.Value);
+                if (user != null)
+                {
+                    return View(user);
+                }
+            }
+            return HttpNotFound();
         }
 
         public ActionResult UserIsntFound()

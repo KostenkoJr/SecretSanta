@@ -1,0 +1,47 @@
+﻿@model SecretSanta.Data.Models.Wish
+@{
+    Layout = null;
+}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">Modal title</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body pb-0">
+        <div class="col-lg-12">
+            <div class="qwick-view-content">
+                <div class="text-center">
+                    <h3>@Model.Title</h3>
+                    <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                        <img src="@Url.Content($"~/Files/{Model.PathToPicture}")" alt="" width="320" height="380" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lg-col-12 pb-30 ml-30 mr-30">
+        <!-- <div class="quick-view-learg-img"> -->
+        <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+            <a href="@Url.Action("AnotherUser", "Profile", new { id = Model.User.Id })">
+                <div class="d-inline">
+                    <img class="rounded-circle" width="50" height="50" src="@Url.Content($"~/Files/{Model.User.PathToPicture}")" alt="" />
+                </div>
+                <h4 class="d-inline ">@(Model.User.FirstName + " " + @Model.User.LastName)</h4>
+            </a>
+        </div>
+        <!-- </div> -->
+        <div class="price">
+            <span>$@Model.Price</span>
+        </div>
+        <p>Link to shop</p>
+        <p>
+            @Model.LinkToShop
+        </p>
+
+        <div class="quickview-btn-gift text-center">
+            <a class="btn-style cr-btn" href="#"><span>add to my wishlist</span></a>
+        </div>
+    </div>
+</div>
+<script src="~/Content/assets/js/main.js"></script>
