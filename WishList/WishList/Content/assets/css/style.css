@@ -1892,3 +1892,15 @@ button.cr-btn:hover b {
     background-color: #bcbcbc !important;
     cursor: default !important;
 }
+
+@-webkit-keyframes autofill {
+    to {
+        color: #7d7d7d;
+        background: #f7f7f7;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+} 
