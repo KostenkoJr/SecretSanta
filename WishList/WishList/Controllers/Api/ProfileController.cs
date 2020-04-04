@@ -23,6 +23,18 @@ namespace WishList.Controllers.Api
         }
 
         #region Get
+        [HttpGet, Route("api/MakeMagic")]
+        public IHttpActionResult MakeMagic()
+        {
+            string email = User.Identity.Name;
+            var user = _userService.GetCurrentUser(email);
+            if(user.IsAdmin)
+            {
+                _userService.SetRecipient();
+                return Ok("Success");
+            }
+            return Ok("Error");
+        }
         #endregion
 
         #region Post

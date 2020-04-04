@@ -22,27 +22,23 @@ namespace SecretSanta.Data.EF.Repositories.RecipientRepository
         {
             using (SantaContext context = new SantaContext())
             {
-                CreateRecipient(new Recipient
-                {
-                    Id = users[users.Count() - 1].Id,
-                    FirstName = users[0].FirstName,
-                    LastName = users[0].LastName,
-                    Email = users[0].Email,
-                    PathToPicture = users[0].PathToPicture,
-                    DateOfBirth = users[0].DateOfBirth
-                });
+                users[users.Count() - 1].RecipientId = users[0].Id;
 
                 for (int i = 0; i < users.Count() - 1; i++)
                 {
-                    CreateRecipient(new Recipient
-                    {
-                        Id = users[i].Id,
-                        FirstName = users[i + 1].FirstName,
-                        LastName = users[i + 1].LastName,
-                        Email = users[i + 1].Email,
-                        PathToPicture = users[i + 1].PathToPicture,
-                        DateOfBirth = users[i + 1].DateOfBirth
-                    });
+                    context.Users.Attach(users[i]);
+                    users[i].RecipientId = users[i + 1].Id;
+                    users[i].Recipient = users[i + 1];
+                    //CreateRecipient(new Recipient
+                    //{
+                    //    Id = users[i + 1].Id,
+                    //    FirstName = users[i + 1].FirstName,
+                    //    LastName = users[i + 1].LastName,
+                    //    Email = users[i + 1].Email,
+                    //    PathToPicture = users[i + 1].PathToPicture,
+                    //    DateOfBirth = users[i + 1].DateOfBirth,
+                    //    UserId = users[i].Id
+                    //});
                 }
                 context.SaveChanges();
             }

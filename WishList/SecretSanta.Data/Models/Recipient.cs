@@ -10,8 +10,6 @@ namespace SecretSanta.Data.Models
 {
     public class Recipient
     {
-        [Key]
-        [ForeignKey("User")]
         public Int64 Id { get; set; }
 
         [MaxLength(255)]
@@ -29,6 +27,10 @@ namespace SecretSanta.Data.Models
         public DateTime DateOfBirth { get; set; }
 
         public String PathToPicture { get; set; }
-        public User User { get; set; }
+        //[Key]
+        //[ForeignKey("User")]
+        //public Int64 UserId { get; set; }
+        //public User User { get; set; }
+        
     }
 }

@@ -50,8 +50,40 @@ namespace SecretSanta.Services.UserServices
         {
             var users = _userRepository.Get().ToList();
             users.Mix();
-            _recipientRepository.SetRecipientForUsers(users);
+            users[users.Count() - 1].RecipientId = users[0].Id;
+            _userRepository.Update(users[users.Count() - 1]);
+            for (int i = 0; i < users.Count() - 1; i++)
+            {
+                users[i].RecipientId = users[i + 1].Id;
+                _userRepository.Update(users[i]);
+            }
+           
         }
+        //public void SetRecipientForUsers(List<User> users)
+        //{
+        //    using (SantaContext context = new SantaContext())
+        //    {
+        //        users[users.Count() - 1].RecipientId = users[0].Id;
+
+        //        for (int i = 0; i < users.Count() - 1; i++)
+        //        {
+        //            context.Users.Attach(users[i]);
+        //            users[i].RecipientId = users[i + 1].Id;
+        //            users[i].Recipient = users[i + 1];
+        //            //CreateRecipient(new Recipient
+        //            //{
+        //            //    Id = users[i + 1].Id,
+        //            //    FirstName = users[i + 1].FirstName,
+        //            //    LastName = users[i + 1].LastName,
+        //            //    Email = users[i + 1].Email,
+        //            //    PathToPicture = users[i + 1].PathToPicture,
+        //            //    DateOfBirth = users[i + 1].DateOfBirth,
+        //            //    UserId = users[i].Id
+        //            //});
+        //        }
+        //        context.SaveChanges();
+        //    }
+        //}
         private IUserRepository _userRepository;
         private IRecipientRepository _recipientRepository;
     }

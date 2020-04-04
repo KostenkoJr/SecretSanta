@@ -35,6 +35,7 @@ namespace SecretSanta.Data.Models
         public Boolean IsAdmin { get; set; }
         public DateTime DateOfBirth { get; set; } 
         public List<Wish> Wishes { get; set; }
-        public Recipient Recipient { get; set; }
+        public Int64? RecipientId { get; set; }
+        public User Recipient { get; set; }
     }
 }

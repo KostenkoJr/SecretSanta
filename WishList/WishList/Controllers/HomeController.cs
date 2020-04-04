@@ -22,7 +22,7 @@ namespace WishList.Controllers
         public ActionResult Index()
         {
             #region Initialize
-            //Initialize();
+           //Initialize();
             #endregion
             var email = User.Identity.Name;
             var user = _userService.GetCurrentUser(email);
@@ -50,7 +50,7 @@ namespace WishList.Controllers
                 return RedirectToAction("UserIsntFound", "Profile");
                 
             }
-            var wishes = _wishService.GetWishes().Where(w => w.UserId == user.Recipient.Id).OrderByDescending(w => w.Date);
+            var wishes = _wishService.GetWishes().Where(w => w.UserId == recipient.Id).OrderByDescending(w => w.Date);
             ViewBag.Wishes = wishes;
             ViewBag.Recipient = recipient;
             return View();
@@ -71,8 +71,8 @@ namespace WishList.Controllers
             });
             _userService.CreateUser(new User
             {
-                FirstName = "Lena",
-                LastName = "Chernaya",
+                FirstName = "Ivan",
+                LastName = "Ivanov",
                 Email = "99@mail.ru",
                 Password = "panda_super_secret_password",
                 PathToPicture = "path to picture",
@@ -82,8 +82,8 @@ namespace WishList.Controllers
             });
             _userService.CreateUser(new User
             {
-                FirstName = "Lena",
-                LastName = "Chernaya",
+                FirstName = "Sidor",
+                LastName = "Sidorov",
                 Email = "88@mail.ru",
                 Password = "panda_super_secret_password",
                 PathToPicture = "path to picture",
