@@ -22,7 +22,10 @@ namespace WishList.Controllers
         public ActionResult Index()
         {
             #region Initialize
-           //Initialize();
+            if(_userService.GetUsers().Count() < 0)
+            {
+                Initialize();
+            }
             #endregion
             var email = User.Identity.Name;
             var user = _userService.GetCurrentUser(email);
