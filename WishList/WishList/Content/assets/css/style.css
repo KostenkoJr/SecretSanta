@@ -1969,3 +1969,18 @@ textarea::-webkit-scrollbar {
 .no-valid {
     border: 1px solid red !important;
 }
+
+input:read-only {
+    cursor: default;
+}
+textarea:read-only {
+    cursor: default;
+ }
+input:read-only:focus {
+    border: 0px solid;
+    background: #f7f7f7;
+}
+textarea:read-only:focus {
+    border: 0px solid;
+    background: #f7f7f7;
+}

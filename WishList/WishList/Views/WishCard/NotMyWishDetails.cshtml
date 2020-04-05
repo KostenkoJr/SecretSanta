@@ -2,58 +2,60 @@
 @{
     Layout = null;
 }
-
-<div class="modal-content" id="contentNotMyWish">
+<div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title">Quick View</h4>
+        <h4 class="modal-title">Quick view</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
-    <div class="modal-body pb-20">
-        <div class="col-lg-5">
-            <div class="quick-view-content">
-                <div class="pd-sub-title">
-                    <h5>Title</h5>
-                    <p>
-                        @Model.Title
-                    </p>
+    <div class="modal-body">
+        <div class="col-lg-6">
+            <div class="qwick-view-content">
+                <div class="form">
+                    <form id="SaveChanges" data-model="@Model.Id">
+                        <input readonly class="mt-10" name="Id" value="@Model.Id" hidden="true" />
+                        <input readonly class="mt-10" name="UserId" value="@Model.UserId" hidden="true" />
+                        <label>
+                            Title
+                            <input readonly class="mt-10" name="Title" placeholder="Ttile" value="@Model.Title" />
+                        </label>
+                        <label>
+                            Price
+                            <input readonly class="mt-10" name="Price" type="number" step="0.1" placeholder="Price" value="@Math.Round(Convert.ToDouble(Model.Price), 2)" />
+                        </label>
+                        <label>
+                            Link to shop
+                            <input readonly class="mt-10" name="LinkToShop" placeholder="Link" value="@Model.LinkToShop" />
+                        </label>
+                        <label>
+                            Description
+                            <textarea readonly class="mt-10" name="Description" placeholder="Description">@Model.Description</textarea>
+                        </label>
+                        <div></div>
+                        <a href="@Url.Action("AnotherUser", "Profile", new { id = Model.User.Id })">
+                            <img class="rounded-circle d-inline-block" width="35" height="35" src="@Url.Content($"~/Files/{Model.User.PathToPicture}")" alt="" />
+                            <h5 style="padding-top: 10px;" class="d-inline-block">@(Model.User.FirstName + " " + @Model.User.LastName)</h5>
+                        </a>
+                    </form>
                 </div>
-                <div class="pd-sub-title">
-                    <h5>Price</h5>
-                    <div class="price">
-                        <span>$@Model.Price</span>
-                    </div>
-                </div> 
-                <div class="pd-sub-title">
-                    <h5>Link to shop</h5>
-                    <p>
-                        @Model.LinkToShop
-                    </p>
-                </div>
-                <div class="pd-sub-title">
-                    <h5>Description</h5>
-                    <textarea disabled="disabled">
-                        @Model.Description
-                    </textarea>
-                </div>
-                <h5>User</h5>
-                <a href="@Url.Action("AnotherUser", "Profile", new { id = Model.User.Id })">
-                    <div class="d-inline">
-                        <img class="rounded-circle" width="50" height="50" src="@Url.Content($"~/Files/{Model.User.PathToPicture}")" alt="" />
-                    </div>
-                    <h5 class="d-inline ">@(Model.User.FirstName + " " + @Model.User.LastName)</h5>
-                </a>
             </div>
         </div>
-        <div class="col-lg-7">
+        <div class="col-lg-6">
             <div class="qwick-view-content">
                 <div class="text-center">
-                    <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                        <img src="@Url.Content($"~/Files/{Model.PathToPicture}")" alt="" width="280" height="368" />
+                    <div class="tab-pane active show fade mt-10" id="modal1" role="tabpanel">
+                        @if (Model.PathToPicture == null)
+                        {
+                            <img class="item-pic" src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="290" height="368" />
+                        }
+                        else
+                        {
+                            <img class="item-pic" src="@Url.Content($"~/Files/{Model.PathToPicture}")" alt="" width="290" height="368" />
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 <script src="~/Content/assets/js/main.js"></script>
+
