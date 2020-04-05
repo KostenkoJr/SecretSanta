@@ -84,7 +84,7 @@
                                                href="@Url.Action("Details", "WishCard", new {id = wish.Id })">
                                                 <i class="ti-search"></i>
                                             </a>
-                                            <a id="add-to-my-wishlist" class="action-heart" title="Add To My Wishlist" href="#" data-wish="#">
+                                            <a id="add-to-my-wishlist" class="action-heart" title="Add To My Wishlist" href="#" data-wish="@wish.Id">
                                                 <i class="ti-heart"></i>
                                             </a>
                                         </div>
@@ -101,7 +101,25 @@
                 </div>
             </div>
         </div>
-
+    </div>
+</div>
+<div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ConfirmModalTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                You already have a wish on your list with that title. Are you sure you want to add it?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirm-btn" type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
     </div>
 </div>
 <!-- all js here -->
@@ -117,5 +135,31 @@
             });
         });
     })
+</script>
+<script>
+    const addToWishListArray = document.querySelectorAll('#add-to-my-wishlist');
+    addToWishListArray.forEach(el => {
+        el.addEventListener('click', (event) => {
+            const wishId = el.dataset.wish;
+            event.preventDefault();
+            fetch(`https://localhost:44360/api/CheckAndAddToMyWishList/${wishId}`)
+                .then(res => res.json())
+                .then(answer => {
+                    if (answer.IsRepeat) {
+                        $('#ConfirmModal').modal('show');
+                        const confirmBtn = document.querySelector('#confirm-btn');
+                        confirmBtn.onclick = (event) => {
+                            event.preventDefault();
+                            fetch(`https://localhost:44360/api/AddToMyWishList/${wishId}`);
+                            $('#ConfirmModal').modal('hide');
+                            Notifier.showSuccess("<strong>Wish added to your wishlist</strong>");
+                        };
+                    }
+                    else {
+                        Notifier.showSuccess("<strong>Wish added to your wishlist</strong>");
+                    }
+                });
+        });
+    });
 </script>
 

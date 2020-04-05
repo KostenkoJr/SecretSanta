@@ -203,11 +203,14 @@ onDeleteWish();
 
 function onMakeMagic() {
     const el = document.querySelector('#MakeMagic');
-    el.addEventListener('click', (event) => {
-        event.preventDefault();
-        fetch('https://localhost:44360/api/MakeMagic')
-            .then(res => res.json())
-            .then(data => console.log(data));
-    })
+    if (el) {
+        el.addEventListener('click', (event) => {
+            event.preventDefault();
+            fetch('https://localhost:44360/api/MakeMagic')
+                .then(res => res.json())
+                .then(data => console.log(data));
+        })
+    }
+
 }
 onMakeMagic();
