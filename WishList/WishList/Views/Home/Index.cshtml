@@ -1,89 +1,89 @@
 ﻿        <!-- HERE -->
 
-    <div class="wish-area pb-30 pt-15">
-        <div class="container">
-            <div class="section-title text-center mb-20">
-                <h2>Wish Gallery</h2>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane active" id="home1" role="tabpanel">
-                    <div class="row">
-                        <!-- Start one wish from gallery -->
-                        @foreach (var wish in ViewBag.Wishes)
-                        {
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div class="wish-wrapper mb-45">
-                                    <div class="wish-img">
+<div class="wish-area pb-30 pt-15">
+    <div class="container">
+        <div class="section-title text-center mb-20">
+            <h2>Wish Gallery</h2>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="home1" role="tabpanel">
+                <div class="row">
+                    <!-- Start one wish from gallery -->
+                    @foreach (var wish in ViewBag.Wishes)
+                    {
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="wish-wrapper mb-45">
+                                <div class="wish-img">
 
-                                        @if (wish.PathToPicture == null)
-                                        {
-                                            <a href="#">
-                                                <img id="@("img" + wish.Id)" src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="270" height="326" />
+                                    @if (wish.PathToPicture == null)
+                                    {
+                                        <a href="#">
+                                            <img id="@("img" + wish.Id)" src="@Url.Content($"~/Files/default-gift.jpg")" alt="" width="270" height="326" />
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <img src="@Url.Content($"~/Files/{wish.PathToPicture}")" width="270" height="326" alt="" />
+                                        </a>
+                                    }
+                                    @if (@wish.IsComlete)
+                                    {
+                                        <span class="done is-complete" id="@("wish" + wish.Id.ToString())">DONE</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="not-done is-complete" id="@("wish" + wish.Id.ToString())">NOT DONE</span>
+                                    }
+                                    <div class="wish-action">
+                                        <div class="wish-action-style">
+                                            <a class="action-plus modalka" title="Quick View" data-toggle="modal" data-target="#exampleModal"
+                                               href="@Url.Action("Details", "WishCard", new { id = wish.Id })">
+                                                <i class="ti-search"></i>
                                             </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="#">
-                                                <img src="@Url.Content($"~/Files/{wish.PathToPicture}")" width="270" height="326" alt="" />
+                                            <a id="add-to-my-wishlist" class="action-heart" title="Add To My Wishlist" href="#" data-wish="@wish.Id">
+                                                <i class="ti-heart"></i>
                                             </a>
-                                        }
-                                        @if (@wish.IsComlete)
-                                        {
-                                            <span class="done is-complete" id="@("wish" + wish.Id.ToString())">DONE</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="not-done is-complete" id="@("wish" + wish.Id.ToString())">NOT DONE</span>
-                                        }
-                                        <div class="wish-action">
-                                            <div class="wish-action-style">
-                                                <a class="action-plus modalka" title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                   href="@Url.Action("Details", "WishCard", new { id = wish.Id })">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                                <a id="add-to-my-wishlist" class="action-heart" title="Add To My Wishlist" href="#" data-wish="@wish.Id">
-                                                    <i class="ti-heart"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="wish-content text-center">
-                                        <h4>
-                                            <a href="wish-details.html">@wish.Title</a>
-                                        </h4>
-                                    </div>
+                                </div>
+                                <div class="wish-content text-center">
+                                    <h4>
+                                        <a href="wish-details.html">@wish.Title</a>
+                                    </h4>
                                 </div>
                             </div>
-                        }
-                    </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
-        <!--Confirm Modal-->
-        <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ConfirmModalTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        You already have a wish on your list with that title. Are you sure you want to add it?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button id="confirm-btn" type="button" class="btn btn-primary">Yes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="modDialog" class="modal fade">
-            <div id="dialogContent" class="modal-dialog"></div>
-        </div>
-        <!-- modal -->
     </div>
+    <!--Confirm Modal-->
+    <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ConfirmModalTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    You already have a wish on your list with that title. Are you sure you want to add it?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="confirm-btn" type="button" class="btn btn-primary">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modDialog" class="modal fade">
+        <div id="dialogContent" class="modal-dialog"></div>
+    </div>
+    <!-- modal -->
+</div>
 <script>
     const addToWishListArray = document.querySelectorAll('#add-to-my-wishlist');
     addToWishListArray.forEach(el => {
@@ -112,13 +112,13 @@
 </script>
 <script>
     $(function () {
-    $.ajaxSetup({ cache: false });
-    $(".modalka").click(function (e) {
-        e.preventDefault();
-        $.get(this.href, function (data) {
-            $('#dialogContent').html(data);
-            $('#modDialog').modal('show');
+        $.ajaxSetup({ cache: false });
+        $(".modalka").click(function (e) {
+            e.preventDefault();
+            $.get(this.href, function (data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+            });
         });
-    });
     });
 </script>
