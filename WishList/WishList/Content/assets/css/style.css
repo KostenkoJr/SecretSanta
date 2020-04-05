@@ -1965,3 +1965,7 @@ textarea::-webkit-scrollbar {
         #result-container > div > a:hover{
             color: silver !important;
         }
+
+.no-valid {
+    border: 1px solid red !important;
+}

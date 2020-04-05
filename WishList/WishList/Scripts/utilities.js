@@ -1,7 +1,7 @@
 ﻿class Notifier {
 
     static showSuccess(title, message) {
-        if (message) {
+        if (message !== null && typeof message != 'undefined' && message.trim() !== '') {
             $.notify(
                 {
                     title: title,
@@ -22,7 +22,7 @@
         else {
             $.notify(
                 {
-                    title: title,
+                    message: title,
                     icon: './../Content/assets/img/logo/2.png'
                 },
                 {
@@ -39,7 +39,7 @@
     }
 
     static showWarning(title, message) {
-        if (message) {
+        if (message !== null && typeof message != 'undefined' && message.trim() !== '') {
             $.notify(
                 {
                     title: title,
@@ -60,7 +60,7 @@
         else {
             $.notify(
                 {
-                    title: title,
+                    message: title,
                     icon: './../Content/assets/img/coming-soon/userIsntFoundIcon.png'
                 },
                 {
