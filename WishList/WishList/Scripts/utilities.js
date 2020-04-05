@@ -5,7 +5,7 @@
             $.notify(
                 {
                     title: title,
-                    icon: './../Content/assets/img/logo/2.png',
+                    icon: '/Content/assets/img/logo/2.png',
                     message: message,
 
                 },
@@ -23,7 +23,7 @@
             $.notify(
                 {
                     message: title,
-                    icon: './../Content/assets/img/logo/2.png'
+                    icon: '/Content/assets/img/logo/2.png'
                 },
                 {
                     type: 'success',
@@ -43,7 +43,7 @@
             $.notify(
                 {
                     title: title,
-                    icon: './../Content/assets/img/coming-soon/userIsntFoundIcon.png',
+                    icon: '/Content/assets/img/coming-soon/userIsntFoundIcon.png',
                     message: message,
 
                 },
@@ -61,7 +61,7 @@
             $.notify(
                 {
                     message: title,
-                    icon: './../Content/assets/img/coming-soon/userIsntFoundIcon.png'
+                    icon: '/Content/assets/img/coming-soon/userIsntFoundIcon.png'
                 },
                 {
                     type: 'danger',
