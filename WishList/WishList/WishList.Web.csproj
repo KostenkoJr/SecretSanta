@@ -454,6 +454,7 @@
     <Content Include="Scripts\Pages\Contact\Contact.js" />
     <Content Include="Scripts\Pages\Profile\DetailsModal.js" />
     <Content Include="Scripts\Pages\Profile\Profile.js" />
+    <Content Include="Scripts\Pages\SearchUsers.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />

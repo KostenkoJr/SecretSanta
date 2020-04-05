@@ -121,11 +121,14 @@
                 <form>
                     <div class="form-search">
                         <input id="search" class="input-text" value="" placeholder="Find your friends" type="search" />
-                        <button>
+                        <button id="find-user-btn">
                             <i class="ti-search"></i>
                         </button>
                     </div>
                 </form>
+                <div id="result-container" class="mt-30">
+
+                </div>
             </div>
         </div>
         <div class="slider-area">
@@ -157,6 +160,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/SecretSanta/scripts")
     @Scripts.Render("~/bundles/alertify/js")
+    <script src="~/Scripts/Pages/SearchUsers.js"></script>
     <script>
         var deadline = '2020-12-31';
         function getTimeRemaining(endtime) {

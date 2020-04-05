@@ -91,9 +91,29 @@ namespace WishList.Controllers.Api
             return Ok(true);
         }
 
-        // DELETE: api/Profile/5
-        public void Delete(int id)
+        [HttpGet, Route("api/FindUsers")]
+        public IHttpActionResult FindUsers([FromUri]string term)
         {
+            var users = _userService.GetUsers().Where(u => u.Email.Contains(term)).ToList();
+            
+            if(users.Count() > 0)
+            {
+                List<UserSearch> usersSearch = new List<UserSearch>();
+                foreach(var user in users)
+                {
+                    usersSearch.Add(new UserSearch { Id = user.Id, FullName = user.FirstName + " " + user.LastName, Email = user.Email });
+                }
+                return Ok(JsonConvert.SerializeObject(usersSearch, Formatting.Indented));
+            }
+            return Ok("No users found");
+        }
+
+        struct UserSearch
+        {
+            public long Id { get; set; }
+            public string FullName { get; set; }
+            public string Email { get; set; }
+
         }
     }
 }
