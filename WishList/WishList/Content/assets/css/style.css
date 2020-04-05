@@ -108,11 +108,7 @@
     padding-top: 70px;
     color: #6c893c;
     line-height: 1em;
-    text-shadow: 0px 0px 0 rgb(70,100,39), 
-        1px 1px 0 rgb(45,75,14),
-        2px 2px 1px rgba(0,0,0,0.6),
-        2px 2px 1px rgba(0,0,0,0.5),
-        0px 0px 1px rgba(0,0,0,.2);
+    text-shadow: 0px 0px 0 rgb(70,100,39), 1px 1px 0 rgb(45,75,14), 2px 2px 1px rgba(0,0,0,0.6), 2px 2px 1px rgba(0,0,0,0.5), 0px 0px 1px rgba(0,0,0,.2);
 }
 /* chosen select option */
 .chosen-container-single .chosen-single span {
@@ -1486,7 +1482,6 @@ button.cr-btn:hover b {
 .quick-view-content > .pd-sub-title > p {
     font-size: 16px;
     margin-bottom: 0;
-
 }
 
 .quick-view-content .pd-sub-title::before {
@@ -1950,6 +1945,23 @@ input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
 }
+
 textarea::-webkit-scrollbar {
     width: 0 !important;
 }
+
+#result-container {
+
+    font-size: 20px;
+}
+
+    #result-container > div {
+        margin-bottom: 10px;
+    }
+        #result-container > div > a {
+            color: white;
+        }
+
+        #result-container > div > a:hover{
+            color: silver !important;
+        }
