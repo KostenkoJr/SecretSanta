@@ -7,7 +7,6 @@ function onSendFeedbackForm() {
         const data = {};
         const arr = Array.from(formData.elements);
         const isValid = validateForm(arr);
-        console.log(isValid);
         if (isValid === false)
             return;
         arr.forEach(el => {
@@ -27,6 +26,7 @@ function onSendFeedbackForm() {
 }
 onSendFeedbackForm();
 
+/*--------------------Help functions--------------------*/
 function resetForm(arr) {
     arr.forEach(inp => {
         if (inp.id !== 'SendForm') {
