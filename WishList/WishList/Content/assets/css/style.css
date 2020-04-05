@@ -1984,3 +1984,7 @@ textarea:read-only:focus {
     border: 0px solid;
     background: #f7f7f7;
 }
+
+a > h5:hover {
+    color: gray;
+}

@@ -31,9 +31,9 @@
                             <textarea readonly class="mt-10" name="Description" placeholder="Description">@Model.Description</textarea>
                         </label>
                         <div></div>
-                        <a href="@Url.Action("AnotherUser", "Profile", new { id = Model.User.Id })">
+                        <a style="display: flex" href="@Url.Action("AnotherUser", "Profile", new { id = Model.User.Id })">
                             <img class="rounded-circle d-inline-block" width="35" height="35" src="@Url.Content($"~/Files/{Model.User.PathToPicture}")" alt="" />
-                            <h5 style="padding-top: 10px;" class="d-inline-block">@(Model.User.FirstName + " " + @Model.User.LastName)</h5>
+                            <h5 style="padding-top: 8px; padding-left: 5px" class="d-inline-block">@(Model.User.FirstName + " " + @Model.User.LastName)</h5>
                         </a>
                     </form>
                 </div>
