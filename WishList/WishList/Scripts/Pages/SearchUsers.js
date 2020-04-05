@@ -9,12 +9,16 @@
         fetch(`https://localhost:44360/api/FindUsers?term=${input.value}`)
             .then(res => res.json())
             .then(res => {
+                const container = document.querySelector('#result-container');
+                container.innerHTML = '';
+                console.log(res == 'No users found');
                 if (res == 'No users found') {
-
+                    const p = document.createElement('p');
+                    p.innerHTML = 'No users found';
+                    p.style.fontSize = '20px';
+                    container.appendChild(p);
                 }
-                else {
-                    const container = document.querySelector('#result-container');
-                    container.innerHTML = '';
+                else { 
                     const fragment = document.createDocumentFragment();
                     const data = JSON.parse(res);
                     data.forEach(ob => {
