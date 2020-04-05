@@ -83,8 +83,11 @@
                                 </div>
                                 <div class="header-gift same-style">
                                     <button class="sidebar-trigger">
-                                        <i class="ti-gift" title="My recipient">
-                                        </i>
+                                        <a class="sidebar-trigger" href="@Url.Action("MyRecipient", "Home")">
+                                            <i class="ti-gift" title="My recipient">
+
+                                            </i>
+                                        </a>
                                     </button>
                                 </div>
                             </div>
@@ -101,9 +104,9 @@
                                                 <li><a href="@Url.Action("RecipientWishes", "Home")">recipient wishes</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html"> rules</a></li>
-                                        <li><a href="contact.html"> about us</a></li>
-                                        <li><a href="contact.html"> contact us</a></li>
+                                        <li><a href="@Url.Action("Rules", "Info")">rules </a></li>
+                                            <li><a href="@Url.Action("About", "Info")">about us</a></li>
+                                            <li><a href="@Url.Action("Contact", "Info")">contact us</a></li>
                                     </ul>
                                 </nav>
                             </div>

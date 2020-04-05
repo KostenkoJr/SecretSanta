@@ -61,6 +61,14 @@ namespace WishList.Controllers
             return View();
         }
 
+        public ActionResult MyRecipient()
+        {
+            var email = User.Identity.Name;
+            var user = _userService.GetCurrentUser(email);
+            var recipient = user.Recipient;
+            return RedirectToAction("AnotherUser", "Profile", new { id = recipient.Id });
+        }
+
         public void Initialize()
         {
             _userService.CreateUser(new User
