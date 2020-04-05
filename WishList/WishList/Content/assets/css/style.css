@@ -1096,6 +1096,11 @@ a.slider-btn {
     min-width: 300px;
 }
 
+#contentNotMyWish .modal-content {
+    margin: 150px auto;
+    min-width: 550px;
+}
+
 .quick-view-tab-content .tab-pane > img {
     width: 100%;
 }
@@ -1465,6 +1470,47 @@ button.cr-btn:hover b {
 
 .wish-details .easyzoom > a img {
     width: 100%;
+}
+
+.quick-view-content > p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.quick-view-content > .pd-sub-title > h5 {
+    font-size: 18px;
+    margin-bottom: 3px;
+    color: #333333;
+}
+
+.quick-view-content > .pd-sub-title > p {
+    font-size: 16px;
+    margin-bottom: 0;
+
+}
+
+.quick-view-content .pd-sub-title::before {
+    width: 60%;
+}
+
+.quick-view-content .pd-sub-title .price {
+    margin: 0;
+    font-size: 16px;
+}
+
+.quick-view-content .pd-sub-title span {
+    color: #807f7f;
+    font-size: 16px;
+}
+
+.quick-view-content textarea {
+    resize: none;
+    overflow: auto;
+    background-color: #ffffff;
+    padding: 0px;
+    white-space: normal;
+    text-align: justify;
+    height: 130px;
 }
 
 /*--------- 8. Login register page ---------*/
@@ -1903,4 +1949,7 @@ button.cr-btn:hover b {
 input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
-} 
+}
+textarea::-webkit-scrollbar {
+    width: 0 !important;
+}

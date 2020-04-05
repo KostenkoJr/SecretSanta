@@ -3,45 +3,57 @@
     Layout = null;
 }
 
-<div class="modal-content">
+<div class="modal-content" id="contentNotMyWish">
     <div class="modal-header">
-        <h3 class="modal-title">Modal title</h3>
+        <h4 class="modal-title">Quick View</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
-    <div class="modal-body pb-0">
-        <div class="col-lg-12">
+    <div class="modal-body pb-20">
+        <div class="col-lg-5">
+            <div class="quick-view-content">
+                <div class="pd-sub-title">
+                    <h5>Title</h5>
+                    <p>
+                        @Model.Title
+                    </p>
+                </div>
+                <div class="pd-sub-title">
+                    <h5>Price</h5>
+                    <div class="price">
+                        <span>$@Model.Price</span>
+                    </div>
+                </div> 
+                <div class="pd-sub-title">
+                    <h5>Link to shop</h5>
+                    <p>
+                        @Model.LinkToShop
+                    </p>
+                </div>
+                <div class="pd-sub-title">
+                    <h5>Description</h5>
+                    <textarea disabled="disabled">
+                        @Model.Description
+                    </textarea>
+                </div>
+                <h5>User</h5>
+                <a href="@Url.Action("AnotherUser", "Profile", new { id = Model.User.Id })">
+                    <div class="d-inline">
+                        <img class="rounded-circle" width="50" height="50" src="@Url.Content($"~/Files/{Model.User.PathToPicture}")" alt="" />
+                    </div>
+                    <h5 class="d-inline ">@(Model.User.FirstName + " " + @Model.User.LastName)</h5>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-7">
             <div class="qwick-view-content">
                 <div class="text-center">
-                    <h3>@Model.Title</h3>
                     <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                        <img src="@Url.Content($"~/Files/{Model.PathToPicture}")" alt="" width="320" height="380" />
+                        <img src="@Url.Content($"~/Files/{Model.PathToPicture}")" alt="" width="280" height="368" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="lg-col-12 pb-30 ml-30 mr-30">
-        <!-- <div class="quick-view-learg-img"> -->
-        <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-            <a href="@Url.Action("AnotherUser", "Profile", new { id = Model.User.Id })">
-                <div class="d-inline">
-                    <img class="rounded-circle" width="50" height="50" src="@Url.Content($"~/Files/{Model.User.PathToPicture}")" alt="" />
-                </div>
-                <h4 class="d-inline ">@(Model.User.FirstName + " " + @Model.User.LastName)</h4>
-            </a>
-        </div>
-        <!-- </div> -->
-        <div class="price">
-            <span>$@Model.Price</span>
-        </div>
-        <p>Link to shop</p>
-        <p>
-            @Model.LinkToShop
-        </p>
 
-        <div class="quickview-btn-gift text-center">
-            <a class="btn-style cr-btn" href="#"><span>add to my wishlist</span></a>
-        </div>
-    </div>
 </div>
 <script src="~/Content/assets/js/main.js"></script>
