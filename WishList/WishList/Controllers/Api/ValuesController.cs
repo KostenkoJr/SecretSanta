@@ -23,12 +23,16 @@ namespace WishList.Controllers.Api
             _userService = userService;
             _feedbackService = feedbackService;
         }
-
+        [Authorize]
         [HttpGet, Route("api/CheckAndAddToMyWishList/{id}")]
         public IHttpActionResult CheckAndAddToMyWishList(long id)
         {
             string email = User.Identity.Name;
             var user = _userService.GetCurrentUser(email);
+            if(user == null)
+            {
+                return Ok("Go to Login");
+            }
             var wish = _wishService.GetWish(id);
             var titleOfMyWishes = user.Wishes.Select(w => w.Title);
             var titleIsExist = titleOfMyWishes.Contains(wish.Title);

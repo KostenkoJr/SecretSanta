@@ -23,6 +23,21 @@ function onUploadImageWish() {
 onUploadImageWish();
 
 function onSaveChangesDetailsWish() {
+    function validateForm(arr) {
+        let counter = 0;
+        arr.forEach(input => {
+            if (input.name != 'Description' && input.name != 'LinkToShop' ) {
+                if (input.value === null || input.value.trim() === '' || typeof input.value === 'undefined') {
+                    counter++;
+                    input.classList.toggle('no-valid', true);
+                }
+                else {
+                    input.classList.toggle('no-valid', false);
+                }
+            }
+        })
+        return counter > 0 ? false : true;
+    }
     const sendBtn = document.querySelector('.save-changes');
     sendBtn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -30,6 +45,10 @@ function onSaveChangesDetailsWish() {
         const img = document.querySelector('.item-pic');
         const data = {};
         const arr = Array.from(formData.elements);
+        const isValid = validateForm(arr);
+        if (isValid === false) {
+            return;
+        }
         arr.forEach(el => {
             data[el.name] = el.value;
         });

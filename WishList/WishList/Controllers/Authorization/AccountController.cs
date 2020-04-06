@@ -70,7 +70,8 @@ namespace WishList.Controllers.Authorization
                         LastName = model.LastName,
                         Email = model.Email,
                         Password = model.Password,
-                        DateOfBirth = DateTime.Now
+                        DateOfBirth = DateTime.Now,
+                        PathToPicture = "default-profile-picture.png"
                     });
                     User user = _userService.GetCurrentUser(model.Email);
                     if (user != null)

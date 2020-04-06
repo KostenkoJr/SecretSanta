@@ -279,7 +279,7 @@
         z-index: 999;
     }
 
-    .main-menu nav ul li ul > li:hover > a::before {
+    .main-menu nav ul li ul > li:hover > a.active-link::before {
         opacity: 1;
     }
 
@@ -294,13 +294,14 @@
 }
 
 .main-menu nav ul li ul li.active > a,
-.stick .main-menu nav ul li ul li.active > a {
+.stick .main-menu nav ul li ul li.active > a{
     color: #5b772d;
 }
 
-.main-menu nav ul li ul li:hover > a {
+.main-menu nav ul li ul li:hover > a.active-link {
     padding-left: 15px;
 }
+
 
 .main-menu nav > ul > li > ul.lavel-menu li ul {
     background: #fff none repeat scroll 0 0;

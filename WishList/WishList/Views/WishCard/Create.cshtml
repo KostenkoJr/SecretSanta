@@ -15,7 +15,7 @@
                         </label>
                         <label>
                             Price
-                            <input class="mt-10" name="Price" type="number" step="0.1" placeholder="Price"/>
+                            <input class="mt-10" name="Price" type="number" step="0.1" placeholder="Price" />
                         </label>
                         <label>
                             Link to shop
@@ -55,14 +55,34 @@
 
 <script>
     //TODO refactoring
+    function validateForm(arr) {
+        let counter = 0;
+        arr.forEach(input => {
+            if (input.name != 'Description' && input.name != 'LinkToShop') {
+                if (input.value === null || input.value.trim() === '' || typeof input.value === 'undefined') {
+                    counter++;
+                    input.classList.toggle('no-valid', true);
+                }
+                else {
+                    input.classList.toggle('no-valid', false);
+                }
+            }
+        })
+        return counter > 0 ? false : true;
+    }
+
     const sendBtn = document.querySelector('.create-wish');
     sendBtn.addEventListener('click', (event) => {
         event.preventDefault();
         const formData = document.querySelector('#CreateWish');
         const img = document.querySelector('.item-pic');
         const data = {};
-        const arr = formData.elements;
-        Array.from(arr).forEach(el => {
+        const arr = Array.from(formData.elements);
+        const isValid = validateForm(arr);
+        if (isValid === false) {
+            return;
+        }
+        arr.forEach(el => {
             data[el.name] = el.value;
         });
         let pathToPicture = img.src.match(/Files\/.*/gi)[0].substring(6);

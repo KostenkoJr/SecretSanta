@@ -31,8 +31,11 @@ namespace WishList.Controllers
             #endregion
             var email = User.Identity.Name;
             var user = _userService.GetCurrentUser(email);
-            var wishes = _wishService.GetWishes().Where(w => w.UserId != user.Id).OrderByDescending(w => w.Date);
-
+            var wishes = _wishService.GetWishes().OrderByDescending(w => w.Date);
+            if (User.Identity.IsAuthenticated)
+            {
+                wishes = wishes.Where(w => w.UserId != user.Id).OrderByDescending(w => w.Date);
+            }
             ViewBag.Wishes = wishes;
             return View();
         }

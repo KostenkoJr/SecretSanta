@@ -21,11 +21,12 @@ namespace WishList.Controllers
         }
         public ActionResult Details(Int64? id)
         {
-            if(id != null)
+            if (id != null)
             {
                 var user = _userervice.GetCurrentUser(User.Identity.Name);
                 var wish = _wishService.GetWish(id.Value);
-                if (user.Id == wish.User.Id)
+
+                if (user != null && user.Id == wish.User.Id)
                 {
                     return PartialView("MyWishDetails", wish);
                 }
@@ -83,14 +84,14 @@ namespace WishList.Controllers
                 //_wish.LinkToShop = wish.LinkToShop;
                 //_wish.Description = wish.Description;
                 _wishService.UpdateWish(wish);
-                
+
                 // TODO: Add update logic here
 
                 return Json(new { Id = 1, Name = "123" });
             }
             catch
             {
-                
+
                 return View();
             }
         }

@@ -44,11 +44,17 @@
                                                 <a href="#">wishes <i class="ion-ios-arrow-down"></i></a>
                                                 <!-- НЕ УДАЛЯТЬ DROPDOWN  ДЛЯ ЛОГИН -->
                                                 <ul>
-                                                    <li class="active">
-                                                        <a href="@Url.Action("Index", "Home")">all wishes</a>
-                                                    </li>
-                                                    <li><a href="@Url.Action("MyWishes", "Home")">my wishes</a></li>
-                                                    <li><a href="@Url.Action("RecipientWishes", "Home")">recipient wishes</a></li>
+                                                    <li class="active"><a class="active-link" href="@Url.Action("Index", "Home")">all wishes</a></li>
+                                                    @if (User.Identity.IsAuthenticated)
+                                                    {
+                                                        <li><a class="active-link" href="@Url.Action("MyWishes", "Home")">my wishes</a></li>
+                                                        <li><a class="active-link" href="@Url.Action("RecipientWishes", "Home")">recipient wishes</a></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li><a style="color: lightgray; cursor: pointer">my wishes</a></li>
+                                                        <li><a style="color: lightgray; cursor: pointer">recipient wishes</a></li>
+                                                    }
                                                 </ul>
                                             </li>
                                             <li><a href="@Url.Action("Rules", "Info")">rules </a></li>
@@ -72,10 +78,20 @@
                                             <li>
                                                 <a href="#" class="ti-user"></a>
                                                 <ul>
-                                                    <li class="active">
-                                                        <a href="@Url.Action("Index", "Profile")">My profile</a>
-                                                    </li>
-                                                    <li><a href="@Url.Action("Logoff", "Account")">Log out</a></li>
+                                                    @if (User.Identity.IsAuthenticated)
+                                                    {
+                                                        <li class="active">
+                                                            <a href="@Url.Action("Index", "Profile")">My profile</a>
+                                                        </li>
+                                                        <li><a href="@Url.Action("Logoff", "Account")">Log out</a></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="active">
+                                                            <a href="@Url.Action("Login", "Account")">Sign in</a>
+                                                        </li>
+                                                        <li><a href="@Url.Action("Login", "Account")">Register</a></li>
+                                                    }
                                                 </ul>
                                             </li>
                                         </ul>
@@ -83,11 +99,15 @@
                                 </div>
                                 <div class="header-gift same-style">
                                     <button class="sidebar-trigger">
-                                        <a class="sidebar-trigger" href="@Url.Action("MyRecipient", "Home")">
-                                            <i class="ti-gift" title="My recipient">
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <a class="sidebar-trigger" href="@Url.Action("MyRecipient", "Home")">
+                                                <i class="ti-gift" title="My recipient">
 
-                                            </i>
-                                        </a>
+                                                </i>
+                                            </a>
+                                        }
+
                                     </button>
                                 </div>
                             </div>
@@ -100,13 +120,16 @@
                                             <a href="#">WISHES</a>
                                             <ul>
                                                 <li><a href="@Url.Action("Index", "Home")">all wishes</a></li>
-                                                <li><a href="@Url.Action("MyWishes", "Home")">my wishes</a></li>
-                                                <li><a href="@Url.Action("RecipientWishes", "Home")">recipient wishes</a></li>
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <li><a href="@Url.Action("MyWishes", "Home")">my wishes</a></li>
+                                                    <li><a href="@Url.Action("RecipientWishes", "Home")">recipient wishes</a></li>
+                                                }
                                             </ul>
                                         </li>
                                         <li><a href="@Url.Action("Rules", "Info")">rules </a></li>
-                                            <li><a href="@Url.Action("About", "Info")">about us</a></li>
-                                            <li><a href="@Url.Action("Contact", "Info")">contact us</a></li>
+                                        <li><a href="@Url.Action("About", "Info")">about us</a></li>
+                                        <li><a href="@Url.Action("Contact", "Info")">contact us</a></li>
                                     </ul>
                                 </nav>
                             </div>

@@ -69,7 +69,7 @@ namespace WishList.Controllers.Api
         {
             string email = User.Identity.Name;
             var user = _userService.GetCurrentUser(email);
-            wish.PathToPicture = String.IsNullOrEmpty(wish.PathToPicture) ? null : wish.PathToPicture;
+            wish.PathToPicture = String.IsNullOrEmpty(wish.PathToPicture) ? "default-gift.png" : wish.PathToPicture;
             wish.UserId = user.Id;
             _wishService.CreateWish(wish);
             return Ok(true);
@@ -80,9 +80,15 @@ namespace WishList.Controllers.Api
         {
             var httpRequest = HttpContext.Current.Request;
             var postedFile = httpRequest.Files["file"];
-            var filePath = HttpContext.Current.Server.MapPath("~/Files/" + postedFile.FileName);
+            var ext = System.IO.Path.GetExtension(postedFile.FileName);
+            if(ext != ".png" && ext != ".jpg" && postedFile.ContentLength <= 3000000)
+            {
+                return StatusCode(HttpStatusCode.BadRequest);
+            }
+            var fileName = Guid.NewGuid().ToString().Substring(0, 20);
+            var filePath = HttpContext.Current.Server.MapPath("~/Files/" + fileName + ext);
             postedFile.SaveAs(filePath);
-            return Ok(postedFile.FileName);
+            return Ok(fileName + ext);
         }
         #endregion
 
