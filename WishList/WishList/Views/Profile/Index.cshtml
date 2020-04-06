@@ -59,11 +59,19 @@
                                     </a>
                                     @if (Model.IsAdmin)
                                     {
-                                        <a id="MakeMagic" class="action-plus btn-style cr-btn btn-wish-add disabled" href="">
-                                            <span>Make a magic</span>
-                                        </a>
+                                        if (Model.Recipient != null)
+                                        {
+                                            <a id="MakeMagic" class="action-plus btn-style btn-wish-add disable-btn" href="">
+                                                <span>Make a magic</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a id="MakeMagic" class="action-plus btn-style cr-btn btn-wish-add" href="">
+                                                <span>Make a magic</span>
+                                            </a>
+                                        }
                                     }
-
                                 </div>
                             </div>
                         </div>

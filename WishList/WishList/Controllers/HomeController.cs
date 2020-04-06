@@ -69,6 +69,10 @@ namespace WishList.Controllers
             var email = User.Identity.Name;
             var user = _userService.GetCurrentUser(email);
             var recipient = user.Recipient;
+            if(recipient == null)
+            {
+                return RedirectToAction("UserIsntFound", "Profile");
+            }
             return RedirectToAction("AnotherUser", "Profile", new { id = recipient.Id });
         }
 

@@ -164,7 +164,7 @@ function onSaveChangesProfileDetails() {
         const promise = AjaxRequest.ajaxSendForm(data, 'https://localhost:44360/api/ChangeProfileDetails');
         promise
             .then(res => {
-                Notifier.showSuccess("<strong>Details updated!</strong>", '<br><p>Your wish was changed!</p>')
+                Notifier.showSuccess("<strong>Details updated!</strong>", '<br><p>Your prifile details were changed!</p>')
                 localStorage.setItem('form-details-cast', JSON.stringify(data));
                 saveChangesBtn.classList.toggle('disable-btn', true);
             })
@@ -206,9 +206,12 @@ function onMakeMagic() {
     if (el) {
         el.addEventListener('click', (event) => {
             event.preventDefault();
+            if (el.classList.contains('disable-btn'))
+                return;
             fetch('https://localhost:44360/api/MakeMagic')
                 .then(res => res.json())
-                .then(data => console.log(data));
+                .then(data => {
+                    el.classList.toggle('disable-btn', true);});
         })
     }
 
