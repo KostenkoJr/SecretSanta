@@ -211,7 +211,9 @@ function onMakeMagic() {
             fetch('https://localhost:44360/api/MakeMagic')
                 .then(res => res.json())
                 .then(data => {
-                    el.classList.toggle('disable-btn', true);});
+                    el.classList.toggle('disable-btn', true);
+                    el.classList.toggle('cr-btn', false);
+                });
         })
     }
 
