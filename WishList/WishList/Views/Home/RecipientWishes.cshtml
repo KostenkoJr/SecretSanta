@@ -100,11 +100,11 @@
                             event.preventDefault();
                             fetch(`https://localhost:44360/api/AddToMyWishList/${wishId}`);
                             $('#ConfirmModal').modal('hide');
-                            Notifier.showSuccess("<strong>Wish added to your wishlist</strong>", '<br><p>Your password has been updated!</p>');
+                            Notifier.showSuccess("<strong>Wish added to your wishlist</strong>");
                         };
                     }
                     else {
-                        Notifier.showSuccess("<strong>Wish added to your wishlist</strong>", '<br><p>Your password has been updated!</p>');
+                        Notifier.showSuccess("<strong>Wish added to your wishlist</strong>");
                     }
                 });
         });
