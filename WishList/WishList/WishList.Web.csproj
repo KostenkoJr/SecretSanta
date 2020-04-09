@@ -201,6 +201,8 @@
     <Content Include="Content\assets\img\logo\logo1.png" />
     <Content Include="Content\assets\img\quick-view\l1.jpg" />
     <Content Include="Content\assets\img\quick-view\l13.png" />
+    <Content Include="Content\assets\img\team\1.jpg" />
+    <Content Include="Content\assets\img\team\2.jpg" />
     <Content Include="Content\assets\img\wish-details\details8-s1.jpg" />
     <Content Include="Content\assets\img\wish\1.jpg" />
     <Content Include="Content\assets\js\ajax-mail.js" />
